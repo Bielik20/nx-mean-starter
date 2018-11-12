@@ -287,8 +287,8 @@ Rename `FeatureBannerModule` to `BannerModule`:
 ## Add State
 
 ```
-npm i @ngrx/entity ngrx-actions
-npm i -D @ngrx/store-devtools
+yarn add @ngrx/entity ngrx-actions
+yarn add @ngrx/store-devtools -D
 ```
 
 ### Root
@@ -327,4 +327,8 @@ ng g lib router --directory=state --unit-test-runner=jest --prefix=app
 
 ```
 ng g lib auth --directory=state --unit-test-runner=jest --prefix=app
+```
+
+```
+ng g lib posts --directory=state --unit-test-runner=jest --prefix=app
 ```

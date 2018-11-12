@@ -28,6 +28,27 @@
     },
     "shared": {
       "tags": []
+    },
+    "models": {
+      "tags": []
+    },
+    "navigation-posts": {
+      "tags": []
+    },
+    "feature-banner": {
+      "tags": []
+    },
+    "state-root": {
+      "tags": []
+    },
+    "state-router": {
+      "tags": []
+    },
+    "state-auth": {
+      "tags": []
+    },
+    "state-posts": {
+      "tags": []
     }
   }
 }

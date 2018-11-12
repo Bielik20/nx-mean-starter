@@ -10,5 +10,7 @@
   ],
   "include": [
     "**/*.ts"
-  ]
+  
+    , "../../libs/navigation/posts/src/index.ts"
+]
 }

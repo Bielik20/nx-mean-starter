@@ -27,6 +27,27 @@
       ],
       "@nx-mean-starter/shared": [
         "libs/shared/src/index.ts"
+      ],
+      "@nx-mean-starter/models": [
+        "libs/models/src/index.ts"
+      ],
+      "@nx-mean-starter/navigation/posts": [
+        "libs/navigation/posts/src/index.ts"
+      ],
+      "@nx-mean-starter/feature/banner": [
+        "libs/feature/banner/src/index.ts"
+      ],
+      "@nx-mean-starter/state/root": [
+        "libs/state/root/src/index.ts"
+      ],
+      "@nx-mean-starter/state/router": [
+        "libs/state/router/src/index.ts"
+      ],
+      "@nx-mean-starter/state/auth": [
+        "libs/state/auth/src/index.ts"
+      ],
+      "@nx-mean-starter/state/posts": [
+        "libs/state/posts/src/index.ts"
       ]
     }
   },

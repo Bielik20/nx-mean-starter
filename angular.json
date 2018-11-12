@@ -282,6 +282,201 @@
           }
         }
       }
+    },
+    "models": {
+      "root": "libs/models",
+      "sourceRoot": "libs/models/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/models/tsconfig.lib.json",
+              "libs/models/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/models/jest.config.js",
+            "tsConfig": "libs/models/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "navigation-posts": {
+      "root": "libs/navigation/posts",
+      "sourceRoot": "libs/navigation/posts/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/navigation/posts/tsconfig.lib.json",
+              "libs/navigation/posts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/navigation/posts/jest.config.js",
+            "tsConfig": "libs/navigation/posts/tsconfig.spec.json",
+            "setupFile": "libs/navigation/posts/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "feature-banner": {
+      "root": "libs/feature/banner",
+      "sourceRoot": "libs/feature/banner/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/banner/tsconfig.lib.json",
+              "libs/feature/banner/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/feature/banner/jest.config.js",
+            "tsConfig": "libs/feature/banner/tsconfig.spec.json",
+            "setupFile": "libs/feature/banner/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "state-root": {
+      "root": "libs/state/root",
+      "sourceRoot": "libs/state/root/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/state/root/tsconfig.lib.json",
+              "libs/state/root/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/state/root/jest.config.js",
+            "tsConfig": "libs/state/root/tsconfig.spec.json",
+            "setupFile": "libs/state/root/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "state-router": {
+      "root": "libs/state/router",
+      "sourceRoot": "libs/state/router/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/state/router/tsconfig.lib.json",
+              "libs/state/router/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/state/router/jest.config.js",
+            "tsConfig": "libs/state/router/tsconfig.spec.json",
+            "setupFile": "libs/state/router/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "state-auth": {
+      "root": "libs/state/auth",
+      "sourceRoot": "libs/state/auth/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/state/auth/tsconfig.lib.json",
+              "libs/state/auth/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/state/auth/jest.config.js",
+            "tsConfig": "libs/state/auth/tsconfig.spec.json",
+            "setupFile": "libs/state/auth/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "state-posts": {
+      "root": "libs/state/posts",
+      "sourceRoot": "libs/state/posts/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/state/posts/tsconfig.lib.json",
+              "libs/state/posts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/state/posts/jest.config.js",
+            "tsConfig": "libs/state/posts/tsconfig.spec.json",
+            "setupFile": "libs/state/posts/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "cli": {
