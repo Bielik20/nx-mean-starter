@@ -13,6 +13,9 @@
     },
     "web-app-e2e": {
       "tags": []
+    },
+    "server": {
+      "tags": []
     }
   }
 }

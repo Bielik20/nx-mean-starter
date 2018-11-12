@@ -60,6 +60,84 @@ Delete `karma.conf.js`.
 ng g app web-app --style=scss --unit-test-runner=jest --e2e-test-runner=cypress --routing --prefix=app
 ```
 
+## Add Server
+
+```
+ng g node-app server
+```
+
+It will create `express` application with `jest` as a test runner.
+
+If there is a need it could be further specified:
+
+```
+ng g node-app server --unit-test-runner=jest --framework=express
+```
+
+### Add Proxy
+
+Create `apps/web-app/proxy.conf.json`:
+
+```json
+{
+  "/api": {
+    "target": "http://localhost:3333",
+    "secure": false
+  }
+}
+```
+
+In `angular.json` in `web-app` section add `proxyConfig`:
+
+```json
+"serve": {
+  "builder": "@angular-devkit/build-angular:dev-server",
+  "options": {
+    "browserTarget": "web-app:build",
+    "proxyConfig": "apps/web-app/proxy.conf.json"
+  },
+```
+
+In `apps/server/src/main.ts` replace default path:
+
+```ts
+app.get('/', ...);
+```
+
+with
+
+```ts
+app.get('/api/', ...);
+```
+
+### Add Production build
+
+```
+yarn add path
+```
+
+In `apps/server/src/main.ts` add:
+
+```ts
+import * as path from 'path';
+
+...
+
+if (environment.production === true) {
+  // in production mode run application from dist folder
+  app.use(express.static(path.join(__dirname, '/../web-app')));
+}
+```
+
+### Add Heroku Deploy
+
+...
+
+### Add Angular Universal
+
+- https://medium.com/@cyrilletuzi/angular-server-side-rendering-in-node-with-express-universal-engine-dce21933ddce
+- https://angular.io/guide/universal
+
 ## Add Services Lib
 
 ```
@@ -167,84 +245,6 @@ Styles that are not connected to any particular application. They are consumed i
 ```
 ng g lib models --unit-test-runner=jest --no-module --prefix=app
 ```
-
-## Add Server
-
-```
-ng g node-app server
-```
-
-It will create `express` application with `jest` as a test runner.
-
-If there is a need it could be further specified:
-
-```
-ng g node-app server --unit-test-runner=jest --framework=express
-```
-
-### Add Proxy
-
-Create `apps/web-app/proxy.conf.json`:
-
-```json
-{
-  "/api": {
-    "target": "http://localhost:3333",
-    "secure": false
-  }
-}
-```
-
-In `angular.json` in `web-app` section add `proxyConfig`:
-
-```json
-"serve": {
-  "builder": "@angular-devkit/build-angular:dev-server",
-  "options": {
-    "browserTarget": "web-app:build",
-    "proxyConfig": "apps/web-app/proxy.conf.json"
-  },
-```
-
-In `apps/server/src/main.ts` replace default path:
-
-```ts
-app.get('/', ...);
-```
-
-with
-
-```ts
-app.get('/api/', ...);
-```
-
-### Add Production build
-
-```
-npm i path
-```
-
-In `apps/server/src/main.ts` add:
-
-```ts
-import * as path from 'path';
-
-...
-
-if (environment.production === true) {
-  // in production mode run application from dist folder
-  app.use(express.static(path.join(__dirname, '/../web-app')));
-}
-```
-
-### Add Heroku Deploy
-
-...
-
-### Add Angular Universal
-
-- https://medium.com/@cyrilletuzi/angular-server-side-rendering-in-node-with-express-universal-engine-dce21933ddce
-- https://angular.io/guide/universal
 
 ## Add Navigation Module
 
