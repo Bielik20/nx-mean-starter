@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+$mat-primary: mat-palette($mat-indigo);
+$mat-accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($mat-primary, $mat-accent);
+$mat-warn: map-get($theme, warn);
+$mat-background: map-get($theme, background);
+$mat-foreground: map-get($theme, foreground);
+
+// Create a config with the default typography levels.
+$config: mat-typography-config();

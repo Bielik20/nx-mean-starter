@@ -12,7 +12,16 @@ import { AppComponent } from './app.component';
     BrowserModule,
     BrowserAnimationsModule,
     NxModule.forRoot(),
-    RouterModule.forRoot([{path: 'navigation-posts', loadChildren: '@nx-mean-starter/navigation/posts#NavigationPostsModule'}], { initialNavigation: 'enabled' })
+    RouterModule.forRoot(
+      [
+        {
+          path: 'posts',
+          loadChildren:
+            '@nx-mean-starter/navigation/posts#NavigationPostsModule'
+        }
+      ],
+      { initialNavigation: 'enabled' }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

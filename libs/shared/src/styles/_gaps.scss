@@ -1,0 +1,34 @@
+@mixin gaps($baseline, $iterations) {
+  @for $i from 1 through $iterations {
+    .gx-#{$i} {
+      margin-left: -$i * $baseline/2;
+      margin-right: -$i * $baseline/2;
+    }
+    .gx-#{$i} > .ge {
+      position: relative;
+      min-height: 1px;
+      padding-left: $i * $baseline/2;
+      padding-right: $i * $baseline/2;
+    }
+
+    .gy-#{$i} {
+      margin-top: -$i * $baseline/2;
+      margin-bottom: -$i * $baseline/2;
+    }
+    .gy-#{$i} > .ge {
+      position: relative;
+      min-height: 1px;
+      padding-top: $i * $baseline/2;
+      padding-bottom: $i * $baseline/2;
+    }
+
+    .g-#{$i} {
+      margin: -$i * $baseline/2;
+    }
+    .g-#{$i} > .ge {
+      position: relative;
+      min-height: 1px;
+      padding: $i * $baseline/2;
+    }
+  }
+}

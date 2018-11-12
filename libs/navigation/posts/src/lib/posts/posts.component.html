@@ -1,0 +1,7 @@
+<app-banner></app-banner>
+
+<button (click)='getPosts()'>Get Posts</button>
+
+<pre>
+{{ posts$ | async | json }}
+</pre>

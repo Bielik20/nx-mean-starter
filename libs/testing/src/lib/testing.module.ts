@@ -1,7 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
+import { RouterLinkDirectiveStub } from './stubs';
+
+/// Dummy module to satisfy Angular Language service. Never used.
 @NgModule({
-  imports: [CommonModule]
+  declarations: [RouterLinkDirectiveStub],
+  imports: [CommonModule],
 })
 export class TestingModule {}

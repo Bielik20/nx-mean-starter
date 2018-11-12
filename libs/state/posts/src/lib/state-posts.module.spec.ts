@@ -4,7 +4,7 @@ import { StatePostsModule } from './state-posts.module';
 describe('StatePostsModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [StatePostsModule]
+      imports: [StatePostsModule],
     }).compileComponents();
   }));
 
