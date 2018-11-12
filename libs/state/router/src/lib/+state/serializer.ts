@@ -3,8 +3,7 @@ import { RouterStateSerializer } from '@ngrx/router-store';
 
 import { UrlSnapshot } from './reducer';
 
-export class CustomRouterStateSerializer
-  implements RouterStateSerializer<UrlSnapshot> {
+export class CustomRouterStateSerializer implements RouterStateSerializer<UrlSnapshot> {
   serialize(routerState: RouterStateSnapshot): UrlSnapshot {
     let route = routerState.root;
 

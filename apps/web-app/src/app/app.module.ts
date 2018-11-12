@@ -21,20 +21,19 @@ import { AppComponent } from './app.component';
       [
         {
           path: 'posts',
-          loadChildren:
-            '@nx-mean-starter/navigation/posts#NavigationPostsModule'
-        }
+          loadChildren: '@nx-mean-starter/navigation/posts#NavigationPostsModule',
+        },
       ],
-      { initialNavigation: 'enabled' }
+      { initialNavigation: 'enabled' },
     ),
     SharedModule.forRoot(),
     CoreModule,
     StateRootModule,
     StoreDevtoolsModule.instrument({
       name: 'web-app',
-      logOnly: environment.production
-    })
+      logOnly: environment.production,
+    }),
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

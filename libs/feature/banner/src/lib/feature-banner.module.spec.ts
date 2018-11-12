@@ -4,7 +4,7 @@ import { FeatureBannerModule } from './feature-banner.module';
 describe('FeatureBannerModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FeatureBannerModule]
+      imports: [FeatureBannerModule],
     }).compileComponents();
   }));
 

@@ -7,6 +7,6 @@ import { BannerComponent } from './banner/banner.component';
 @NgModule({
   declarations: [BannerComponent],
   imports: [CommonModule, SharedModule],
-  exports: [BannerComponent]
+  exports: [BannerComponent],
 })
 export class FeatureBannerModule {}

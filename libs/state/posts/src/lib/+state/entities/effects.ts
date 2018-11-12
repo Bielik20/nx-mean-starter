@@ -4,13 +4,7 @@ import { Store } from '@ngrx/store';
 import { PostsService } from '@nx-mean-starter/services';
 import { ofAction } from 'ngrx-actions/dist';
 import { of } from 'rxjs';
-import {
-  catchError,
-  filter,
-  map,
-  switchMap,
-  withLatestFrom,
-} from 'rxjs/operators';
+import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 
 import { Load, LoadError, LoadSuccess, Select } from './actions';
 import { EntitiesState } from './reducer';

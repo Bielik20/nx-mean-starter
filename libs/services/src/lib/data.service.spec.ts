@@ -7,10 +7,7 @@ import { of } from 'rxjs';
 describe('Service: Data', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        PostsService,
-        { provide: HttpClient, useValue: { get: jest.fn(() => of([])) } },
-      ],
+      providers: [PostsService, { provide: HttpClient, useValue: { get: jest.fn(() => of([])) } }],
     });
   });
 
@@ -18,10 +15,7 @@ describe('Service: Data', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('should return empty array', inject(
-    [PostsService],
-    (service: PostsService) => {
-      service.getAll().subscribe(val => expect(val).toEqual([]));
-    },
-  ));
+  it('should return empty array', inject([PostsService], (service: PostsService) => {
+    service.getAll().subscribe(val => expect(val).toEqual([]));
+  }));
 });

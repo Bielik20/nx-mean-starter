@@ -9,14 +9,9 @@ import { delay } from 'rxjs/operators';
 export class AuthService {
   constructor() {}
 
-  login(
-    login: string,
-    password: string,
-  ): Observable<{ user: User; jwt: string }> {
+  login(login: string, password: string): Observable<{ user: User; jwt: string }> {
     if (login === 'test' && password === 'test') {
-      return of({ user: { email: 'mail@test.com' }, jwt: 'abc123' }).pipe(
-        delay(500),
-      );
+      return of({ user: { email: 'mail@test.com' }, jwt: 'abc123' }).pipe(delay(500));
     }
     return throwError('not authenticated');
   }

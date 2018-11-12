@@ -4,7 +4,7 @@ import { NavigationPostsModule } from './navigation-posts.module';
 describe('NavigationPostsModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NavigationPostsModule]
+      imports: [NavigationPostsModule],
     }).compileComponents();
   }));
 

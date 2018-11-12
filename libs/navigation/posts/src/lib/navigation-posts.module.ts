@@ -13,9 +13,7 @@ import { PostsComponent } from './posts/posts.component';
     SharedModule,
     FeatureBannerModule,
 
-    RouterModule.forChild([
-      { path: '', pathMatch: 'full', component: PostsComponent }
-    ])
-  ]
+    RouterModule.forChild([{ path: '', pathMatch: 'full', component: PostsComponent }]),
+  ],
 })
 export class NavigationPostsModule {}

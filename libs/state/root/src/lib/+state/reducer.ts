@@ -12,9 +12,7 @@ export interface State {
 
 export const reducers: ActionReducerMap<any> = {};
 
-export const reducerToken = new InjectionToken<ActionReducerMap<any>>(
-  'Reducers',
-);
+export const reducerToken = new InjectionToken<ActionReducerMap<any>>('Reducers');
 
 export function getReducers() {
   return reducers;

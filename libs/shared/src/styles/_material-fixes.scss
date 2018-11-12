@@ -15,8 +15,7 @@
     .hover-elevation-z#{$i}:hover {
       transition: box-shadow 0.25s;
       box-shadow: #{map-get(_get-umbra-map(black, 1), $i)},
-        #{map-get(_get-penumbra-map(black, 1), $i)},
-        #{map-get(_get-ambient-map(black, 1), $i)};
+        #{map-get(_get-penumbra-map(black, 1), $i)}, #{map-get(_get-ambient-map(black, 1), $i)};
     }
   }
 }
