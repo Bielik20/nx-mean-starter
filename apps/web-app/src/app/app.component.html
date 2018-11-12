@@ -1,16 +1,29 @@
+<app-layout>
+  <h1>Starter App</h1>
 
-<div style="text-align:center">
-  <h1>Welcome to {{title}}!</h1>
-  <img width="300" src="https://raw.githubusercontent.com/nrwl/nx/master/nx-logo.png">
-</div>
+  <h2>Authentication</h2>
 
-<h2>This is an Angular CLI app built with Nrwl Nx!</h2>
+  <pre>
+  {{ user$ | async | json }}
+  </pre>
 
-An open source toolkit for enterprise Angular applications.
+  <form class="example-form">
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Login" value="test" #loginField>
+    </mat-form-field>
 
-Nx is designed to help you create and build enterprise grade Angular applications. It provides an opinionated approach to application project structure and patterns.
+    <mat-form-field class="w-100">
+      <input matInput placeholder="Password" value="test" type='password' #passwordField>
+    </mat-form-field>
 
-<h2>Quick Start & Documentation</h2>
+    <button type='button' mat-raised-button color="warn" (click)='logout()'>Logout</button>
+    <button type='button' mat-raised-button color="primary" (click)='login(loginField.value, passwordField.value)'>Login</button>
+  </form>
 
-<a href="https://nrwl.io/nx">Watch a 5-minute video on how to get started with Nx.</a>
-<router-outlet></router-outlet>
+  <h2>Nav</h2>
+
+  <a [routerLink]="['/']">Home</a>
+  <br>
+  <a [routerLink]="['/posts']">Posts</a>
+  <router-outlet></router-outlet>
+</app-layout>

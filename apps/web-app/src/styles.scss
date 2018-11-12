@@ -1,1 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import 'libs/core/src/styles';
+@import './app-theme';
+
+@include app-theme($theme, $config);

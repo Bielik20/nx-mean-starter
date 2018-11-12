@@ -1,0 +1,11 @@
+@import 'libs/shared/src/styles';
+
+@mixin app-theme($theme, $config) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  @include shared-theme($theme, $config);
+}
