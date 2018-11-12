@@ -16,6 +16,18 @@
     },
     "server": {
       "tags": []
+    },
+    "services": {
+      "tags": []
+    },
+    "testing": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    },
+    "shared": {
+      "tags": []
     }
   }
 }

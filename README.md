@@ -172,8 +172,8 @@ Import normally to _almost_ every module.
 ## Styles
 
 ```
-npm i bootstrap hammerjs @angular/cdk @angular/material
-npm i -D sass-rem
+yarn add bootstrap hammerjs @angular/cdk @angular/material
+yarn add sass-rem -D
 ```
 
 In `apps/web-app/src/main.ts` add:

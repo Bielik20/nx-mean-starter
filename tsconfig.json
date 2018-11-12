@@ -16,6 +16,18 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@nx-mean-starter/services": [
+        "libs/services/src/index.ts"
+      ],
+      "@nx-mean-starter/testing": [
+        "libs/testing/src/index.ts"
+      ],
+      "@nx-mean-starter/core": [
+        "libs/core/src/index.ts"
+      ],
+      "@nx-mean-starter/shared": [
+        "libs/shared/src/index.ts"
+      ]
     }
   },
   "exclude": [
