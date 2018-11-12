@@ -172,7 +172,8 @@ Import normally to _almost_ every module.
 ## Styles
 
 ```
-yarn add bootstrap hammerjs @angular/cdk @angular/material
+ng add @angular/material
+yarn add bootstrap
 yarn add sass-rem -D
 ```
 
