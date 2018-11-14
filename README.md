@@ -64,6 +64,7 @@ ng g app web-app --style=scss --unit-test-runner=jest --e2e-test-runner=cypress 
 
 ```
 ng g node-app server
+yarn add bcryptjs compression body-parser connect-mongo mongoose errorhandler express-session express-validator lodash lusca path passport passport-jwt request request-promise-native winston
 ```
 
 It will create `express` application with `jest` as a test runner.
@@ -111,10 +112,6 @@ app.get('/api/', ...);
 ```
 
 ### Add Production build
-
-```
-yarn add path
-```
 
 In `apps/server/src/main.ts` add:
 

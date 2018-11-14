@@ -4,4 +4,7 @@
 
 export const environment = {
   production: false,
+  mongoUrl: 'mongodb://localhost:27017',
+  sessionSecret: 'ascva123fsadgt',
+  port: 3333,
 };
