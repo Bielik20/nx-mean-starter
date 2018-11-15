@@ -16,8 +16,8 @@ export class AppConfig {
   constructor(private app: Express) {}
 
   make() {
-    // this.mongo();
-    // this.session();
+    this.mongo();
+    this.session();
     this.app.use(compression());
     this.bodyParser();
     this.app.use(expressValidator());
@@ -29,7 +29,10 @@ export class AppConfig {
 
   private async mongo() {
     try {
-      await mongoose.connect(environment.mongoUrl);
+      await mongoose.connect(
+        environment.mongoUrl,
+        { useNewUrlParser: true },
+      );
       console.log('MongoDB Connected');
     } catch (err) {
       console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
