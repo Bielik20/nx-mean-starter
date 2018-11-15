@@ -7,10 +7,10 @@ import * as session from 'express-session';
 import * as expressValidator from 'express-validator';
 import * as lusca from 'lusca';
 import * as mongoose from 'mongoose';
-import * as passport from 'passport';
 import * as path from 'path';
 
 import { environment } from '../../environments/environment';
+import { initializeAuth } from './auth';
 
 export class AppConfig {
   constructor(private app: Express) {}
@@ -18,17 +18,18 @@ export class AppConfig {
   make() {
     this.mongo();
     this.session();
-    this.app.use(compression());
+    this.compression();
     this.bodyParser();
-    this.app.use(expressValidator());
-    this.passport();
+    this.validation();
+    this.auth();
     this.lusca();
-    this.app.use(expressStatic(path.join(__dirname, 'assets'), { maxAge: 31557600000 }));
+    this.assets();
     this.errorHandler();
   }
 
   private async mongo() {
     try {
+      mongoose.set('useCreateIndex', true); // https://github.com/Automattic/mongoose/issues/6890#issuecomment-416218953
       await mongoose.connect(
         environment.mongoUrl,
         { useNewUrlParser: true },
@@ -54,19 +55,30 @@ export class AppConfig {
     );
   }
 
+  private compression() {
+    this.app.use(compression());
+  }
+
   private bodyParser() {
     this.app.use(bodyParser.json());
     this.app.use(bodyParser.urlencoded({ extended: true }));
   }
 
-  private passport() {
-    this.app.use(passport.initialize());
-    this.app.use(passport.session());
+  private validation() {
+    this.app.use(expressValidator());
+  }
+
+  private auth() {
+    initializeAuth(this.app);
   }
 
   private lusca() {
     this.app.use(lusca.xframe('SAMEORIGIN'));
     this.app.use(lusca.xssProtection(true));
+  }
+
+  private assets() {
+    this.app.use(expressStatic(path.join(__dirname, 'assets'), { maxAge: 31557600000 }));
   }
 
   /**

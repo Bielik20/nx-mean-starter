@@ -48,6 +48,9 @@
       ],
       "@nx-mean-starter/state/posts": [
         "libs/state/posts/src/index.ts"
+      ],
+      "@nx-mean-starter/schemas": [
+        "libs/schemas/src/index.ts"
       ]
     }
   },

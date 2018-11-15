@@ -49,6 +49,9 @@
     },
     "state-posts": {
       "tags": []
+    },
+    "schemas": {
+      "tags": []
     }
   }
 }

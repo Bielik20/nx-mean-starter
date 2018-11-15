@@ -477,6 +477,33 @@
           }
         }
       }
+    },
+    "schemas": {
+      "root": "libs/schemas",
+      "sourceRoot": "libs/schemas/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/schemas/tsconfig.lib.json",
+              "libs/schemas/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/schemas/jest.config.js",
+            "tsConfig": "libs/schemas/tsconfig.spec.json"
+          }
+        }
+      }
     }
   },
   "cli": {

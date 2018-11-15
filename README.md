@@ -64,7 +64,7 @@ ng g app web-app --style=scss --unit-test-runner=jest --e2e-test-runner=cypress 
 
 ```
 ng g node-app server
-yarn add bcryptjs compression body-parser connect-mongo mongoose errorhandler express-session express-validator lodash lusca path passport passport-jwt request request-promise-native winston
+yarn add bcryptjs compression body-parser connect-mongo mongoose errorhandler express-session express-validator lodash lusca path passport passport-jwt jsonwebtoken request request-promise-native winston
 ```
 
 It will create `express` application with `jest` as a test runner.
@@ -74,6 +74,19 @@ If there is a need it could be further specified:
 ```
 ng g node-app server --unit-test-runner=jest --framework=express
 ```
+
+### Schemas
+
+```
+ng g lib schemas --unit-test-runner=jest --no-module --prefix=app
+```
+
+TODO:
+
+- Add types
+- Add wrappers (for now only bcrypt from UserModel)
+- Make UserEntity an interface and inherit from user model
+- Review Authentication
 
 ### Add Proxy
 
