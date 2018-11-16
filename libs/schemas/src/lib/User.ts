@@ -67,11 +67,11 @@ function genSalt() {
 // hash the password with the salt
 function hash(password, salt) {
   return new Promise((resolve, reject) => {
-    bcrypt.hash(password, salt, function(err, hash) {
+    bcrypt.hash(password, salt, function(err, _hash) {
       if (err) {
         reject(err);
       } else {
-        resolve(hash);
+        resolve(_hash);
       }
     });
   });

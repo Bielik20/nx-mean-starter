@@ -22,13 +22,60 @@ create-nx-workspace myworkspacename
 create-nx-workspace myworkspacename --yarn
 ```
 
-## Configure Prettier
+## Configure Prettier etc.
+
+```
+yarn add husky lint-staged -D
+```
+
+Modify `.prettierrc`:
 
 ```json
 {
   "singleQuote": true,
   "trailingComma": "all",
   "printWidth": 100
+}
+```
+
+Modify `tslint.json`:
+
+```json
+"rules": {
+  "no-unused-variable": true,
+  "ordered-imports": [
+    true,
+    {
+      "named-imports-order": "case-insensitive",
+      "import-sources-order": "case-insensitive"
+    }
+  ],
+}
+```
+
+Modify `package.json`:
+
+```json
+"husky": {
+  "hooks": {
+    "pre-commit": "lint-staged"
+  }
+},
+"lint-staged": {
+  "linters": {
+    "*.ts": [
+      "prettier --write",
+      "tslint --fix",
+      "git add"
+    ],
+    "*.{json,css,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "ignore": [
+    "**/dist/**/*"
+  ]
 }
 ```
 

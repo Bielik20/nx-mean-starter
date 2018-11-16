@@ -1,5 +1,5 @@
-import { UrlSnapshot } from './reducer';
 import { Action } from '@ngrx/store';
+import { UrlSnapshot } from './reducer';
 
 export class Navigated implements Action {
   readonly type = '[Router] Navigated';

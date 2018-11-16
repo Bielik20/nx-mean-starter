@@ -1,5 +1,4 @@
 import * as express from 'express';
-
 import { AppConfig, AppControllers } from './app';
 import { environment } from './environments/environment';
 

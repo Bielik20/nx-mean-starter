@@ -1,8 +1,7 @@
-import { inject, TestBed } from '@angular/core/testing';
-
-import { PostsService } from './data.service';
 import { HttpClient } from '@angular/common/http';
+import { inject, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
+import { PostsService } from './data.service';
 
 describe('Service: Data', () => {
   beforeEach(() => {

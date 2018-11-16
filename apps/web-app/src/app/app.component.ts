@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
-import { Observable } from 'rxjs';
 import { AuthState } from '@nx-mean-starter/state/auth';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',

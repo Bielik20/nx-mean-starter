@@ -1,4 +1,4 @@
-import { Directive, Input, NgModule } from '@angular/core';
+import { Directive, Input } from '@angular/core';
 
 // export for convenience.
 export { RouterLink } from '@angular/router';

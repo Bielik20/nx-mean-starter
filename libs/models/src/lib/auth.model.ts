@@ -3,4 +3,5 @@ export interface Login {
   password: string;
 }
 
+// tslint:disable-next-line:no-empty-interface
 export interface Register extends Login {}
