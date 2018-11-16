@@ -1,4 +1,4 @@
-import { UserModel } from '@nx-mean-starter/schemas';
+import { UserContext } from '@nx-mean-starter/schemas';
 import { Express } from 'express';
 import * as passport from 'passport';
 import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
@@ -27,7 +27,7 @@ function useJwt() {
   passport.use(
     new JwtStrategy(opts, function(jwt_payload, done) {
       console.log(jwt_payload);
-      UserModel.findOne({ _id: jwt_payload.sub }, function(err, user) {
+      UserContext.findOne({ _id: jwt_payload.sub }, function(err, user) {
         console.log(err, user);
         if (err) {
           return done(err, false);

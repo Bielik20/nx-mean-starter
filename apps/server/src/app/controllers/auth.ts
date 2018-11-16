@@ -1,5 +1,5 @@
 import { Login, Register } from '@nx-mean-starter/models';
-import { UserModel } from '@nx-mean-starter/schemas';
+import { UserContext } from '@nx-mean-starter/schemas';
 import { Request, Response, Router } from 'express';
 import * as jwt from 'jsonwebtoken';
 
@@ -9,7 +9,7 @@ export const authRouter: Router = Router();
 
 authRouter.post('/login', async (req: Request, res: Response) => {
   const model: Login = req.body;
-  const user = await UserModel.findOne({ email: model.email });
+  const user = await UserContext.findOne({ email: model.email });
 
   if (!user) {
     return res.status(401).send({ message: 'Authentication failed - Invalid email' });
@@ -25,7 +25,7 @@ authRouter.post('/login', async (req: Request, res: Response) => {
 authRouter.post('/register', async (req: Request, res: Response) => {
   const model: Register = req.body;
   try {
-    const user = await new UserModel(model).save();
+    const user = await new UserContext(model).save();
     return res.json({ success: true, token: generateToken(user) });
   } catch {
     return res.status(401).send({ message: 'Register failed' });

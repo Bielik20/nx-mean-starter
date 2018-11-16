@@ -27,7 +27,7 @@ schema.pre('save', async function(next) {
   if (user.isModified('password') || user.isNew) {
     try {
       const salt = await genSalt();
-      user.password = await genHash(salt, user.password);
+      user.password = await hash(user.password, salt);
       return next();
     } catch (err) {
       return next(err);
@@ -65,7 +65,7 @@ function genSalt() {
 }
 
 // hash the password with the salt
-function genHash(salt, password) {
+function hash(password, salt) {
   return new Promise((resolve, reject) => {
     bcrypt.hash(password, salt, function(err, hash) {
       if (err) {
@@ -77,4 +77,4 @@ function genHash(salt, password) {
   });
 }
 
-export const UserModel = mongoose.model('User', schema);
+export const UserContext = mongoose.model('User', schema);
