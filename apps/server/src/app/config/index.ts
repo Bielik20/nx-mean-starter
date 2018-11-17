@@ -29,10 +29,10 @@ export class AppConfig {
 
   private async mongo() {
     try {
-      mongoose.set('useCreateIndex', true); // https://github.com/Automattic/mongoose/issues/6890#issuecomment-416218953
+      // https://github.com/Automattic/mongoose/issues/6890#issuecomment-416218953
       await mongoose.connect(
         environment.mongoUrl,
-        { useNewUrlParser: true },
+        { useNewUrlParser: true, useCreateIndex: true },
       );
       console.log('MongoDB Connected');
     } catch (err) {

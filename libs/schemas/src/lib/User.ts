@@ -1,12 +1,12 @@
+import { User } from '@nx-mean-starter/models';
 import * as bcrypt from 'bcryptjs';
 import * as mongoose from 'mongoose';
 
-export type UserEntity = mongoose.Document & {
-  email: string;
+export interface UserEntity extends mongoose.Document, User {
   password: string;
 
   comparePassword: comparePasswordFunction;
-};
+}
 
 type comparePasswordFunction = (candidatePassword: string) => Promise<boolean>;
 

@@ -1,7 +1,6 @@
 import { createMockPosts, Post } from '@nx-mean-starter/models';
 import { Express, static as expressStatic } from 'express';
 import * as path from 'path';
-
 import { environment } from '../../environments/environment';
 import { authenticate } from '../config/auth';
 import { authRouter } from './auth';
