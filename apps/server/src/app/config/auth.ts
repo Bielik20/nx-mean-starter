@@ -25,18 +25,18 @@ function useJwt() {
   };
 
   passport.use(
-    new JwtStrategy(opts, function(jwt_payload, done) {
-      UserContext.findOne({ _id: jwt_payload.sub }, function(err, user) {
-        if (err) {
-          return done(err, false);
-        }
+    new JwtStrategy(opts, async (jwtPayload, done) => {
+      try {
+        const user = await UserContext.findOne({ _id: jwtPayload.sub });
         if (user) {
           return done(null, user);
         } else {
           return done(null, false);
           // or you could create a new account
         }
-      });
+      } catch (err) {
+        return done(err, false);
+      }
     }),
   );
 }
