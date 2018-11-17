@@ -23,11 +23,11 @@ const schema = new mongoose.Schema(
 // ======================
 
 schema.pre('save', async function(next) {
-  const user = this;
+  const user = this as UserEntity;
   if (user.isModified('password') || user.isNew) {
     try {
-      const salt = await genSalt();
-      user.password = await hash(user.password, salt);
+      const salt = await bcrypt.genSalt();
+      user.password = await bcrypt.hash(user.password, salt);
       return next();
     } catch (err) {
       return next(err);
@@ -51,30 +51,4 @@ schema.methods.comparePassword = function(candidatePassword): Promise<boolean> {
   });
 };
 
-// first generate a random salt
-function genSalt() {
-  return new Promise((resolve, reject) => {
-    bcrypt.genSalt(10, function(err, salt) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(salt);
-      }
-    });
-  });
-}
-
-// hash the password with the salt
-function hash(password, salt) {
-  return new Promise((resolve, reject) => {
-    bcrypt.hash(password, salt, function(err, _hash) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(_hash);
-      }
-    });
-  });
-}
-
-export const UserContext = mongoose.model('User', schema);
+export const UserContext = mongoose.model<UserEntity>('User', schema);
