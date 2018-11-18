@@ -11,7 +11,7 @@ new AppControllers(app).make();
  */
 const server = app.listen(environment.port, () => {
   console.log(
-    `  App is running at http://localhost:%d in %s mode`,
+    `\n  App is running at http://localhost:%d in %s mode`,
     environment.port,
     environment.production ? 'production' : 'development',
   );

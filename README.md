@@ -131,13 +131,6 @@ ng g node-app server --unit-test-runner=jest --framework=express
 ng g lib schemas --unit-test-runner=jest --no-module --prefix=app
 ```
 
-TODO:
-
-- Add types
-- Add wrappers (for now only bcrypt from UserModel)
-- Make UserEntity an interface and inherit from user model
-- Review Authentication
-
 ### Add Proxy
 
 Create `apps/web-app/proxy.conf.json`:

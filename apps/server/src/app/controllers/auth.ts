@@ -2,7 +2,6 @@ import { Login, Register } from '@nx-mean-starter/models';
 import { UserContext } from '@nx-mean-starter/schemas';
 import { Request, Response, Router } from 'express';
 import * as jwt from 'jsonwebtoken';
-
 import { environment } from '../../environments/environment';
 
 export const authRouter: Router = Router();
@@ -15,7 +14,7 @@ authRouter.post('/login', async (req: Request, res: Response) => {
     return res.status(401).send({ message: 'Authentication failed - Invalid email' });
   }
 
-  if (await (user as any).comparePassword(model.password)) {
+  if (await user.comparePassword(model.password)) {
     return res.json({ token: generateToken(user) });
   } else {
     return res.status(401).send({ message: 'Authentication failed - Invalid password' });
