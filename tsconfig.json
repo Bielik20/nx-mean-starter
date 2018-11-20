@@ -7,55 +7,23 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@nx-mean-starter/services": [
-        "libs/services/src/index.ts"
-      ],
-      "@nx-mean-starter/testing": [
-        "libs/testing/src/index.ts"
-      ],
-      "@nx-mean-starter/core": [
-        "libs/core/src/index.ts"
-      ],
-      "@nx-mean-starter/shared": [
-        "libs/shared/src/index.ts"
-      ],
-      "@nx-mean-starter/models": [
-        "libs/models/src/index.ts"
-      ],
-      "@nx-mean-starter/navigation/posts": [
-        "libs/navigation/posts/src/index.ts"
-      ],
-      "@nx-mean-starter/feature/banner": [
-        "libs/feature/banner/src/index.ts"
-      ],
-      "@nx-mean-starter/state/root": [
-        "libs/state/root/src/index.ts"
-      ],
-      "@nx-mean-starter/state/router": [
-        "libs/state/router/src/index.ts"
-      ],
-      "@nx-mean-starter/state/auth": [
-        "libs/state/auth/src/index.ts"
-      ],
-      "@nx-mean-starter/state/posts": [
-        "libs/state/posts/src/index.ts"
-      ],
-      "@nx-mean-starter/schemas": [
-        "libs/schemas/src/index.ts"
-      ]
+      "@nx-mean-starter/services": ["libs/services/src/index.ts"],
+      "@nx-mean-starter/testing": ["libs/testing/src/index.ts"],
+      "@nx-mean-starter/core": ["libs/core/src/index.ts"],
+      "@nx-mean-starter/shared": ["libs/shared/src/index.ts"],
+      "@nx-mean-starter/models": ["libs/models/src/index.ts"],
+      "@nx-mean-starter/feature/banner": ["libs/feature/banner/src/index.ts"],
+      "@nx-mean-starter/state/root": ["libs/state/root/src/index.ts"],
+      "@nx-mean-starter/state/router": ["libs/state/router/src/index.ts"],
+      "@nx-mean-starter/state/auth": ["libs/state/auth/src/index.ts"],
+      "@nx-mean-starter/schemas": ["libs/schemas/src/index.ts"],
+      "@nx-mean-starter/state/users": ["libs/state/users/src/index.ts"],
+      "@nx-mean-starter/navigation/users": ["libs/navigation/users/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

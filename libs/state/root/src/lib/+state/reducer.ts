@@ -1,13 +1,13 @@
 import { InjectionToken } from '@angular/core';
 import { ActionReducerMap } from '@ngrx/store';
 import { AuthState } from '@nx-mean-starter/state/auth';
-import { PostsState } from '@nx-mean-starter/state/posts';
 import { RouterState } from '@nx-mean-starter/state/router';
+import { UsersState } from '@nx-mean-starter/state/users';
 
 export interface State {
   router: RouterState.State;
   auth: AuthState.State;
-  posts: PostsState.State;
+  users: UsersState.State;
 }
 
 export const reducers: ActionReducerMap<any> = {};

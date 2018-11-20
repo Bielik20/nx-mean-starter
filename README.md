@@ -303,23 +303,23 @@ ng g lib models --unit-test-runner=jest --no-module --prefix=app
 ## Add Navigation Module
 
 ```
-ng g lib posts --unit-test-runner=jest --directory=navigation --routing --lazy --parent-module=apps/web-app/src/app/app.module.ts --prefix=app
+ng g lib users --unit-test-runner=jest --directory=navigation --routing --lazy --parent-module=apps/web-app/src/app/app.module.ts --prefix=app
 ```
 
 ### Optional (rename module)
 
-Rename `NavigationPostsModule` to `PostsModule`:
+Rename `NavigationUsersModule` to `UsersModule`:
 
-- `navigation-posts.module.ts` -> `posts.module.ts`
-- `navigation-posts.module.spec.ts` -> `posts.module.spec.ts`
+- `navigation-users.module.ts` -> `users.module.ts`
+- `navigation-users.module.spec.ts` -> `users.module.spec.ts`
 - in `index.ts`
 
 In `apps/web-app/src/app/app.module.ts` change:
 
 ```ts
 {
-  path: 'posts',
-  loadChildren: '@nx-mean-starter/navigation/posts#PostsModule',
+  path: 'users',
+  loadChildren: '@nx-mean-starter/navigation/users#UsersModule',
 },
 ```
 
@@ -383,5 +383,13 @@ ng g lib auth --directory=state --unit-test-runner=jest --prefix=app
 ```
 
 ```
-ng g lib posts --directory=state --unit-test-runner=jest --prefix=app
+ng g lib users --directory=state --unit-test-runner=jest --prefix=app
 ```
+
+# Deleting
+
+At the root directory, delete mentions of the library in following files:
+
+- `angular.json`
+- `nx.json`
+- `tsconfig.json`

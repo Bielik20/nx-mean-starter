@@ -4,13 +4,6 @@
     "outDir": "../../dist/out-tsc/apps/web-app",
     "types": []
   },
-  "exclude": [
-    "src/test-setup.ts",
-    "**/*.spec.ts"
-  ],
-  "include": [
-    "**/*.ts"
-  
-    , "../../libs/navigation/posts/src/index.ts"
-]
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
+  "include": ["**/*.ts", "../../libs/navigation/users/src/index.ts"]
 }

@@ -3,9 +3,8 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StateAuthModule } from '@nx-mean-starter/state/auth';
-import { StatePostsModule } from '@nx-mean-starter/state/posts';
 import { StateRouterModule } from '@nx-mean-starter/state/router';
-
+import { StateUsersModule } from '@nx-mean-starter/state/users';
 import { reducerProvider, reducerToken } from './+state/reducer';
 import { SelectEffects } from './+state/select.effects';
 
@@ -16,7 +15,7 @@ import { SelectEffects } from './+state/select.effects';
     EffectsModule.forRoot([SelectEffects]),
     StateAuthModule,
     StateRouterModule,
-    StatePostsModule,
+    StateUsersModule,
   ],
   providers: [reducerProvider],
 })

@@ -18,12 +18,7 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     NxModule.forRoot(),
     RouterModule.forRoot(
-      [
-        {
-          path: 'posts',
-          loadChildren: '@nx-mean-starter/navigation/posts#NavigationPostsModule',
-        },
-      ],
+      [{ path: 'users', loadChildren: '@nx-mean-starter/navigation/users#NavigationUsersModule' }],
       { initialNavigation: 'enabled' },
     ),
     SharedModule.forRoot(),

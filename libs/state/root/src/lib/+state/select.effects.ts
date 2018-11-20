@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { PostsState } from '@nx-mean-starter/state/posts';
 import { RouterState } from '@nx-mean-starter/state/router';
+import { UsersState } from '@nx-mean-starter/state/users';
 import { ofAction } from 'ngrx-actions/dist';
 import { filter, map } from 'rxjs/operators';
 
 @Injectable()
 export class SelectEffects {
   @Effect()
-  post$ = this.actions$.pipe(
+  navigated$ = this.actions$.pipe(
     ofAction(RouterState.Navigated),
     map(action => this.getSelectAction(action)),
     filter(action => !!action),
@@ -24,8 +24,8 @@ export class SelectEffects {
       return null;
     }
     switch (navigation) {
-      case 'posts':
-        return new PostsState.Select(id);
+      case 'users':
+        return new UsersState.Select(id);
     }
     return null;
   }

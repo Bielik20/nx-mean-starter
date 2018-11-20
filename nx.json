@@ -32,9 +32,6 @@
     "models": {
       "tags": []
     },
-    "navigation-posts": {
-      "tags": []
-    },
     "feature-banner": {
       "tags": []
     },
@@ -47,10 +44,13 @@
     "state-auth": {
       "tags": []
     },
-    "state-posts": {
+    "schemas": {
       "tags": []
     },
-    "schemas": {
+    "state-users": {
+      "tags": []
+    },
+    "navigation-users": {
       "tags": []
     }
   }

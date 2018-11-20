@@ -1,4 +1,4 @@
-import { createMockPosts, Post } from '@nx-mean-starter/models';
+import { createMockUsers, User } from '@nx-mean-starter/models';
 import { Express, static as expressStatic } from 'express';
 import * as path from 'path';
 import { environment } from '../../environments/environment';
@@ -9,10 +9,10 @@ export class AppControllers {
   constructor(private app: Express) {}
 
   make() {
-    const posts: Post[] = createMockPosts();
+    const users: User[] = createMockUsers();
 
-    this.app.get('/api/posts', authenticate(), (req, res) => {
-      res.send(JSON.stringify(posts));
+    this.app.get('/api/users', authenticate(), (req, res) => {
+      res.send(JSON.stringify(users));
     });
 
     this.app.use('/api/auth/', authRouter);

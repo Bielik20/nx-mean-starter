@@ -11,7 +11,7 @@ export class AuthService {
 
   login(login: string, password: string): Observable<{ user: User; jwt: string }> {
     if (login === 'test' && password === 'test') {
-      return of({ user: { email: 'mail@test.com' }, jwt: 'abc123' }).pipe(delay(500));
+      return of({ user: { _id: 'test', email: 'mail@test.com' }, jwt: 'abc123' }).pipe(delay(500));
     }
     return throwError('not authenticated');
   }
