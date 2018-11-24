@@ -43,6 +43,7 @@ Modify `tslint.json`:
 ```json
 "rules": {
   "no-unused-variable": true,
+  "max-line-length": [true, {"limit": 100, "ignore-pattern": "^import |^export {(.*?)}"}],
   "ordered-imports": [
     true,
     {
