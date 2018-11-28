@@ -7,19 +7,6 @@
   {{ user$ | async | json }}
   </pre>
 
-  <form class="example-form">
-    <mat-form-field class="w-100">
-      <input matInput placeholder="Login" value="test" #loginField>
-    </mat-form-field>
-
-    <mat-form-field class="w-100">
-      <input matInput placeholder="Password" value="test" type='password' #passwordField>
-    </mat-form-field>
-
-    <button type='button' mat-raised-button color="warn" (click)='logout()'>Logout</button>
-    <button type='button' mat-raised-button color="primary" (click)='login(loginField.value, passwordField.value)'>Login</button>
-  </form>
-
   <h2>Nav</h2>
 
   <a [routerLink]="['/']">Home</a>

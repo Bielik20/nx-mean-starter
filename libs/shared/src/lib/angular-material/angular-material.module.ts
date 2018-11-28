@@ -9,6 +9,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatAutocompleteModule,
   MatBadgeModule,
@@ -96,6 +97,7 @@ import {
     OverlayModule,
     PlatformModule,
     PortalModule,
+    FlexLayoutModule,
   ],
 })
 export class AngularMaterialModule {}

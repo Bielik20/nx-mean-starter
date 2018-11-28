@@ -1,0 +1,28 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="example-card">
+    <mat-card-content>
+
+      <div *ngIf="!pending; else spinner">
+        <form [formGroup]="loginForm" (ngSubmit)="login.emit(loginForm.value)">
+          <div class="form-container">
+            <mat-form-field>
+              <input formControlName="email" matInput placeholder="Email" type="email" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input formControlName="password" matInput placeholder="Hasło" type="password" required>
+            </mat-form-field>
+          </div>
+
+          <button mat-raised-button color="primary" class="submit-button" [disabled]="loginForm.invalid">Zaloguj</button>
+        </form>
+      </div>
+
+      <ng-template #spinner>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <mat-spinner class="spinner"></mat-spinner>
+        </div>
+      </ng-template>
+
+    </mat-card-content>
+  </mat-card>
+</div>
