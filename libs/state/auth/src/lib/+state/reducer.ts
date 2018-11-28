@@ -1,18 +1,16 @@
 import { ActionReducer } from '@ngrx/store';
-import { User } from '@nx-mean-starter/models';
 import { Action, createReducer, Store } from 'ngrx-actions/dist';
-
 import { AuthError, Login, LoginSuccess, Logout, LogoutSuccess } from './actions';
 
 export interface State {
-  user: User;
+  userId: string;
   jwt: string;
   pending: boolean;
   error: string;
 }
 
 export const initialState = {
-  user: undefined,
+  userId: undefined,
   jwt: undefined,
   pending: false,
   error: undefined,
@@ -29,7 +27,7 @@ export class StateStore {
   loginSuccess(state: State, action: LoginSuccess): State {
     return {
       ...state,
-      user: action.user,
+      userId: action.user._id,
       jwt: action.jwt,
       pending: false,
       error: undefined,
@@ -40,7 +38,7 @@ export class StateStore {
   logoutSuccess(state: State): State {
     return {
       ...state,
-      user: undefined,
+      userId: undefined,
       jwt: undefined,
       pending: false,
       error: undefined,

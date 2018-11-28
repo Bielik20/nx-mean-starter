@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
 import { AuthState } from '@nx-mean-starter/state/auth';
+import { RootState } from '@nx-mean-starter/state/root';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -12,8 +13,8 @@ import { Observable } from 'rxjs';
 export class AppComponent {
   user$: Observable<User>;
 
-  constructor(private store: Store<AuthState.State>) {
-    this.user$ = this.store.select(AuthState.getUser);
+  constructor(private store: Store<RootState.State>) {
+    this.user$ = this.store.select(RootState.getAuthenticatedUser);
   }
 
   login(login: string, password: string) {

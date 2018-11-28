@@ -7,7 +7,7 @@ export const getEntitiesState = createSelector(getState, state => state.entities
 export const {
   selectIds: getIds,
   selectEntities: getEntities,
-  selectAll: getAllEntities,
+  selectAll: getEntitiesArray,
   selectTotal: getTotalEntities,
 } = entitiesAdapter.getSelectors(getEntitiesState);
 

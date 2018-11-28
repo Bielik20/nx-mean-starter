@@ -6,7 +6,6 @@ import { AuthService, LocalStorageService } from '@nx-mean-starter/services';
 import { ofAction } from 'ngrx-actions/dist';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-
 import { AuthError, Login, LoginSuccess, Logout, LogoutSuccess } from './actions';
 import { State } from './reducer';
 

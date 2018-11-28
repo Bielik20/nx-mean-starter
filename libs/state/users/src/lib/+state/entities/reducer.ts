@@ -1,5 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { User } from '@nx-mean-starter/models';
+import { AuthState } from '@nx-mean-starter/state/auth';
 import { Action, createReducer, Store } from 'ngrx-actions/dist';
 
 import { Load, LoadError, LoadSuccess, Select } from './actions';
@@ -33,8 +34,8 @@ export class EntitiesStore {
     return { ...state, loading: true, error: undefined };
   }
 
-  @Action(LoadSuccess)
-  loadSuccess(state: EntitiesState, action: LoadSuccess): EntitiesState {
+  @Action(LoadSuccess, AuthState.LoginSuccess)
+  upsertOne(state: EntitiesState, action: LoadSuccess | AuthState.LoginSuccess): EntitiesState {
     return entitiesAdapter.upsertOne(action.user, state);
   }
 
