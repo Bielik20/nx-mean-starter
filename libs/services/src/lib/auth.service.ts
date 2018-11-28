@@ -15,8 +15,4 @@ export class AuthService {
     }
     return throwError('not authenticated');
   }
-
-  logout(): Observable<void> {
-    return of(null).pipe(delay(500));
-  }
 }

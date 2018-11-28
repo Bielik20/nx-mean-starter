@@ -25,12 +25,7 @@ export class Effects {
   @Effect()
   logout$ = this.actions$.pipe(
     ofAction(Logout),
-    switchMap(() =>
-      this.authService.logout().pipe(
-        map(() => new LogoutSuccess()),
-        catchError(err => of(new AuthError(err))),
-      ),
-    ),
+    map(() => new LogoutSuccess()),
   );
 
   @Effect({ dispatch: false })
