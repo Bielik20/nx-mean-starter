@@ -440,6 +440,32 @@
           }
         }
       }
+    },
+    "feature-auth": {
+      "root": "libs/feature/auth",
+      "sourceRoot": "libs/feature/auth/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/auth/tsconfig.lib.json",
+              "libs/feature/auth/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/feature/auth/jest.config.js",
+            "tsConfig": "libs/feature/auth/tsconfig.spec.json",
+            "setupFile": "libs/feature/auth/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "cli": {

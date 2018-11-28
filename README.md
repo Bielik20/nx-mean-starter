@@ -327,7 +327,7 @@ In `apps/web-app/src/app/app.module.ts` change:
 ## Add Feature Module
 
 ```
-ng g lib banner --unit-test-runner=jest --directory=feature --prefix=app
+ng g lib auth --unit-test-runner=jest --directory=feature --prefix=app
 ```
 
 ### Optional (rename module)
