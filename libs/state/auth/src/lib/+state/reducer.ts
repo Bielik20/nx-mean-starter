@@ -1,6 +1,6 @@
 import { ActionReducer } from '@ngrx/store';
 import { Action, createReducer, Store } from 'ngrx-actions/dist';
-import { AuthError, Login, LoginSuccess, Logout, LogoutSuccess } from './actions';
+import { AuthError, Login, LoginSuccess, Logout, Register, RegisterSuccess } from './actions';
 
 export interface State {
   userId: string;
@@ -18,13 +18,13 @@ export const initialState = {
 
 @Store<State>(initialState)
 export class StateStore {
-  @Action(Login, Logout)
-  loginLogout(state: State): State {
+  @Action(Login, Register)
+  pending(state: State): State {
     return { ...state, pending: true, error: undefined };
   }
 
-  @Action(LoginSuccess)
-  loginSuccess(state: State, action: LoginSuccess): State {
+  @Action(LoginSuccess, RegisterSuccess)
+  authSuccess(state: State, action: LoginSuccess | RegisterSuccess): State {
     return {
       ...state,
       userId: action.user._id,
@@ -34,8 +34,8 @@ export class StateStore {
     };
   }
 
-  @Action(LogoutSuccess)
-  logoutSuccess(state: State): State {
+  @Action(Logout)
+  logout(state: State): State {
     return {
       ...state,
       userId: undefined,
@@ -55,9 +55,9 @@ export function reducer(state, action) {
   return createReducer(StateStore)(state, action);
 }
 
-/** Clears storage on Logout Success */
+/** Clears storage on Logout */
 export function logoutMetaReducer(_reducer: ActionReducer<any>): ActionReducer<any> {
   return function(state, action) {
-    return _reducer(action.type === '[Auth] Logout Success' ? undefined : state, action);
+    return _reducer(action.type === '[Auth] Logout' ? undefined : state, action);
   };
 }

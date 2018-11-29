@@ -6,7 +6,7 @@ import { AuthService, LocalStorageService } from '@nx-mean-starter/services';
 import { ofAction } from 'ngrx-actions/dist';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { AuthError, Login, LoginSuccess, Logout, LogoutSuccess } from './actions';
+import { AuthError, Login, LoginSuccess, Logout } from './actions';
 import { State } from './reducer';
 
 @Injectable()
@@ -15,17 +15,11 @@ export class Effects {
   login$ = this.actions$.pipe(
     ofAction(Login),
     switchMap(action =>
-      this.authService.login(action.login, action.password).pipe(
+      this.authService.login(action.login.email, action.login.password).pipe(
         map(res => new LoginSuccess(res.user, res.jwt)),
         catchError(err => of(new AuthError(err))),
       ),
     ),
-  );
-
-  @Effect()
-  logout$ = this.actions$.pipe(
-    ofAction(Logout),
-    map(() => new LogoutSuccess()),
   );
 
   @Effect({ dispatch: false })
@@ -38,8 +32,8 @@ export class Effects {
   );
 
   @Effect({ dispatch: false })
-  logoutSuccess$ = this.actions$.pipe(
-    ofAction(LogoutSuccess),
+  logout$ = this.actions$.pipe(
+    ofAction(Logout),
     tap(() => {
       this.storage.removeItem('jwt');
       this.storage.removeItem('user');

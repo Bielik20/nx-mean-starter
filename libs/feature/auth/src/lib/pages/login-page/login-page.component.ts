@@ -25,6 +25,6 @@ export class LoginPageComponent implements OnInit {
   }
 
   login(auth: Login) {
-    this.store.dispatch(new AuthState.Login(auth.email, auth.password));
+    this.store.dispatch(new AuthState.Login(auth));
   }
 }
