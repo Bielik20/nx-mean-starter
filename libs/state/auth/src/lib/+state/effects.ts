@@ -6,7 +6,7 @@ import { AuthService, LocalStorageService } from '@nx-mean-starter/services';
 import { ofAction } from 'ngrx-actions/dist';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { AuthError, Login, LoginSuccess, Logout } from './actions';
+import { AuthError, AuthSuccess, Login, Logout, Register } from './actions';
 import { State } from './reducer';
 
 @Injectable()
@@ -15,16 +15,27 @@ export class Effects {
   login$ = this.actions$.pipe(
     ofAction(Login),
     switchMap(action =>
-      this.authService.login(action.login.email, action.login.password).pipe(
-        map(res => new LoginSuccess(res.user, res.jwt)),
+      this.authService.login(action.login).pipe(
+        map(res => new AuthSuccess(res.user, res.jwt)),
+        catchError(err => of(new AuthError(err))),
+      ),
+    ),
+  );
+
+  @Effect()
+  register$ = this.actions$.pipe(
+    ofAction(Register),
+    switchMap(action =>
+      this.authService.register(action.register).pipe(
+        map(res => new AuthSuccess(res.user, res.jwt)),
         catchError(err => of(new AuthError(err))),
       ),
     ),
   );
 
   @Effect({ dispatch: false })
-  loginSuccess$ = this.actions$.pipe(
-    ofAction(LoginSuccess),
+  authSuccess$ = this.actions$.pipe(
+    ofAction(AuthSuccess),
     tap(action => {
       this.storage.setItem('jwt', action.jwt);
       this.storage.setItem('user', action.user);
@@ -53,7 +64,7 @@ export class Effects {
     const user = this.storage.getItem<User>('user');
     const jwt = this.storage.getItem('jwt');
     if (!!user && !!jwt) {
-      this.store.dispatch(new LoginSuccess(user, jwt));
+      this.store.dispatch(new AuthSuccess(user, jwt));
     }
   }
 }

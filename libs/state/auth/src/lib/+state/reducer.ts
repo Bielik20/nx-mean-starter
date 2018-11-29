@@ -1,6 +1,6 @@
 import { ActionReducer } from '@ngrx/store';
 import { Action, createReducer, Store } from 'ngrx-actions/dist';
-import { AuthError, Login, LoginSuccess, Logout, Register, RegisterSuccess } from './actions';
+import { AuthError, AuthSuccess, Login, Logout, Register } from './actions';
 
 export interface State {
   userId: string;
@@ -23,8 +23,8 @@ export class StateStore {
     return { ...state, pending: true, error: undefined };
   }
 
-  @Action(LoginSuccess, RegisterSuccess)
-  authSuccess(state: State, action: LoginSuccess | RegisterSuccess): State {
+  @Action(AuthSuccess)
+  authSuccess(state: State, action: AuthSuccess): State {
     return {
       ...state,
       userId: action.user._id,

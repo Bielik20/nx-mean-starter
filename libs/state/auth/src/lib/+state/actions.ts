@@ -6,17 +6,12 @@ export class Register implements Action {
   constructor(public register: RegisterModel) {}
 }
 
-export class RegisterSuccess implements Action {
-  readonly type = '[Auth] Register Success';
-  constructor(public user: User, public jwt: string) {}
-}
-
 export class Login implements Action {
   readonly type = '[Auth] Login';
   constructor(public login: LoginModel) {}
 }
 
-export class LoginSuccess implements Action {
+export class AuthSuccess implements Action {
   readonly type = '[Auth] Login Success';
   constructor(public user: User, public jwt: string) {}
 }

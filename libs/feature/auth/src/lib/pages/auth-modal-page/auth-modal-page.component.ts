@@ -27,7 +27,7 @@ export class AuthModalPageComponent implements OnInit {
   private setModalCloseAfterLogin() {
     this.actions$
       .pipe(
-        ofAction(AuthState.LoginSuccess),
+        ofAction(AuthState.AuthSuccess),
         take(1),
         tap(() => this.dialogRef.close()),
       )

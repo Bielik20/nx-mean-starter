@@ -1,5 +1,5 @@
 <div *ngIf="!pending; else spinner">
-  <form [formGroup]="loginForm" (ngSubmit)="login.emit(loginForm.value)">
+  <form [formGroup]="registerForm" (ngSubmit)="register.emit(registerForm.value)">
     <div class="form-container">
       <mat-form-field>
         <input formControlName="email" matInput placeholder="Email" type="email" required>
@@ -7,10 +7,13 @@
       <mat-form-field>
         <input formControlName="password" matInput placeholder="Password" type="password" required>
       </mat-form-field>
+      <mat-form-field>
+        <input formControlName="confirmPassword" matInput placeholder="Repeat Password" type="password" required>
+      </mat-form-field>
     </div>
 
     <button mat-raised-button color="primary" class="submit-button"
-            [disabled]="loginForm.invalid">Login
+            [disabled]="registerForm.invalid">Register
     </button>
   </form>
 </div>
