@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { select, Store } from '@ngrx/store';
 import { Register } from '@nx-mean-starter/models';
+import { CustomValidatorsService } from '@nx-mean-starter/shared';
 import { AuthState } from '@nx-mean-starter/state/auth';
 import { Observable } from 'rxjs';
 
@@ -14,7 +15,11 @@ export class RegisterPageComponent implements OnInit {
   registerForm: FormGroup;
   pending$: Observable<boolean>;
 
-  constructor(private store: Store<AuthState.State>, private fb: FormBuilder) {}
+  constructor(
+    private store: Store<AuthState.State>,
+    private fb: FormBuilder,
+    private customValidators: CustomValidatorsService,
+  ) {}
 
   ngOnInit() {
     this.pending$ = this.store.pipe(select(AuthState.getPending));
@@ -24,20 +29,11 @@ export class RegisterPageComponent implements OnInit {
         password: ['aaa123', Validators.required],
         confirmPassword: ['aaa123', Validators.required],
       },
-      { validator: PasswordValidation.matchPassword },
+      { validator: this.customValidators.confirmPassword },
     );
   }
 
   register(auth: Register) {
     this.store.dispatch(new AuthState.Register(auth));
-  }
-}
-
-export class PasswordValidation {
-  static matchPassword(AC: AbstractControl) {
-    const password = AC.get('password').value;
-    const confirmPassword = AC.get('confirmPassword').value;
-    const incorrect = password !== confirmPassword;
-    return incorrect ? { matchPassword: true } : null;
   }
 }

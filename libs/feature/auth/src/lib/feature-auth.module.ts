@@ -17,7 +17,6 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     RegisterPageComponent,
     RegisterComponent,
   ],
-  exports: [LoginPageComponent],
   entryComponents: [AuthModalPageComponent],
 })
 export class FeatureAuthModule {}
