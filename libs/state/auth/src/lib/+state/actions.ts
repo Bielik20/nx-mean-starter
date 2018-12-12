@@ -12,7 +12,7 @@ export class Login implements Action {
 }
 
 export class AuthSuccess implements Action {
-  readonly type = '[Auth] Login Success';
+  readonly type = '[Auth] Auth Success';
   constructor(public user: User, public jwt: string) {}
 }
 
