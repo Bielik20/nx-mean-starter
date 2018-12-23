@@ -192,12 +192,6 @@ if (environment.production === true) {
 - https://medium.com/@cyrilletuzi/angular-server-side-rendering-in-node-with-express-universal-engine-dce21933ddce
 - https://angular.io/guide/universal
 
-## Add Services Lib
-
-```
-ng g lib services --unit-test-runner=jest --no-module --prefix=app
-```
-
 ## Add Testing helpers
 
 ```

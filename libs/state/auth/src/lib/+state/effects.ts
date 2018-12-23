@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
-import { LocalStorageService } from '@nx-mean-starter/services';
+import { LocalStorageService } from '@nx-mean-starter/shared';
 import { ofAction } from 'ngrx-actions/dist';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
