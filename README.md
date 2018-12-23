@@ -249,11 +249,11 @@ In `apps/web-app/src/index.html`:
 
 ```html
 <head>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
 </head>
 ...
-<body class='mat-typography'>
+<body class="mat-typography"></body>
 ```
 
 In `apps/web-app/src/styles.scss`:
@@ -332,10 +332,10 @@ ng g lib auth --unit-test-runner=jest --directory=feature --prefix=app
 
 ### Optional (rename module)
 
-Rename `FeatureBannerModule` to `BannerModule`:
+Rename `FeatureAuthModule` to `AuthModule`:
 
-- `feature-banner.module.ts` -> `banner.module.ts`
-- `feature-banner.module.spec.ts` -> `banner.module.spec.ts`
+- `feature-auth.module.ts` -> `auth.module.ts`
+- `feature-auth.module.spec.ts` -> `auth.module.spec.ts`
 - in `index.ts`
 
 ## Add State
