@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
-import { AuthService, LocalStorageService } from '@nx-mean-starter/services';
+import { LocalStorageService } from '@nx-mean-starter/services';
 import { ofAction } from 'ngrx-actions/dist';
 import { of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
+import { AuthService } from '../service/auth.service';
 import { AuthError, AuthSuccess, Login, Logout, Register } from './actions';
 import { State } from './reducer';
 
