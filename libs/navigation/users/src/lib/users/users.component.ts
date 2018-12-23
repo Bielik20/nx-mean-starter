@@ -1,20 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
-import { UsersService } from '@nx-mean-starter/services';
+import { UsersState } from '@nx-mean-starter/state/users';
 import { Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.scss'],
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit {
   users$: Observable<User[]>;
 
-  constructor(private usersService: UsersService) {}
+  constructor(private store: Store<UsersState.State>) {}
+
+  ngOnInit() {
+    this.users$ = this.store.select(UsersState.getEntitiesArray);
+  }
 
   getUsers() {
-    this.users$ = this.usersService.getAll().pipe(shareReplay(1));
+    this.store.dispatch(new UsersState.LoadAll());
   }
 }

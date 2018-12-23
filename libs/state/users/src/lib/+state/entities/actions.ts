@@ -16,6 +16,15 @@ export class LoadSuccess implements Action {
   constructor(public user: User) {}
 }
 
+export class LoadAll implements Action {
+  readonly type = '[Users Entities] Load All';
+}
+
+export class LoadAllSuccess implements Action {
+  readonly type = '[Users Entities] Load All Success';
+  constructor(public users: User[]) {}
+}
+
 export class LoadError implements Action {
   readonly type = '[Users Entities] Load Error';
   constructor(public error: string) {}

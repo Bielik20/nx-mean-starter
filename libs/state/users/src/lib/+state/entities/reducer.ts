@@ -2,8 +2,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { User } from '@nx-mean-starter/models';
 import { AuthState } from '@nx-mean-starter/state/auth';
 import { Action, createReducer, Store } from 'ngrx-actions/dist';
-
-import { Load, LoadError, LoadSuccess, Select } from './actions';
+import { Load, LoadAll, LoadAllSuccess, LoadError, LoadSuccess, Select } from './actions';
 
 export interface EntitiesState extends EntityState<User> {
   selectedId: string;
@@ -29,14 +28,19 @@ export class EntitiesStore {
     return { ...state, selectedId: action.id };
   }
 
-  @Action(Load)
+  @Action(Load, LoadAll)
   load(state: EntitiesState): EntitiesState {
     return { ...state, loading: true, error: undefined };
   }
 
   @Action(LoadSuccess, AuthState.AuthSuccess)
   upsertOne(state: EntitiesState, action: LoadSuccess | AuthState.AuthSuccess): EntitiesState {
-    return entitiesAdapter.upsertOne(action.user, state);
+    return entitiesAdapter.upsertOne(action.user, { ...state, loading: false });
+  }
+
+  @Action(LoadAllSuccess)
+  upsertMany(state: EntitiesState, action: LoadAllSuccess): EntitiesState {
+    return entitiesAdapter.upsertMany(action.users, { ...state, loading: false });
   }
 
   @Action(LoadError)

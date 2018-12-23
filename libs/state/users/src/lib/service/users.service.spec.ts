@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { async, inject, TestBed } from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { UsersService } from './users.service';
 
 describe('Service: Users', () => {

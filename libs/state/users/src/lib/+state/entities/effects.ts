@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { UsersService } from '@nx-mean-starter/services';
 import { ofAction } from 'ngrx-actions/dist';
 import { of } from 'rxjs';
 import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
-import { Load, LoadError, LoadSuccess, Select } from './actions';
+import { UsersService } from '../../service/users.service';
+import { Load, LoadAll, LoadAllSuccess, LoadError, LoadSuccess, Select } from './actions';
 import { EntitiesState } from './reducer';
 import { getEntities } from './selectors';
 
@@ -27,6 +27,17 @@ export class EntitiesEffects {
     switchMap(action =>
       this.service.getOne(action.id).pipe(
         map(user => new LoadSuccess(user)),
+        catchError(err => of(new LoadError(err))),
+      ),
+    ),
+  );
+
+  @Effect()
+  loadAll$ = this.actions$.pipe(
+    ofAction(LoadAll),
+    switchMap(() =>
+      this.service.getAll().pipe(
+        map(user => new LoadAllSuccess(user)),
         catchError(err => of(new LoadError(err))),
       ),
     ),

@@ -1,7 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { async, ComponentFixture, inject, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { UsersService } from '@nx-mean-starter/services';
+import { Store } from '@ngrx/store';
 import { click } from '@nx-mean-starter/testing';
 import { of } from 'rxjs';
 import { UsersComponent } from './users.component';
@@ -15,8 +15,8 @@ describe('UsersComponent', () => {
       declarations: [UsersComponent],
       providers: [
         {
-          provide: UsersService,
-          useValue: { getAll: jest.fn(() => of([])) },
+          provide: Store,
+          useValue: { select: jest.fn(() => of([])), dispatch: jest.fn() },
         },
       ],
       schemas: [NO_ERRORS_SCHEMA],
@@ -33,9 +33,9 @@ describe('UsersComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should get users', inject([UsersService], (service: UsersService) => {
+  it('should get users', () => {
     const de = fixture.debugElement.query(By.css('button'));
     click(de);
     component.users$.subscribe(val => expect(val).toEqual([]));
-  }));
+  });
 });
