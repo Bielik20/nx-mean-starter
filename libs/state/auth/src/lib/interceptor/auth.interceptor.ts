@@ -7,9 +7,9 @@ import {
 } from '@angular/common/http';
 import { Injectable, Provider } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AuthState } from '@nx-mean-starter/state/auth';
 import { Observable } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
+import { getJwt, State } from '../+state';
 
 @Injectable({
   providedIn: 'root',
@@ -21,15 +21,15 @@ export class AuthInterceptor implements HttpInterceptor {
     multi: true,
   };
 
-  constructor(private store: Store<AuthState.State>) {}
+  constructor(private store: Store<State>) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return this.store.select(AuthState.getJwt).pipe(
+    return this.store.select(getJwt).pipe(
       take(1),
       switchMap(jwt => {
         const authHeader = `Bearer ${jwt}`;
         const authReq = req.clone({ setHeaders: { Authorization: authHeader } });
-        return next.handle(req);
+        return next.handle(authReq);
       }),
     );
   }
