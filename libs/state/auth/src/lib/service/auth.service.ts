@@ -1,25 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthResponse, Login, Register } from '@nx-mean-starter/models';
-import { Observable, of, throwError } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   login(model: Login): Observable<AuthResponse> {
-    if (model.email === 'test@test.com' && model.password === 'aaa123') {
-      return of({ user: { _id: 'test', email: 'test@test.com' }, jwt: 'abc123' }).pipe(delay(500));
-    }
-    return throwError('not authenticated');
+    return this.http.post<AuthResponse>('api/auth/login', model);
   }
 
   register(model: Register): Observable<AuthResponse> {
-    if (model.email === 'test@test.com' && model.password === 'aaa123') {
-      return of({ user: { _id: 'test', email: 'test@test.com' }, jwt: 'abc123' }).pipe(delay(500));
-    }
-    return throwError('not registered');
+    return this.http.post<AuthResponse>('api/auth/register', model);
   }
 }

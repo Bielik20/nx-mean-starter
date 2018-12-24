@@ -15,7 +15,7 @@ authRouter.post('/login', async (req: Request, res: Response) => {
   }
 
   if (await user.comparePassword(model.password)) {
-    return res.json({ token: generateToken(user) });
+    return res.json({ jwt: generateToken(user), user });
   } else {
     return res.status(401).send({ message: 'Authentication failed - Invalid password' });
   }
@@ -25,7 +25,7 @@ authRouter.post('/register', async (req: Request, res: Response) => {
   const model: Register = req.body;
   try {
     const user = await new UserContext(model).save();
-    return res.json({ success: true, token: generateToken(user) });
+    return res.json({ jwt: generateToken(user), user });
   } catch {
     return res.status(401).send({ message: 'Register failed' });
   }
