@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialog } from '@angular/material';
 import { LayoutComponent } from './layout.component';
 
 describe('LayoutComponent', () => {
@@ -8,6 +9,7 @@ describe('LayoutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LayoutComponent],
+      providers: [{ provide: MatDialog, useValue: { open: jest.fn() } }],
     }).compileComponents();
   }));
 
