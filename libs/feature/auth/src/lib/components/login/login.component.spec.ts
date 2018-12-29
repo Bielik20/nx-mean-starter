@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from '@nx-mean-starter/shared';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -8,6 +10,7 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ReactiveFormsModule, NoopAnimationsModule, SharedModule],
       declarations: [LoginComponent],
     }).compileComponents();
   }));
@@ -15,6 +18,11 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+    component.loginForm = new FormGroup({
+      email: new FormControl(),
+      password: new FormControl(),
+    });
+
     fixture.detectChanges();
   });
 
