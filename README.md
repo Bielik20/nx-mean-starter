@@ -98,9 +98,11 @@ Delete `karma.conf.js`.
 
 ### Testing
 
-- `ng test` - run tests with report coverage for whole workspace
+- `yarn affected:test --all` - run tests with report coverage for whole workspace
 - `ng test app-name` - run tests fo specified app/lib
-- `ng test --watch` - run tests listening for changes. Can be used with app-name.
+- `ng test app-name --watch` - run tests listening for changes.
+
+Omitting app-name will result in running command for the default app.
 
 ## Add App
 

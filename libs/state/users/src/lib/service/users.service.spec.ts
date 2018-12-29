@@ -1,19 +1,24 @@
-import { HttpClient } from '@angular/common/http';
-import { inject, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { TestBed } from '@angular/core/testing';
 import { UsersService } from './users.service';
 
 describe('Service: Users', () => {
+  let service: UsersService;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UsersService, { provide: HttpClient, useValue: { get: jest.fn(() => of([])) } }],
+      imports: [HttpClientTestingModule],
+      providers: [UsersService],
     });
+
+    service = TestBed.get(UsersService);
   });
 
-  it('should ...', inject([UsersService], (service: UsersService) => {
+  it('should ...', () => {
     expect(service).toBeTruthy();
-  }));
+  });
 
-  it('should return empty array', inject([UsersService], (service: UsersService) => {
+  it('should return empty array', () => {
     service.getAll().subscribe(val => expect(val).toEqual([]));
-  }));
+  });
 });
