@@ -19,7 +19,7 @@ describe('AuthModalPageComponent', () => {
       imports: [NoopAnimationsModule, SharedModule],
       declarations: [AuthModalPageComponent],
       providers: [
-        StoreStub.provide,
+        StoreStub.provider,
         { provide: Actions, useValue: new Subject() },
         { provide: MatDialogRef, useValue: { close: jest.fn() } },
       ],

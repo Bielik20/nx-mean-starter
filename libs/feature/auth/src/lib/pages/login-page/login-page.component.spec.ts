@@ -16,7 +16,7 @@ describe('LoginPageComponent', () => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule, NoopAnimationsModule, SharedModule],
       declarations: [LoginPageComponent, LoginComponent],
-      providers: [StoreStub.provide],
+      providers: [StoreStub.provider],
     }).compileComponents();
   }));
 

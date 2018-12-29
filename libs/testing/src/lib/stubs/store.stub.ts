@@ -8,7 +8,7 @@ declare type UnifiedSelector<T = any, Result = any> =
   | MemoizedSelectorWithProps<T, any, Result>;
 
 export class StoreStub<StateType = any> extends BehaviorSubject<StateType> {
-  static provide = { provide: Store, useValue: new StoreStub() };
+  static provider = { provide: Store, useValue: new StoreStub() };
 
   public dispatch = jest.fn();
   public select = jest.fn(this.executeSelector);

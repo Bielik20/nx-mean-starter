@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog } from '@angular/material';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from '@nx-mean-starter/shared';
 import { LayoutComponent } from './layout.component';
 
 describe('LayoutComponent', () => {
@@ -8,6 +10,7 @@ describe('LayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule, SharedModule],
       declarations: [LayoutComponent],
       providers: [{ provide: MatDialog, useValue: { open: jest.fn() } }],
     }).compileComponents();

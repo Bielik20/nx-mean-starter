@@ -16,7 +16,7 @@ describe('RegisterPageComponent', () => {
     TestBed.configureTestingModule({
       imports: [ReactiveFormsModule, NoopAnimationsModule, SharedModule],
       declarations: [RegisterPageComponent, RegisterComponent],
-      providers: [StoreStub.provide],
+      providers: [StoreStub.provider],
     }).compileComponents();
   }));
 

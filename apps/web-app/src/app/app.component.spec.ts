@@ -9,7 +9,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [AppComponent],
-      providers: [StoreStub.provide],
+      providers: [StoreStub.provider],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));

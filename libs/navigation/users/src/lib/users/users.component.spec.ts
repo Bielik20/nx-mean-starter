@@ -1,9 +1,7 @@
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { Store } from '@ngrx/store';
-import { click } from '@nx-mean-starter/testing';
-import { of } from 'rxjs';
+import { click, StoreStub } from '@nx-mean-starter/testing';
 import { UsersComponent } from './users.component';
 
 describe('UsersComponent', () => {
@@ -13,12 +11,7 @@ describe('UsersComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UsersComponent],
-      providers: [
-        {
-          provide: Store,
-          useValue: { select: jest.fn(() => of([])), dispatch: jest.fn() },
-        },
-      ],
+      providers: [StoreStub.provider],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
   }));
