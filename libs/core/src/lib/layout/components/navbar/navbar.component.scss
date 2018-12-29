@@ -1,0 +1,36 @@
+app-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  height: 56px;
+}
+
+.app-navbar-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  height: 100%;
+
+  > .mat-button {
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+}
+
+.app-logo {
+  height: 40px;
+}
+
+.app-navbar-link {
+  text-decoration: inherit;
+  flex: 1;
+}
+
+.app-navbar {
+  display: none;
+}

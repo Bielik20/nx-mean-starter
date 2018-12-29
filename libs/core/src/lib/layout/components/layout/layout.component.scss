@@ -1,0 +1,15 @@
+app-layout {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.app-sidenav {
+  width: 15%;
+  min-width: 200px;
+  max-width: 300px;
+}

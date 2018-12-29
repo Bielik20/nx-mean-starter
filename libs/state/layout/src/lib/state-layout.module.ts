@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { Effects } from '../../../auth/src/lib/+state/effects';
+import { Effects } from './+state/effects';
 import { reducer } from './+state/reducer';
 
 @NgModule({

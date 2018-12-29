@@ -1,0 +1,13 @@
+<!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
+<nav class="app-navbar-header mat-elevation-z6">
+  <button mat-icon-button (click)="toggleSidenav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a mat-button routerLink="/">
+    <img class="app-logo" src="assets/logo.png" alt="logo">
+  </a>
+  <div class="flex-spacer"></div>
+  <button mat-icon-button (click)="authenticate.emit()">
+    <mat-icon>person</mat-icon>
+  </button>
+</nav>

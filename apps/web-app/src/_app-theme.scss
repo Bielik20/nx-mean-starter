@@ -1,4 +1,5 @@
 @import 'libs/shared/src/styles';
+@import 'libs/core/src/lib/layout/components/navbar/theme';
 
 @mixin app-theme($theme, $config) {
   $primary: map-get($theme, primary);
@@ -8,4 +9,5 @@
   $foreground: map-get($theme, foreground);
 
   @include shared-theme($theme, $config);
+  @include navbar-theme($theme, $config);
 }

@@ -1,0 +1,26 @@
+@mixin general() {
+  .flex {
+    flex: 1;
+  }
+
+  .flex-spacer {
+    flex-grow: 1;
+  }
+
+  .app-content {
+    margin: 20px 40px 0px 40px;
+  }
+
+  @media only screen and (max-width: 959px) {
+    .app-content {
+      margin: 20px 20px 0px 20px;
+    }
+  }
+
+  .app-content > * {
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

@@ -7,18 +7,21 @@ import { NxModule } from '@nrwl/nx';
 import { CoreModule } from '@nx-mean-starter/core';
 import { SharedModule } from '@nx-mean-starter/shared';
 import { StateRootModule } from '@nx-mean-starter/state/root';
-
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomePageComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     NxModule.forRoot(),
     RouterModule.forRoot(
-      [{ path: 'users', loadChildren: '@nx-mean-starter/navigation/users#NavigationUsersModule' }],
+      [
+        { path: '', component: HomePageComponent },
+        { path: 'users', loadChildren: '@nx-mean-starter/navigation/users#NavigationUsersModule' },
+      ],
       { initialNavigation: 'enabled' },
     ),
     SharedModule.forRoot(),
