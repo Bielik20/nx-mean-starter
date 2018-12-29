@@ -21,7 +21,8 @@
       "@nx-mean-starter/schemas": ["libs/schemas/src/index.ts"],
       "@nx-mean-starter/state/users": ["libs/state/users/src/index.ts"],
       "@nx-mean-starter/navigation/users": ["libs/navigation/users/src/index.ts"],
-      "@nx-mean-starter/feature/auth": ["libs/feature/auth/src/index.ts"]
+      "@nx-mean-starter/feature/auth": ["libs/feature/auth/src/index.ts"],
+      "@nx-mean-starter/state/layout": ["libs/state/layout/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

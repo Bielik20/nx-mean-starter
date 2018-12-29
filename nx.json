@@ -49,6 +49,9 @@
     },
     "feature-auth": {
       "tags": []
+    },
+    "state-layout": {
+      "tags": []
     }
   }
 }
