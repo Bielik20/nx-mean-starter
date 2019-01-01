@@ -16,7 +16,7 @@ export class AuthModalPageComponent implements OnInit {
   constructor(
     private store: Store<AuthState.State>,
     private actions$: Actions,
-    private dialogRef: MatDialogRef<AuthModalPageComponent>,
+    private dialogRef: MatDialogRef<AuthModalPageComponent, boolean>,
   ) {}
 
   ngOnInit() {
@@ -29,7 +29,7 @@ export class AuthModalPageComponent implements OnInit {
       .pipe(
         ofAction(AuthState.AuthSuccess),
         take(1),
-        tap(() => this.dialogRef.close()),
+        tap(() => this.dialogRef.close(true)),
       )
       .subscribe();
   }
