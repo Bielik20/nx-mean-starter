@@ -36,23 +36,27 @@ export class AppConfig {
       );
       console.log('MongoDB Connected');
     } catch (err) {
-      console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
+      console.error('MongoDB connection error. Please make sure MongoDB is running. ' + err);
     }
   }
 
   private session() {
-    const MongoStore = mongo(session);
-    this.app.use(
-      session({
-        resave: true,
-        saveUninitialized: true,
-        secret: environment.sessionSecret,
-        store: new MongoStore({
-          url: environment.mongoUrl,
-          autoReconnect: true,
+    try {
+      const MongoStore = mongo(session);
+      this.app.use(
+        session({
+          resave: true,
+          saveUninitialized: true,
+          secret: environment.sessionSecret,
+          store: new MongoStore({
+            url: environment.mongoUrl,
+            autoReconnect: true,
+          }),
         }),
-      }),
-    );
+      );
+    } catch (err) {
+      console.error('Session connection error. Probably mongo fault.' + err);
+    }
   }
 
   private compression() {

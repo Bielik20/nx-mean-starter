@@ -187,7 +187,30 @@ if (environment.production === true) {
 
 ### Add Heroku Deploy
 
-...
+Install Heroku CLI and login
+
+```
+brew install heroku/brew/heroku
+heroku login
+```
+
+Create new app on Heroku:
+
+```
+heroku apps:create <app-name> --region eu
+```
+
+Add Heroku remote
+
+```
+heroku git:remote -a <app-name>
+```
+
+Deploy
+
+```
+git push heroku master
+```
 
 ### Add Angular Universal
 
