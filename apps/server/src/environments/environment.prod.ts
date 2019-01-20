@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  mongoUrl: 'mongodb://<mlab_user>:<mlab_password>@<mlab_connection_url>',
+  mongoUri: process.env.MONGO_URI || 'mongodb://localhost/nx-mean-starter',
   sessionSecret: 'sdfo38jds8n3vnsp02',
   port: process.env.PORT || 3333,
   jwt: {

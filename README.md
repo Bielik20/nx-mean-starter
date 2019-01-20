@@ -212,6 +212,17 @@ Deploy
 git push heroku master
 ```
 
+### Add mLab (MongoDB)
+
+1. Goto https://mlab.com/home and create new "MongoDB Deployment"
+2. To to your database -> users https://mlab.com/databases/nx-mean-starter#users
+3. Add database user
+   - Remember username and password
+4. Go to https://dashboard.heroku.com/apps/nx-mean-starter/settings -> Config Vars
+   - Add
+     - Key: MONGO_URI
+     - Value: _connection string with username and password_
+
 ### Add Angular Universal
 
 - https://medium.com/@cyrilletuzi/angular-server-side-rendering-in-node-with-express-universal-engine-dce21933ddce

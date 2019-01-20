@@ -31,7 +31,7 @@ export class AppConfig {
     try {
       // https://github.com/Automattic/mongoose/issues/6890#issuecomment-416218953
       await mongoose.connect(
-        environment.mongoUrl,
+        environment.mongoUri,
         { useNewUrlParser: true, useCreateIndex: true },
       );
       console.log('MongoDB Connected');
@@ -49,7 +49,7 @@ export class AppConfig {
           saveUninitialized: true,
           secret: environment.sessionSecret,
           store: new MongoStore({
-            url: environment.mongoUrl,
+            url: environment.mongoUri,
             autoReconnect: true,
           }),
         }),

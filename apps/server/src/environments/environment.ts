@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  mongoUrl: 'mongodb://localhost/nx-mean-starter',
+  mongoUri: 'mongodb://localhost/nx-mean-starter',
   sessionSecret: 'ascva123fsadgt',
   port: 3333,
   jwt: {
