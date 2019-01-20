@@ -10,6 +10,13 @@ Based on:
 - [nx-fullstack](https://blog.nrwl.io/building-full-stack-applications-using-angular-cli-and-nx-5eff205248f1)
 - [angular cli proxy](https://github.com/angular/angular-cli/blob/master/docs/documentation/stories/proxy.md)
 
+# Step to transform into project
+
+1. Rename nx-mean-starter to <your-app-name>
+2. Go through "Add Heroku Deploy" and "Add mLab (MongoDB)" keeping in mind first step.
+
+# Steps to reproduce
+
 ```
 npm i -g @angular/cli@latest @nrwl/schematics@latest
 ```
@@ -197,13 +204,13 @@ heroku login
 Create new app on Heroku:
 
 ```
-heroku apps:create <app-name> --region eu
+heroku apps:create nx-mean-starter --region eu
 ```
 
 Add Heroku remote
 
 ```
-heroku git:remote -a <app-name>
+heroku git:remote -a nx-mean-starter
 ```
 
 Deploy
