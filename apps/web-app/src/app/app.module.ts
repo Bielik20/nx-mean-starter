@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
@@ -36,6 +37,7 @@ import { HomePageComponent } from './home-page/home-page.component';
       name: 'web-app',
       logOnly: environment.production,
     }),
+    AngularFireModule.initializeApp(environment.firebase),
   ],
   bootstrap: [AppComponent],
 })

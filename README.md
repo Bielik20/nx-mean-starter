@@ -230,6 +230,10 @@ git push heroku master
      - Key: MONGO_URI
      - Value: _connection string with username and password_
 
+### Add Firebase
+
+Create firebase project at https://console.firebase.google.com
+
 ### Add Angular Universal
 
 - https://medium.com/@cyrilletuzi/angular-server-side-rendering-in-node-with-express-universal-engine-dce21933ddce
