@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "importHelpers": true,
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
@@ -23,7 +24,8 @@
       "@nx-mean-starter/navigation/users": ["libs/navigation/users/src/index.ts"],
       "@nx-mean-starter/feature/auth": ["libs/feature/auth/src/index.ts"],
       "@nx-mean-starter/state/layout": ["libs/state/layout/src/index.ts"]
-    }
+    },
+    "module": "es2015"
   },
   "exclude": ["node_modules", "tmp"]
 }
