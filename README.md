@@ -235,6 +235,12 @@ git push heroku master
 1. Create firebase project at https://console.firebase.google.com
 2. Copy firebase config to `web-app` environment.
 3. Go to authentication tab and configure authentication.
+4. Go to database tab and configure cloud firestore.
+5. Download firebase-adminsdk private service key
+   1. Navigate to the Service Accounts tab.
+   2. Generate new private key
+   3. Save as firebase-admindsk.json
+   4. Move it to `aps/server/src/environment`
 
 ### Add Angular Universal
 

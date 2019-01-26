@@ -1,3 +1,5 @@
+import firebase from './firebase-adminsdk.json';
+
 export const environment = {
   production: true,
   mongoUri: process.env.MONGO_URI || 'mongodb://localhost/nx-mean-starter',
@@ -8,4 +10,5 @@ export const environment = {
     issuer: 'nx-mean-starter',
     audience: 'nx-mean-starter',
   },
+  firebase,
 };
