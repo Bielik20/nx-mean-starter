@@ -1,10 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { Actions } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { AuthState } from '@nx-mean-starter/state/auth';
-import { ofAction } from 'ngrx-actions/dist';
-import { take, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-auth-modal-page',
@@ -15,22 +12,14 @@ import { take, tap } from 'rxjs/operators';
 export class AuthModalPageComponent implements OnInit {
   constructor(
     private store: Store<AuthState.State>,
-    private actions$: Actions,
     private dialogRef: MatDialogRef<AuthModalPageComponent, boolean>,
   ) {}
 
   ngOnInit() {
-    this.setModalCloseAfterLogin();
     setTimeout(() => this.store.dispatch(new AuthState.Logout()));
   }
 
-  private setModalCloseAfterLogin() {
-    this.actions$
-      .pipe(
-        ofAction(AuthState.AuthSuccess),
-        take(1),
-        tap(() => this.dialogRef.close(true)),
-      )
-      .subscribe();
+  onSuccess() {
+    this.dialogRef.close(true);
   }
 }

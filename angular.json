@@ -22,7 +22,15 @@
             "main": "apps/web-app/src/main.ts",
             "polyfills": "apps/web-app/src/polyfills.ts",
             "tsConfig": "apps/web-app/tsconfig.app.json",
-            "assets": ["apps/web-app/src/favicon.ico", "apps/web-app/src/assets"],
+            "assets": [
+              "apps/web-app/src/favicon.ico",
+              "apps/web-app/src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-auth-firebaseui/assets/",
+                "output": "./assets/"
+              }
+            ],
             "styles": ["apps/web-app/src/styles.scss"],
             "scripts": []
           },

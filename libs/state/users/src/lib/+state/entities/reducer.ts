@@ -33,8 +33,8 @@ export class EntitiesStore {
     return { ...state, loading: true, error: undefined };
   }
 
-  @Action(LoadSuccess, AuthState.AuthSuccess)
-  upsertOne(state: EntitiesState, action: LoadSuccess | AuthState.AuthSuccess): EntitiesState {
+  @Action(LoadSuccess, AuthState.OldAuthSuccess)
+  upsertOne(state: EntitiesState, action: LoadSuccess | AuthState.OldAuthSuccess): EntitiesState {
     return entitiesAdapter.upsertOne(action.user, { ...state, loading: false });
   }
 

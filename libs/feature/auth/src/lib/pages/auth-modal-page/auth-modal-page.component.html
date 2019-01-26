@@ -1,8 +1,6 @@
-<mat-tab-group class="tab-max-width">
-  <mat-tab label="Login">
-    <app-login-page></app-login-page>
-  </mat-tab>
-  <mat-tab label="Register">
-    <app-register-page></app-register-page>
-  </mat-tab>
-</mat-tab-group>
+<ngx-auth-firebaseui
+  [providers]="['google', 'facebook']"
+  [guestEnabled]=false
+  (onSuccess)="onSuccess($event)"
+>
+</ngx-auth-firebaseui>

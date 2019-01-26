@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AuthState } from '@nx-mean-starter/state/auth';
 import { RouterState } from '@nx-mean-starter/state/router';
 import { combineLatest, Observable, of } from 'rxjs';
-import { switchMap, take } from 'rxjs/operators';
+import { filter, switchMap, take } from 'rxjs/operators';
 import { AuthModalPageComponent } from '../pages';
 
 @Injectable({
@@ -22,7 +22,9 @@ export class AuthGuard implements CanActivate {
     return combineLatest(
       this.store.select(AuthState.getAuthenticated),
       this.store.select(RouterState.getNavigationId),
+      this.store.select(AuthState.getReady),
     ).pipe(
+      filter(([a, b, ready]) => ready === true),
       take(1),
       switchMap(([authenticated, navigationId]) => {
         if (authenticated === true) {

@@ -232,7 +232,9 @@ git push heroku master
 
 ### Add Firebase
 
-Create firebase project at https://console.firebase.google.com
+1. Create firebase project at https://console.firebase.google.com
+2. Copy firebase config to `web-app` environment.
+3. Go to authentication tab and configure authentication.
 
 ### Add Angular Universal
 

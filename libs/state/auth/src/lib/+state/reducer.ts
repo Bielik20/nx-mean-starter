@@ -1,53 +1,38 @@
 import { ActionReducer } from '@ngrx/store';
+import { AuthData } from '@nx-mean-starter/models';
 import { Action, createReducer, Store } from 'ngrx-actions/dist';
-import { AuthError, AuthSuccess, Login, Logout, Register } from './actions';
+import { AuthSuccess, LogoutSuccess } from './actions';
 
 export interface State {
-  userId: string;
-  jwt: string;
-  pending: boolean;
-  error: string;
+  data?: Partial<AuthData>;
+  ready: boolean;
 }
 
 export const initialState = {
-  userId: undefined,
-  jwt: undefined,
-  pending: false,
-  error: undefined,
+  data: {
+    stsTokenManager: {} as any,
+  },
+  ready: false,
 };
 
 @Store<State>(initialState)
 export class StateStore {
-  @Action(Login, Register)
-  pending(state: State): State {
-    return { ...state, pending: true, error: undefined };
-  }
-
   @Action(AuthSuccess)
   authSuccess(state: State, action: AuthSuccess): State {
     return {
       ...state,
-      userId: action.user._id,
-      jwt: action.jwt,
-      pending: false,
-      error: undefined,
+      data: action.authData,
+      ready: true,
     };
   }
 
-  @Action(Logout)
-  logout(state: State): State {
+  @Action(LogoutSuccess)
+  logoutSuccess(state: State): State {
     return {
       ...state,
-      userId: undefined,
-      jwt: undefined,
-      pending: false,
-      error: undefined,
+      ...initialState,
+      ready: true,
     };
-  }
-
-  @Action(AuthError)
-  error(state: State, action: AuthError): State {
-    return { ...state, pending: false, error: action.message };
   }
 }
 
@@ -56,8 +41,9 @@ export function reducer(state, action) {
 }
 
 /** Clears storage on Logout */
+// TODO Remove from state-auth.module because it would set ready to false
 export function logoutMetaReducer(_reducer: ActionReducer<any>): ActionReducer<any> {
   return function(state, action) {
-    return _reducer(action.type === '[Auth] Logout' ? undefined : state, action);
+    return _reducer(action.type === '[Auth] Logout Success' ? undefined : state, action);
   };
 }

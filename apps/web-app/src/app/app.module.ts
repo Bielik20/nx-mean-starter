@@ -9,6 +9,7 @@ import { CoreModule } from '@nx-mean-starter/core';
 import { AuthGuard } from '@nx-mean-starter/feature/auth';
 import { SharedModule } from '@nx-mean-starter/shared';
 import { StateRootModule } from '@nx-mean-starter/state/root';
+import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -38,6 +39,12 @@ import { HomePageComponent } from './home-page/home-page.component';
       logOnly: environment.production,
     }),
     AngularFireModule.initializeApp(environment.firebase),
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase, () => 'nx-mean-starter', {
+      enableFirestoreSync: false,
+      onlyEmailPasswordAuth: false,
+      toastMessageOnAuthSuccess: true,
+      toastMessageOnAuthError: true,
+    }),
   ],
   bootstrap: [AppComponent],
 })

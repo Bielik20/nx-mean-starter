@@ -3,14 +3,12 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { Effects } from './+state/effects';
-import { logoutMetaReducer, reducer } from './+state/reducer';
+import { reducer } from './+state/reducer';
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature('auth', reducer, {
-      metaReducers: [logoutMetaReducer],
-    }),
+    StoreModule.forFeature('auth', reducer),
     EffectsModule.forFeature([Effects]),
   ],
 })

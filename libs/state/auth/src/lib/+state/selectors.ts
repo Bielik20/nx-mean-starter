@@ -4,12 +4,22 @@ import { State } from './reducer';
 
 const getState = createFeatureSelector<State>('auth');
 
-export const getUserId = createSelector(getState, (state: State) => state.userId);
+export const getUserId = createSelector(
+  getState,
+  (state: State) => state.data.uid,
+);
 
-export const getAuthenticated = createSelector(getState, (state: State) => !!state.userId);
+export const getAuthenticated = createSelector(
+  getState,
+  (state: State) => !!state.data.uid,
+);
 
-export const getJwt = createSelector(getState, (state: State) => state.jwt);
+export const getReady = createSelector(
+  getState,
+  (state: State) => !!state.ready,
+);
 
-export const getPending = createSelector(getState, (state: State) => state.pending);
-
-export const getError = createSelector(getState, (state: State) => state.error);
+export const getJwt = createSelector(
+  getState,
+  (state: State) => state.data.stsTokenManager.accessToken,
+);
