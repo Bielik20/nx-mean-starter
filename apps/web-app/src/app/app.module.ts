@@ -14,6 +14,10 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
+export function appFactoryName() {
+  return 'nx-mean-starter';
+}
+
 @NgModule({
   declarations: [AppComponent, HomePageComponent],
   imports: [
@@ -39,7 +43,7 @@ import { HomePageComponent } from './home-page/home-page.component';
       logOnly: environment.production,
     }),
     AngularFireModule.initializeApp(environment.firebase),
-    NgxAuthFirebaseUIModule.forRoot(environment.firebase, () => 'nx-mean-starter', {
+    NgxAuthFirebaseUIModule.forRoot(environment.firebase, appFactoryName, {
       enableFirestoreSync: false,
       onlyEmailPasswordAuth: false,
       toastMessageOnAuthSuccess: true,
