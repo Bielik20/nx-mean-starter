@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
-
 import { Effects } from './+state/effects';
 import { reducer } from './+state/reducer';
 import { provider } from './+state/serializer';

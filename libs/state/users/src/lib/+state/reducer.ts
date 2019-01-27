@@ -1,7 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import { ActionReducerMap, combineReducers } from '@ngrx/store';
-
-import { entitiesReducer, EntitiesState } from './entities';
+import { entitiesReducer, EntitiesState } from './entities/reducer';
 
 export interface State {
   entities: EntitiesState;

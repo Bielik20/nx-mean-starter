@@ -1,2 +1,2 @@
 export * from './entities';
-export * from './reducer';
+export { State } from './reducer';

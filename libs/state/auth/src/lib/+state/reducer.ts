@@ -41,7 +41,6 @@ export function reducer(state, action) {
 }
 
 /** Clears storage on Logout */
-// TODO Remove from state-auth.module because it would set ready to false
 export function logoutMetaReducer(_reducer: ActionReducer<any>): ActionReducer<any> {
   return function(state, action) {
     return _reducer(action.type === '[Auth] Logout Success' ? undefined : state, action);

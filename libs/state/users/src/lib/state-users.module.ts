@@ -3,9 +3,9 @@ import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AuthInterceptor, AuthState } from '@nx-mean-starter/state/auth';
-import { EntitiesEffects, reducerProvider, reducerToken } from './+state';
+import { EntitiesEffects } from './+state/entities/effects';
+import { reducerProvider, reducerToken } from './+state/reducer';
 
-// TODO Remove reducer token
 @NgModule({
   imports: [
     CommonModule,
