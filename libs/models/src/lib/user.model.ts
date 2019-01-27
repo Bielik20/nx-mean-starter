@@ -1,10 +1,14 @@
+// ISSUE: https://github.com/Microsoft/TypeScript/issues/16936
 export interface User {
-  // ISSUE: https://github.com/Microsoft/TypeScript/issues/16936
-  _id: any;
+  _id: string;
   email: string;
+  emailVerified: boolean;
+  name?: string;
+  pictureUrl?: string;
+  phoneNumber?: string;
 }
 
-export function createMockUsers(): User[] {
+export function createMockUsers(): Partial<User>[] {
   return [
     {
       _id: '1',

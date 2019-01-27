@@ -1,21 +1,14 @@
-import { createMockUsers, User } from '@nx-mean-starter/models';
 import { Express, static as expressStatic } from 'express';
 import * as path from 'path';
 import { environment } from '../../environments/environment';
 import { authenticate } from '../config/auth';
-import { authRouter } from './auth';
+import { usersRouter } from './users';
 
 export class AppControllers {
   constructor(private app: Express) {}
 
   make() {
-    const users: User[] = createMockUsers();
-
-    this.app.get('/api/users', authenticate(), (req, res) => {
-      res.send(JSON.stringify(users));
-    });
-
-    this.app.use('/api/auth/', authRouter);
+    this.app.use('/api/users', authenticate(), usersRouter);
 
     if (environment.production === true) {
       // in production mode run application from dist folder

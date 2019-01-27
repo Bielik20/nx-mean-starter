@@ -8,10 +8,5 @@ export const environment = {
   mongoUri: 'mongodb://localhost/nx-mean-starter',
   sessionSecret: 'ascva123fsadgt',
   port: 3333,
-  jwt: {
-    secret: 'smfd32fsd',
-    issuer: 'nx-mean-starter',
-    audience: 'nx-mean-starter',
-  },
   firebase,
 };

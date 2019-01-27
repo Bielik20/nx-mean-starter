@@ -1,12 +1,12 @@
+import { UserFromTokenProxy } from '@nx-mean-starter/models';
 import { UserContext } from '@nx-mean-starter/schemas';
 import { Express } from 'express';
 import * as passport from 'passport';
-import { ExtractJwt, Strategy as JwtStrategy } from 'passport-jwt';
-
-import { environment } from '../../environments/environment';
+import { Strategy as BearerStrategy } from 'passport-http-bearer';
+import { firebase } from '../core';
 
 export function authenticate() {
-  return passport.authenticate('jwt', { session: false });
+  return passport.authenticate('bearer', { session: false });
 }
 
 export function initializeAuth(app: Express) {
@@ -15,25 +15,22 @@ export function initializeAuth(app: Express) {
 }
 
 function registerStrategies() {
-  useJwt();
+  useBearer();
 }
 
-function useJwt() {
-  const opts = {
-    secretOrKey: environment.jwt.secret,
-    jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  };
-
+function useBearer() {
   passport.use(
-    new JwtStrategy(opts, async (jwtPayload, done) => {
+    new BearerStrategy(async (token: string, done) => {
       try {
-        const user = await UserContext.findOne({ _id: jwtPayload.sub });
-        if (user) {
-          return done(null, user);
-        } else {
-          return done(null, false);
-          // or you could create a new account
+        const payload = await firebase.auth().verifyIdToken(token);
+        const userFromJwt = UserFromTokenProxy.Create(payload);
+        let user = await UserContext.findById(userFromJwt._id).lean();
+
+        if (!user) {
+          user = await new UserContext(userFromJwt).save();
         }
+
+        return done(null, user);
       } catch (err) {
         return done(err, false);
       }

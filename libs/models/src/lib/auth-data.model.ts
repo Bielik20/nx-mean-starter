@@ -1,10 +1,10 @@
 export interface AuthData {
   uid: string;
-  displayName: string;
-  photoURL: string;
+  displayName?: string;
+  photoURL?: string;
   email: string;
   emailVerified: boolean;
-  phoneNumber?: null;
+  phoneNumber?: string;
   isAnonymous: boolean;
   appName: string;
   authDomain: string;
@@ -18,12 +18,4 @@ export interface StsTokenManager {
   refreshToken: string;
   accessToken: string;
   expirationTime: number;
-}
-
-export interface UserInfo {
-  uid: string;
-  displayName: string;
-  photoURL: string;
-  email: string;
-  phoneNumber?: null;
 }
