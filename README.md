@@ -121,7 +121,7 @@ ng g app web-app --style=scss --unit-test-runner=jest --e2e-test-runner=cypress 
 
 ```
 ng g node-app server
-yarn add compression body-parser connect-mongo mongoose errorhandler express-session express-validator lodash lusca path passport passport-http-bearer request request-promise-native winston
+yarn add compression body-parser connect-mongo mongoose errorhandler express-session express-validator lodash lusca path passport passport-http-bearer request request-promise-native winston firebase firebase-admin
 yarn add @types/compression @types/body-parser @types/connect-mongo @types/mongoose @types/errorhandler @types/express-session @types/lodash @types/lusca @types/passport @types/passport-http-bearer @types/request @types/request-promise-native @types/winston -D
 ```
 
@@ -232,15 +232,29 @@ git push heroku master
 
 ### Add Firebase
 
+Run `git update-index --assume-unchanged apps/server/src/environments/firebase-adminsdk.ts` to stop tracking changes to that file.
+
 1. Create firebase project at https://console.firebase.google.com
 2. Copy firebase config to `web-app` environment.
 3. Go to authentication tab and configure authentication.
 4. (optional) Go to database tab and configure cloud firestore.
 5. Download firebase-adminsdk private service key
+
    1. Navigate to the Service Accounts tab.
    2. Generate new private key
-   3. Save as firebase-admindsk.json
-   4. Move it to `aps/server/src/environment`
+   3. Save as `firebase-admindsk.json`
+   4. Copy content of `firebase-admindsk.json`
+   5. Modify `aps/server/src/environment/firebase-admindsk.ts`
+
+### Add Firebase Auth
+
+Add your domain (heroku etc.) to the OAuth redirect domains list in the Firebase console -> Auth section -> Sign in method tab.
+
+### Add Firebase Auth UI
+
+```
+yarn add ngx-auth-firebaseui
+```
 
 ### Add Angular Universal
 
