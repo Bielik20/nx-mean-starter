@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
+import { User } from '@nx-mean-starter/models';
+import { AuthState } from '@nx-mean-starter/state/auth';
 import { ofAction } from 'ngrx-actions/dist';
 import { of } from 'rxjs';
 import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
@@ -19,6 +21,13 @@ export class EntitiesEffects {
     withLatestFrom(this.entities$),
     filter(([action, entities]) => !entities[action.id]),
     map(([action, entities]) => new Load(action.id)),
+  );
+
+  @Effect()
+  authenticated$ = this.actions$.pipe(
+    ofAction(AuthState.AuthSuccess),
+    switchMap(() => this.service.getMe()),
+    map((user: User) => new LoadSuccess(user)),
   );
 
   @Effect()
