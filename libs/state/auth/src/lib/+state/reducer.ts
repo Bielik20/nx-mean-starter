@@ -4,14 +4,14 @@ import { Action, createReducer, Store } from 'ngrx-actions/dist';
 import { AuthSuccess, SignOutSuccess } from './actions';
 
 export interface State {
-  data?: Partial<AuthData>;
+  uid: string;
+  isAnonymous: boolean;
   ready: boolean;
 }
 
 export const initialState = {
-  data: {
-    stsTokenManager: {} as any,
-  },
+  uid: null,
+  isAnonymous: false,
   ready: false,
 };
 
@@ -21,7 +21,7 @@ export class StateStore {
   authSuccess(state: State, action: AuthSuccess): State {
     return {
       ...state,
-      data: action.authData,
+      ...action.authData,
       ready: true,
     };
   }

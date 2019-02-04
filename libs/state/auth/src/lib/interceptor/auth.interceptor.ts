@@ -6,10 +6,9 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable, Provider } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
-import { getJwt, State } from '../+state';
 
 @Injectable({
   providedIn: 'root',
@@ -21,10 +20,10 @@ export class AuthInterceptor implements HttpInterceptor {
     multi: true,
   };
 
-  constructor(private store: Store<State>) {}
+  constructor(private afa: AngularFireAuth) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return this.store.select(getJwt).pipe(
+    return this.afa.idToken.pipe(
       take(1),
       switchMap(jwt => {
         const authHeader = `Bearer ${jwt}`;
