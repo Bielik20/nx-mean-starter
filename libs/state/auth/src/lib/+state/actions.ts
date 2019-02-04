@@ -1,9 +1,13 @@
 import { Action } from '@ngrx/store';
-import { AuthData, User } from '@nx-mean-starter/models';
+import { AuthData } from '@nx-mean-starter/models';
 
-export class AuthSuccess implements Action {
-  readonly type = '[Auth] Auth Success';
+export class AuthIn implements Action {
+  readonly type = '[Auth] Auth In';
   constructor(public authData: AuthData) {}
+}
+
+export class AuthOut implements Action {
+  readonly type = '[Auth] Auth Out';
 }
 
 export class SignOut implements Action {

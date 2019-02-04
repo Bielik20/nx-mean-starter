@@ -1,7 +1,6 @@
 import { ActionReducer } from '@ngrx/store';
-import { AuthData } from '@nx-mean-starter/models';
 import { Action, createReducer, Store } from 'ngrx-actions/dist';
-import { AuthSuccess, SignOutSuccess } from './actions';
+import { AuthIn, AuthOut } from './actions';
 
 export interface State {
   uid: string;
@@ -17,8 +16,8 @@ export const initialState = {
 
 @Store<State>(initialState)
 export class StateStore {
-  @Action(AuthSuccess)
-  authSuccess(state: State, action: AuthSuccess): State {
+  @Action(AuthIn)
+  authSuccess(state: State, action: AuthIn): State {
     return {
       ...state,
       ...action.authData,
@@ -26,7 +25,7 @@ export class StateStore {
     };
   }
 
-  @Action(SignOutSuccess)
+  @Action(AuthOut)
   signOutSuccess(state: State): State {
     return {
       ...state,

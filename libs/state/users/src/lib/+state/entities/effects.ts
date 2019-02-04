@@ -25,7 +25,7 @@ export class EntitiesEffects {
 
   @Effect()
   authenticated$ = this.actions$.pipe(
-    ofAction(AuthState.AuthSuccess),
+    ofAction(AuthState.AuthIn),
     switchMap(() => this.service.getMe()),
     map((user: User) => new LoadSuccess(user)),
   );
