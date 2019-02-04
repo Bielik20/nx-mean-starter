@@ -1,3 +1,3 @@
 export * from './actions';
-export { State, logoutMetaReducer } from './reducer';
+export { State, signOutMetaReducer } from './reducer';
 export * from './selectors';

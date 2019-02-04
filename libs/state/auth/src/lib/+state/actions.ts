@@ -6,10 +6,10 @@ export class AuthSuccess implements Action {
   constructor(public authData: AuthData) {}
 }
 
-export class Logout implements Action {
-  readonly type = '[Auth] Logout';
+export class SignOut implements Action {
+  readonly type = '[Auth] SignOut';
 }
 
-export class LogoutSuccess implements Action {
-  readonly type = '[Auth] Logout Success';
+export class SignOutSuccess implements Action {
+  readonly type = '[Auth] SignOut Success';
 }

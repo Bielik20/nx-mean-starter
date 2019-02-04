@@ -5,7 +5,7 @@ import { AuthDataProxy } from '@nx-mean-starter/models';
 import { User as FirebaseUser } from 'firebase';
 import { ofAction } from 'ngrx-actions/dist';
 import { map, tap } from 'rxjs/operators';
-import { AuthSuccess, Logout, LogoutSuccess } from './actions';
+import { AuthSuccess, SignOut, SignOutSuccess } from './actions';
 
 @Injectable()
 export class Effects {
@@ -16,13 +16,13 @@ export class Effects {
         const authState = AuthDataProxy.Create(firebaseUser.toJSON());
         return new AuthSuccess(authState);
       }
-      return new LogoutSuccess();
+      return new SignOutSuccess();
     }),
   );
 
   @Effect({ dispatch: false })
-  logout$ = this.actions$.pipe(
-    ofAction(Logout),
+  signOut$ = this.actions$.pipe(
+    ofAction(SignOut),
     tap(() => this.afa.auth.signOut()),
   );
 

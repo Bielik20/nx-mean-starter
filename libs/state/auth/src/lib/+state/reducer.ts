@@ -1,7 +1,7 @@
 import { ActionReducer } from '@ngrx/store';
 import { AuthData } from '@nx-mean-starter/models';
 import { Action, createReducer, Store } from 'ngrx-actions/dist';
-import { AuthSuccess, LogoutSuccess } from './actions';
+import { AuthSuccess, SignOutSuccess } from './actions';
 
 export interface State {
   data?: Partial<AuthData>;
@@ -26,8 +26,8 @@ export class StateStore {
     };
   }
 
-  @Action(LogoutSuccess)
-  logoutSuccess(state: State): State {
+  @Action(SignOutSuccess)
+  signOutSuccess(state: State): State {
     return {
       ...state,
       ...initialState,
@@ -40,9 +40,9 @@ export function reducer(state, action) {
   return createReducer(StateStore)(state, action);
 }
 
-/** Clears storage on Logout */
-export function logoutMetaReducer(_reducer: ActionReducer<any>): ActionReducer<any> {
+/** Clears storage on SignOut */
+export function signOutMetaReducer(_reducer: ActionReducer<any>): ActionReducer<any> {
   return function(state, action) {
-    return _reducer(action.type === '[Auth] Logout Success' ? undefined : state, action);
+    return _reducer(action.type === '[Auth] SignOut Success' ? undefined : state, action);
   };
 }

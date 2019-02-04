@@ -10,7 +10,7 @@ import { reducerProvider, reducerToken } from './+state/reducer';
   imports: [
     CommonModule,
     StoreModule.forFeature('users', reducerToken, {
-      metaReducers: [AuthState.logoutMetaReducer],
+      metaReducers: [AuthState.signOutMetaReducer],
     }),
     EffectsModule.forFeature([EntitiesEffects]),
   ],
