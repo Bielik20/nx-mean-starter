@@ -1,4 +1,5 @@
 // Stores the currently-being-typechecked object for error messages.
+import { UserFromToken } from '@nx-mean-starter/models';
 import {
   checkBoolean,
   checkString,
@@ -6,7 +7,6 @@ import {
   throwNotObject,
   throwNull2NonNull,
 } from './proxy-helpers';
-import { User } from './user.model';
 
 let obj: any = null;
 export class UserFromTokenProxy {
@@ -16,10 +16,10 @@ export class UserFromTokenProxy {
   public readonly name?: string;
   public readonly pictureUrl?: string;
   public readonly phoneNumber?: string;
-  public static Parse(d: string): User {
+  public static Parse(d: string): UserFromToken {
     return UserFromTokenProxy.Create(JSON.parse(d));
   }
-  public static Create(d: any, field: string = 'root'): User {
+  public static Create(d: any, field: string = 'root'): UserFromToken {
     if (!field) {
       obj = d;
       field = 'root';

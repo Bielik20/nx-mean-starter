@@ -1,5 +1,4 @@
-import { UserFromTokenProxy } from '@nx-mean-starter/models';
-import { UserContext } from '@nx-mean-starter/schemas';
+import { UserFromToken, UserFromTokenProxy } from '@nx-mean-starter/models';
 import { Express } from 'express';
 import * as passport from 'passport';
 import { Strategy as BearerStrategy } from 'passport-http-bearer';
@@ -23,12 +22,7 @@ function useBearer() {
     new BearerStrategy(async (token: string, done) => {
       try {
         const payload = await firebase.auth().verifyIdToken(token);
-        const userFromJwt = UserFromTokenProxy.Create(payload);
-        let user = await UserContext.findById(userFromJwt._id).lean();
-
-        if (!user) {
-          user = await new UserContext(userFromJwt).save();
-        }
+        const user: UserFromToken = UserFromTokenProxy.Create(payload);
 
         return done(null, user);
       } catch (err) {
