@@ -230,9 +230,16 @@ git push heroku master
      - Key: MONGO_URI
      - Value: _connection string with username and password_
 
-### Add Firebase
+## Firebase
 
-Run `git update-index --assume-unchanged apps/server/src/environments/firebase-adminsdk.ts` to stop tracking changes to that file.
+```
+npm install -g firebase-tools
+firebase login
+```
+
+### Add Firebase Server Admin SDK
+
+Run `git update-index --skip-worktree apps/server/src/environments/firebase-adminsdk.ts` to stop tracking changes to that file.
 
 1. Create firebase project at https://console.firebase.google.com
 2. Copy firebase config to `web-app` environment.
