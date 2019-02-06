@@ -233,15 +233,68 @@ git push heroku master
 ## Firebase
 
 ```
-npm install -g firebase-tools
+yarn global add -g firebase-tools
 firebase login
+```
+
+Create `.firebaserc`:
+
+```json
+{
+  "projects": {
+    "default": "nx-mean-starter"
+  }
+}
 ```
 
 ### Add Firebase Functions
 
 ```
 ng g node-app functions
+yarn add firebase-admin firebase-functions
+yarn add firebase-tools -D
+yarn add @google-cloud/functions-emulator -D --ignore-engines
 ```
+
+Replace `apps/functions/src/main.ts` with:
+
+```typescript
+import * as functions from 'firebase-functions';
+
+// // Start writing Firebase Functions
+// // https://firebase.google.com/docs/functions/typescript
+//
+export const helloWorld = functions.https.onRequest((request, response) => {
+  response.send('Hello from Firebase!');
+});
+```
+
+Create `firebase.json`:
+
+```json
+{
+  "functions": {
+    "predeploy": [
+      "yarn --prefix \"$RESOURCE_DIR\" lint functions",
+      "yarn --prefix \"$RESOURCE_DIR\" build functions --prod"
+    ],
+    "source": "/"
+  }
+}
+```
+
+In `package.json` add:
+
+```json
+"main": "dist/apps/functions/main.js",
+"engines": {
+  "node": "8"
+},
+```
+
+#### Usage
+
+yarn firebase:deploy --only functions
 
 ### Add Firebase Server Admin SDK
 

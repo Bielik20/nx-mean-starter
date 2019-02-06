@@ -10,6 +10,10 @@
     "test": "ng test",
     "lint": "./node_modules/.bin/nx lint && ng lint",
     "e2e": "ng e2e",
+    "firebase:serve": "yarn run build functions --watch & firebase serve --port 5000 --only functions",
+    "firebase:shell": "yarn run build functions --watch & firebase functions:shell",
+    "firebase:deploy": "firebase deploy",
+    "firebase:logs": "firebase functions:log",
     "affected:apps": "./node_modules/.bin/nx affected:apps",
     "affected:libs": "./node_modules/.bin/nx affected:libs",
     "affected:build": "./node_modules/.bin/nx affected:build",
@@ -22,12 +26,17 @@
     "format:check": "./node_modules/.bin/nx format:check",
     "update": "ng update @nrwl/schematics",
     "update:check": "ng update",
+    "update:list": "yarn upgrade-interactive",
     "workspace-schematic": "./node_modules/.bin/nx workspace-schematic",
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
     "affected": "./node_modules/.bin/nx affected"
   },
   "private": true,
+  "main": "dist/apps/functions/main.js",
+  "engines": {
+    "node": "8"
+  },
   "dependencies": {
     "@angular/animations": "^7.0.0",
     "@angular/cdk": "~7.0.3",
@@ -41,6 +50,8 @@
     "@angular/platform-browser": "^7.0.0",
     "@angular/platform-browser-dynamic": "^7.0.0",
     "@angular/router": "^7.0.0",
+    "@nestjs/common": "5.5.0",
+    "@nestjs/core": "5.5.0",
     "@ngrx/effects": "6.1.2",
     "@ngrx/entity": "^6.1.2",
     "@ngrx/router-store": "6.1.2",
@@ -56,7 +67,8 @@
     "express-session": "^1.15.6",
     "express-validator": "^5.3.0",
     "firebase": "~5.7.0",
-    "firebase-admin": "^6.5.1",
+    "firebase-admin": "^7.0.0",
+    "firebase-functions": "^2.2.0",
     "hammerjs": "^2.0.8",
     "lodash": "^4.17.11",
     "lusca": "^1.6.1",
@@ -78,6 +90,9 @@
     "@angular/cli": "7.2.2",
     "@angular/compiler-cli": "^7.0.0",
     "@angular/language-service": "^7.0.0",
+    "@google-cloud/functions-emulator": "^1.0.0-beta.5",
+    "@nestjs/schematics": "5.11.2",
+    "@nestjs/testing": "5.5.0",
     "@ngrx/schematics": "6.1.2",
     "@ngrx/store-devtools": "6.1.2",
     "@nrwl/builders": "7.5.1",
@@ -101,6 +116,7 @@
     "@types/winston": "^2.4.4",
     "codelyzer": "~4.5.0",
     "cypress": "^3.1.0",
+    "firebase-tools": "^6.3.1",
     "husky": "^1.1.4",
     "jasmine-marbles": "0.4.0",
     "jest": "^23.0.0",
@@ -117,10 +133,6 @@
   },
   "resolutions": {
     "@types/mongoose": "5.3.1"
-  },
-  "engines": {
-    "node": "10.13.0",
-    "npm": "6.4.1"
   },
   "husky": {
     "hooks": {

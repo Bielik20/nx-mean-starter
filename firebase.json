@@ -1,0 +1,9 @@
+{
+  "functions": {
+    "predeploy": [
+      "yarn --prefix \"$RESOURCE_DIR\" lint functions",
+      "yarn --prefix \"$RESOURCE_DIR\" build functions --prod"
+    ],
+    "source": "/"
+  }
+}
