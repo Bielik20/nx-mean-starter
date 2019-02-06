@@ -563,10 +563,10 @@
     tree-kill "1.2.0"
     webpack-sources "1.2.0"
 
-"@nrwl/builders@7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/builders/-/builders-7.5.0.tgz#f05086d31326ccd9362037866176e937151dcf3c"
-  integrity sha512-JKHUb2DbGPVCnJy/iTGvusE3zsz59zilmW7NUIJU4FLYLvqfHE5rWtk7F7Q7LvQhqD6IVBRfSSidHIAg2HOkvA==
+"@nrwl/builders@7.5.1":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/builders/-/builders-7.5.1.tgz#b8097f8748e6292ede7f446ea6c4ac7d2b4d2266"
+  integrity sha512-68+c6aDv4l/h9rnG1i9ROz9a/zxA9BAoRy0A4VB9KbJ7hLIJ5zbKHrfQVbBh0OdCLc5eQIQt3Vl882jl2/j4MA==
   dependencies:
     "@angular-devkit/architect" "~0.12.1"
     "@angular-devkit/build-webpack" "~0.12.1"
@@ -579,15 +579,15 @@
     webpack-dev-server "3.1.14"
     webpack-node-externals "1.7.2"
 
-"@nrwl/nx@7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/nx/-/nx-7.5.0.tgz#250c80afe16fd664ac52c3eb1592e9955675c7aa"
-  integrity sha512-TBTjvUKLTqzUaEYFoyEu7z3HqhOrXMvseycjWIKIsWlRwaEL3V86vJaCoYWVZYT3nuK6sxQ/m/l08vjXRZKTCQ==
+"@nrwl/nx@7.5.1":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/nx/-/nx-7.5.1.tgz#890d7b79f5a6c9a564d18fe28e841e3e7ecdb0d0"
+  integrity sha512-OegS/kwlClfCcaffVtYuTDz6zMJzrOLlVotblgPfTRd4CJrylN3wLbPlM8U80XoGSpQTKCyfzzPlKsu6ikp7rg==
 
-"@nrwl/schematics@7.5.0":
-  version "7.5.0"
-  resolved "https://registry.yarnpkg.com/@nrwl/schematics/-/schematics-7.5.0.tgz#ba8f8c1e4a004a1d3d082c493c5da15d6396678c"
-  integrity sha512-jiVLj2lquzjA3dhpC8HNbwB611SnL96omFCCKk4pQdQouk8eVM+gLCjQnBMKIB6j/lBH/7/++p/FRTCg1qfHTQ==
+"@nrwl/schematics@7.5.1":
+  version "7.5.1"
+  resolved "https://registry.yarnpkg.com/@nrwl/schematics/-/schematics-7.5.1.tgz#717bf80f7273a00f469cfe33a4cb27fc7eadbbb5"
+  integrity sha512-4gVHUsD15qInVa4uMOrj8YS2KECFA4a5/BkgAPiR5GX3WnCStahp6JaXyPa1aeJ6RCaW4iFvHr3AlfL4UvE8CQ==
   dependencies:
     "@types/yargs" "^11.0.0"
     app-root-path "^2.0.1"
@@ -8926,7 +8926,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@6.3.3, rxjs@^6.1.0, rxjs@~6.3.3:
+rxjs@6.3.3, rxjs@^6.1.0:
   version "6.3.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.3.3.tgz#3c6a7fa420e844a81390fb1158a9ec614f4bad55"
   integrity sha512-JTWmoY9tWCs7zvIk/CvRjhjGaOd+OVBM987mxFo+OW66cGpdKjZcpmc74ES1sB//7Kl/PAe8+wEakuhG4pcgOw==
@@ -8939,6 +8939,13 @@ rxjs@^5.0.0-beta.11:
   integrity sha512-xx2itnL5sBbqeeiVgNPVuQQ1nC8Jp2WfNJhXWHmElW9YmrpS9UVnNzhP3EH3HFqexO5Tlp8GhYY+WEcqcVMvGw==
   dependencies:
     symbol-observable "1.0.1"
+
+rxjs@~6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.4.0.tgz#f3bb0fe7bda7fb69deac0c16f17b50b0b8790504"
+  integrity sha512-Z9Yfa11F6B9Sg/BK9MnqnQ+aQYicPLtilXBp2yUtDt2JRCE0h26d33EnfO3ZxoNxG0T92OUucP3Ct7cpfkdFfw==
+  dependencies:
+    tslib "^1.9.0"
 
 safe-buffer@5.1.1:
   version "5.1.1"
