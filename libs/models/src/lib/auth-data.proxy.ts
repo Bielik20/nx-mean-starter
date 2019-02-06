@@ -8,7 +8,6 @@ import {
   throwNull2NonNull,
 } from './proxy-helpers';
 
-let obj: any = null;
 export class AuthDataProxy {
   public readonly uid: string;
   public readonly isAnonymous: boolean;
@@ -17,7 +16,6 @@ export class AuthDataProxy {
   }
   public static Create(d: any, field: string = 'root'): AuthData {
     if (!field) {
-      obj = d;
       field = 'root';
     }
     if (d === null || d === undefined) {

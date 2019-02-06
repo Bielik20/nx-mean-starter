@@ -8,7 +8,6 @@ import {
   throwNull2NonNull,
 } from './proxy-helpers';
 
-let obj: any = null;
 export class UserFromTokenProxy {
   public readonly _id: string;
   public readonly email: string;
@@ -21,7 +20,6 @@ export class UserFromTokenProxy {
   }
   public static Create(d: any, field: string = 'root'): UserFromToken {
     if (!field) {
-      obj = d;
       field = 'root';
     }
     if (d === null || d === undefined) {

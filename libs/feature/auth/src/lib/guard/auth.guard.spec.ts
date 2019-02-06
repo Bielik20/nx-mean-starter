@@ -29,6 +29,7 @@ describe('AuthGuard', () => {
 
     guard = TestBed.get(AuthGuard);
     store = TestBed.get(Store);
+    store.overrideSelector(AuthState.getReady, true);
   });
 
   it('should ...', () => {

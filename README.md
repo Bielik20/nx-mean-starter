@@ -237,6 +237,12 @@ npm install -g firebase-tools
 firebase login
 ```
 
+### Add Firebase Functions
+
+```
+ng g node-app functions
+```
+
 ### Add Firebase Server Admin SDK
 
 Run `git update-index --skip-worktree apps/server/src/environments/firebase-adminsdk.ts` to stop tracking changes to that file.

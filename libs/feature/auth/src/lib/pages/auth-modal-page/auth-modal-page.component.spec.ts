@@ -37,4 +37,8 @@ describe('AuthModalPageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should fire sing out', () => {
+    expect(store.dispatch.mock.calls.length).toBe(1);
+  });
 });
