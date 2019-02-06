@@ -197,7 +197,7 @@ if (environment.production === true) {
 Install Heroku CLI and login
 
 ```
-brew install heroku/brew/heroku
+brew install heroku
 heroku login
 ```
 
@@ -252,8 +252,7 @@ Create `.firebaserc`:
 ```
 ng g node-app functions
 yarn add firebase-admin firebase-functions
-yarn add firebase-tools -D
-yarn add @google-cloud/functions-emulator -D --ignore-engines
+yarn add concurrently -D
 ```
 
 Replace `apps/functions/src/main.ts` with:
@@ -292,9 +291,21 @@ In `package.json` add:
 },
 ```
 
+Also in `package.json` add following scripts:
+
+```json
+"firebase:serve": "concurrently --kill-others \"yarn run build functions --watch\" \"firebase serve --only functions\"",
+"firebase:shell": "concurrently --kill-others \"yarn run build functions --watch\" \"firebase functions:shell\" --raw",
+"firebase:deploy": "firebase deploy",
+"firebase:logs": "firebase functions:log",
+```
+
 #### Usage
 
-yarn firebase:deploy --only functions
+- `yarn firebase:deploy --only functions` - deploy functions
+- Reacts to changes:
+  - `yarn firebase:serve` - run functions locally
+  - `yarn firebase:shell` - run functions shell locally
 
 ### Add Firebase Server Admin SDK
 
