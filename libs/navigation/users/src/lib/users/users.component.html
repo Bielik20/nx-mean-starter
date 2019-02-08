@@ -1,7 +1,9 @@
-<h2>All Users:</h2>
+<mat-card>
+  <h2>All Users:</h2>
 
-<button (click)="getUsers()">Get Users</button>
+  <button mat-button color="accent" (click)="getUsers()">Get Users</button>
 
 <pre>
 {{ users$ | async | json }}
 </pre>
+</mat-card>

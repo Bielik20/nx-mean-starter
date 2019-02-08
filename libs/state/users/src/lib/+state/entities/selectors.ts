@@ -2,7 +2,10 @@ import { createSelector } from '@ngrx/store';
 import { getState } from '../selector';
 import { entitiesAdapter } from './reducer';
 
-export const getEntitiesState = createSelector(getState, state => state.entities);
+export const getEntitiesState = createSelector(
+  getState,
+  state => state.entities,
+);
 
 export const {
   selectIds: getIds,
@@ -11,4 +14,13 @@ export const {
   selectTotal: getTotalEntities,
 } = entitiesAdapter.getSelectors(getEntitiesState);
 
-export const getSelectedId = createSelector(getEntitiesState, state => state.selectedId);
+export const getSelectedId = createSelector(
+  getEntitiesState,
+  state => state.selectedId,
+);
+
+export const getSelectedUser = createSelector(
+  getEntities,
+  getSelectedId,
+  (users, id) => users[id],
+);

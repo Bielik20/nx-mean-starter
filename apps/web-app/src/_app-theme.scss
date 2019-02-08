@@ -1,5 +1,6 @@
 @import 'libs/shared/src/styles';
 @import 'libs/core/src/lib/layout/components/navbar/theme';
+@import 'libs/core/src/lib/layout/components/user-sidenav-card/theme';
 
 @mixin app-theme($theme, $config) {
   $primary: map-get($theme, primary);
@@ -10,4 +11,5 @@
 
   @include shared-theme($theme, $config);
   @include navbar-theme($theme, $config);
+  @include user-sidenav-card-theme($theme, $config);
 }

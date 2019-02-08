@@ -1,0 +1,13 @@
+<mat-card>
+  <form [formGroup]="userForm" (ngSubmit)="save(userForm.value)">
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Name</mat-label>
+      <input formControlName="name" matInput placeholder="What is your name?">
+    </mat-form-field>
+    <mat-form-field class="w-100" appearance="outline">
+      <mat-label>Picture Url</mat-label>
+      <input formControlName="pictureUrl" matInput placeholder="How do you look like?">
+    </mat-form-field>
+    <button mat-button color="accent">Save</button>
+  </form>
+</mat-card>

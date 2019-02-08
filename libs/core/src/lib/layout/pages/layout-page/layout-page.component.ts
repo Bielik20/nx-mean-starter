@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import { Store } from '@ngrx/store';
-import { AuthModalPageComponent } from '@nx-mean-starter/feature/auth';
 import { LayoutState } from '@nx-mean-starter/state/layout';
 import { Observable } from 'rxjs';
 
@@ -15,7 +13,7 @@ export class LayoutPageComponent implements OnInit {
   isMobile$: Observable<boolean>;
   showSidenav$: Observable<boolean>;
 
-  constructor(private store: Store<LayoutState.State>, private dialog: MatDialog) {}
+  constructor(private store: Store<LayoutState.State>) {}
 
   ngOnInit() {
     this.isMobile$ = this.store.select(LayoutState.getIsMobile);
@@ -28,9 +26,5 @@ export class LayoutPageComponent implements OnInit {
 
   openedChangeSidenav(value: boolean) {
     this.store.dispatch(new LayoutState.SetSidenav(value));
-  }
-
-  authenticate() {
-    this.dialog.open(AuthModalPageComponent);
   }
 }

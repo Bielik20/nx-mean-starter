@@ -7,3 +7,9 @@ export const getAuthenticatedUser = createSelector(
   UsersState.getEntities,
   (userId, entities) => userId && entities[userId],
 );
+
+export const getAuthenticatedUserLoading = createSelector(
+  AuthState.getUserId,
+  getAuthenticatedUser,
+  (userId, user) => userId && !user,
+);

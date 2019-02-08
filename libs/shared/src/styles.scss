@@ -1,9 +1,11 @@
 @import './styles/general';
 @import './styles/material-fixes.scss';
 @import './styles/gaps.scss';
+@import './styles/app-loading';
 
 @mixin shared-theme($theme, $config) {
   @include general();
   @include material-fixes();
   @include gaps(1rem, 5);
+  @include app-loading($theme);
 }

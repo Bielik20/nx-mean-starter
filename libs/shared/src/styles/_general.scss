@@ -1,4 +1,8 @@
 @mixin general() {
+  pre {
+    color: inherit;
+  }
+
   .flex {
     flex: 1;
   }
@@ -22,5 +26,25 @@
     box-sizing: border-box;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .animation-container,
+  .animation-container ~ * {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  :focus {
+    outline: none !important;
+    -moz-outline-style: none;
+  }
+
+  a.no-style:hover,
+  a.no-style:visited,
+  a.no-style:link,
+  a.no-style:active {
+    color: inherit;
+    text-decoration: none;
   }
 }

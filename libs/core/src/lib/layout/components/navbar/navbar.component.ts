@@ -8,7 +8,6 @@ import { Component, EventEmitter, OnInit, Output, ViewEncapsulation } from '@ang
 })
 export class NavbarComponent implements OnInit {
   @Output() toggleSidenav = new EventEmitter<void>();
-  @Output() authenticate = new EventEmitter<void>();
 
   constructor() {}
 

@@ -10,7 +10,11 @@ export class UsersService {
   constructor(private http: HttpClient) {}
 
   getMe(): Observable<User> {
-    return this.http.get<User>('api/users/me');
+    return this.http.get<User>('api/me');
+  }
+
+  patchMe(user: Partial<User>): Observable<User> {
+    return this.http.patch<User>('api/me', user);
   }
 
   getOne(id: string): Observable<User> {

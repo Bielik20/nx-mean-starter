@@ -6,6 +6,16 @@ export class Select implements Action {
   constructor(public id: string) {}
 }
 
+export class PatchOne implements Action {
+  readonly type = '[Users Entities] Update One';
+  constructor(public user: Partial<User>) {}
+}
+
+export class PatchOneSuccess implements Action {
+  readonly type = '[Users Entities] Update One Success';
+  constructor(public user: User) {}
+}
+
 export class Load implements Action {
   readonly type = '[Users Entities] Load';
   constructor(public id: string) {}
@@ -25,7 +35,7 @@ export class LoadAllSuccess implements Action {
   constructor(public users: User[]) {}
 }
 
-export class LoadError implements Action {
-  readonly type = '[Users Entities] Load Error';
+export class ServerError implements Action {
+  readonly type = '[Users Entities] Server Error';
   constructor(public error: string) {}
 }

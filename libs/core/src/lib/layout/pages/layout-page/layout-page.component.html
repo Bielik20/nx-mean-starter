@@ -1,17 +1,6 @@
-<app-navbar (toggleSidenav)='toggleSidenav()' (authenticate)="authenticate()"></app-navbar>
+<app-navbar (toggleSidenav)='toggleSidenav()'></app-navbar>
 <app-layout [isMobile]='isMobile$ | async' [showSidenav]='showSidenav$ | async'
             (openedChangeSidenav)="openedChangeSidenav($event)">
-  <div sidenav>
-    <mat-nav-list>
-      <a mat-list-item [routerLink]="['/']">
-        <h4 mat-line>Home</h4>
-        <p mat-line>Starting Page</p>
-      </a>
-      <a mat-list-item [routerLink]="['/users']">
-        <h4 mat-line>Users</h4>
-        <p mat-line>Page with list of all users</p>
-      </a>
-    </mat-nav-list>
-  </div>
+  <app-sidenav-page sidenav></app-sidenav-page>
   <router-outlet main></router-outlet>
 </app-layout>

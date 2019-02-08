@@ -7,7 +7,16 @@ import { ofAction } from 'ngrx-actions/dist';
 import { of } from 'rxjs';
 import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { UsersService } from '../../service/users.service';
-import { Load, LoadAll, LoadAllSuccess, LoadError, LoadSuccess, Select } from './actions';
+import {
+  Load,
+  LoadAll,
+  LoadAllSuccess,
+  LoadSuccess,
+  PatchOne,
+  PatchOneSuccess,
+  Select,
+  ServerError,
+} from './actions';
 import { EntitiesState } from './reducer';
 import { getEntities } from './selectors';
 
@@ -24,10 +33,26 @@ export class EntitiesEffects {
   );
 
   @Effect()
+  updateOne$ = this.actions$.pipe(
+    ofAction(PatchOne),
+    map((action: PatchOne) => action.user),
+    switchMap((user: Partial<User>) =>
+      this.service.patchMe(user).pipe(
+        map((updatedUser: User) => new PatchOneSuccess(updatedUser)),
+        catchError(err => of(new ServerError(err))),
+      ),
+    ),
+  );
+
+  @Effect()
   authenticated$ = this.actions$.pipe(
     ofAction(AuthState.AuthIn),
-    switchMap(() => this.service.getMe()),
-    map((user: User) => new LoadSuccess(user)),
+    switchMap(() =>
+      this.service.getMe().pipe(
+        map((user: User) => new LoadSuccess(user)),
+        catchError(err => of(new ServerError(err))),
+      ),
+    ),
   );
 
   @Effect()
@@ -36,7 +61,7 @@ export class EntitiesEffects {
     switchMap(action =>
       this.service.getOne(action.id).pipe(
         map(user => new LoadSuccess(user)),
-        catchError(err => of(new LoadError(err))),
+        catchError(err => of(new ServerError(err))),
       ),
     ),
   );
@@ -47,7 +72,7 @@ export class EntitiesEffects {
     switchMap(() =>
       this.service.getAll().pipe(
         map(user => new LoadAllSuccess(user)),
-        catchError(err => of(new LoadError(err))),
+        catchError(err => of(new ServerError(err))),
       ),
     ),
   );
