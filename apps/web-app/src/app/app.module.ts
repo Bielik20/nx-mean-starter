@@ -35,9 +35,6 @@ export function appFactoryName() {
     AngularFireModule.initializeApp(environment.firebase),
     NgxAuthFirebaseUIModule.forRoot(environment.firebase, appFactoryName, {
       enableFirestoreSync: false,
-      onlyEmailPasswordAuth: false,
-      toastMessageOnAuthSuccess: true,
-      toastMessageOnAuthError: true,
     }),
   ],
   bootstrap: [AppComponent],
