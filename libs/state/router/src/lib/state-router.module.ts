@@ -10,9 +10,7 @@ import { provider } from './+state/serializer';
 @NgModule({
   imports: [
     CommonModule,
-    StoreRouterConnectingModule.forRoot({
-      stateKey: 'router',
-    }),
+    StoreRouterConnectingModule.forRoot(),
     StoreModule.forFeature('router', reducer),
     EffectsModule.forFeature([Effects]),
   ],

@@ -3,7 +3,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
 import { AuthState } from '@nx-mean-starter/state/auth';
-import { ofAction } from 'ngrx-actions/dist';
+import { ofAction } from 'ngrx-actions';
 import { of } from 'rxjs';
 import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { UsersService } from '../../service/users.service';

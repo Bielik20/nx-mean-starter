@@ -3,7 +3,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { RouterState } from '@nx-mean-starter/state/router';
 import { UsersState } from '@nx-mean-starter/state/users';
-import { ofAction } from 'ngrx-actions/dist';
+import { ofAction } from 'ngrx-actions';
 import { filter, map } from 'rxjs/operators';
 
 @Injectable()

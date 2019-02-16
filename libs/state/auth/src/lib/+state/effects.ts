@@ -5,7 +5,7 @@ import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { AuthDataProxy } from '@nx-mean-starter/models';
 import { User as FirebaseUser } from 'firebase';
-import { ofAction } from 'ngrx-actions/dist';
+import { ofAction } from 'ngrx-actions';
 import { from } from 'rxjs';
 import { filter, map, switchMap, tap, withLatestFrom } from 'rxjs/operators';
 import { AuthIn, AuthOut, SignOut, SignOutSuccess } from './actions';

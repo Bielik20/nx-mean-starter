@@ -1,6 +1,6 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { User } from '@nx-mean-starter/models';
-import { Action, createReducer, Store } from 'ngrx-actions/dist';
+import { Action, createReducer, Store } from 'ngrx-actions';
 import {
   Load,
   LoadAll,
