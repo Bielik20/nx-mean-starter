@@ -1,9 +1,11 @@
-<mat-card class="page">
-  <h2>User:</h2>
+<article>
+  <mat-card class="responsive-card">
+    <h2>User:</h2>
 
-  <a *ngIf="isAuthUser$ | async" [routerLink]="['./edit']" mat-button color="accent">Edit</a>
+    <a *ngIf="(isAuthUser$ | async)" [routerLink]="['./edit']" mat-button color="accent">Edit</a>
 
 <pre>
 {{ user$ | async | json }}
 </pre>
-</mat-card>
+  </mat-card>
+</article>

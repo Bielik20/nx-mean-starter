@@ -1,13 +1,15 @@
 @import './styles/app-loading';
-@import './styles/card-page';
+@import './styles/article';
 @import './styles/gaps';
 @import './styles/general';
 @import './styles/material-fixes';
+@import './styles/responsive-card';
 
 @mixin shared-theme($theme, $config) {
   @include general();
   @include material-fixes();
   @include gaps(1rem, 5);
   @include app-loading($theme);
-  @include card-page();
+  @include responsive-card();
+  @include article();
 }

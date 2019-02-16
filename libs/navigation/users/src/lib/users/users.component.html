@@ -1,9 +1,11 @@
-<mat-card class="page">
-  <h2>All Users:</h2>
+<article>
+  <mat-card class="responsive-card">
+    <h2>All Users:</h2>
 
-  <button mat-button color="accent" (click)="getUsers()">Get Users</button>
+    <button mat-button color="accent" (click)="getUsers()">Get Users</button>
 
 <pre>
 {{ users$ | async | json }}
 </pre>
-</mat-card>
+  </mat-card>
+</article>

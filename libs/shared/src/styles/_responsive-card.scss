@@ -1,0 +1,13 @@
+@mixin responsive-card() {
+  mat-card.responsive-card {
+    margin: 30px;
+  }
+
+  @media only screen and (max-width: 959px) {
+    mat-card.responsive-card {
+      margin: 0;
+      border-radius: 0;
+      height: 100%;
+    }
+  }
+}

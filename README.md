@@ -125,7 +125,9 @@ yarn add compression body-parser connect-mongo mongoose errorhandler express-ses
 yarn add @types/compression @types/body-parser @types/connect-mongo @types/mongoose @types/errorhandler @types/express-session @types/lodash @types/lusca @types/passport @types/passport-http-bearer @types/request @types/request-promise-native @types/winston -D
 ```
 
-> As far as @types/mongoose is concerned, it may not be needed (comes with mongoose). Sometimes mongoose comes with outdated version so that new types must be installed manually. Should it happen conflicts may occur, [fix](https://github.com/szokodiakos/typegoose/issues/123).
+> As far as @types/mongoose is concerned, it may not be needed (comes with mongoose).
+> Because @types/connect-mongo comes with outdated types it needs to be installed and resolved manually.
+> Should it happen conflicts may occur, [fix](https://github.com/szokodiakos/typegoose/issues/123).
 
 It will create `express` application with `jest` as a test runner.
 
