@@ -11,8 +11,7 @@
     flex-grow: 1;
   }
 
-  .animation-container,
-  .animation-container ~ * {
+  .animation-container {
     position: absolute;
     width: 100%;
     height: 100%;

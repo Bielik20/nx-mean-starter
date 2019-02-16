@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { fadeRouter } from '@nx-mean-starter/shared';
 import { LayoutState } from '@nx-mean-starter/state/layout';
 import { Observable } from 'rxjs';
 
@@ -7,6 +8,7 @@ import { Observable } from 'rxjs';
   selector: 'app-layout-page',
   templateUrl: './layout-page.component.html',
   styleUrls: ['./layout-page.component.scss'],
+  animations: [fadeRouter],
 })
 export class LayoutPageComponent implements OnInit {
   isMobile$: Observable<boolean>;

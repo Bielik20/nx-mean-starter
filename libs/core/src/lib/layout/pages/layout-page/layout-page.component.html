@@ -2,5 +2,7 @@
 <app-layout [isMobile]='isMobile$ | async' [showSidenav]='showSidenav$ | async'
             (openedChangeSidenav)="openedChangeSidenav($event)">
   <app-sidenav-page sidenav></app-sidenav-page>
-  <router-outlet main></router-outlet>
+  <main [@fadeRouter]="o.activatedRouteData" class="animation-container">
+    <router-outlet #o="outlet"></router-outlet>
+  </main>
 </app-layout>
