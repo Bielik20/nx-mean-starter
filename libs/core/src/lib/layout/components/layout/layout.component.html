@@ -1,11 +1,11 @@
-<mat-sidenav-container class="flex">
+<mat-sidenav-container>
   <mat-sidenav class="mat-elevation-z4 app-sidenav" fixedTopGap="56" fixedInViewport="true"
                [attr.role]="isMobile ? 'dialog' : 'navigation'" [mode]="isMobile ? 'over' : 'side'" [opened]="showSidenav"
                (openedStart)="openedChangeSidenav.emit(true)" (closedStart)="openedChangeSidenav.emit(false)">
     <ng-content select="[sidenav]"></ng-content>
   </mat-sidenav>
 
-  <div class="app-content">
+  <main>
     <ng-content select='[main]'></ng-content>
-  </div>
+  </main>
 </mat-sidenav-container>
