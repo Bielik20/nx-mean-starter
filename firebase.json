@@ -5,5 +5,14 @@
       "yarn --prefix \"$RESOURCE_DIR\" build functions --prod"
     ],
     "source": "/"
+  },
+  "hosting": {
+    "public": "dist/apps/web-app",
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "server"
+      }
+    ]
   }
 }

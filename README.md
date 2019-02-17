@@ -122,12 +122,11 @@ ng g app web-app --style=scss --unit-test-runner=jest --e2e-test-runner=cypress 
 ```
 ng g node-app server
 yarn add compression body-parser connect-mongo mongoose errorhandler express-session express-validator lodash lusca path passport passport-http-bearer request request-promise-native winston firebase firebase-admin
-yarn add @types/compression @types/body-parser @types/connect-mongo @types/mongoose @types/errorhandler @types/express-session @types/lodash @types/lusca @types/passport @types/passport-http-bearer @types/request @types/request-promise-native @types/winston -D
+yarn add @types/compression @types/body-parser @types/mongoose @types/errorhandler @types/express-session @types/lodash @types/lusca @types/passport @types/passport-http-bearer @types/request @types/request-promise-native @types/winston -D
 ```
 
-> As far as @types/mongoose is concerned, it may not be needed (comes with mongoose).
-> Because @types/connect-mongo comes with outdated types it needs to be installed and resolved manually.
-> Should it happen conflicts may occur, [fix](https://github.com/szokodiakos/typegoose/issues/123).
+> `@types/connect-mongo` are missing because at the time of writing they are heavily flawed.
+> They are messing with `@types/mongoose` and with `express`.
 
 It will create `express` application with `jest` as a test runner.
 
@@ -332,8 +331,49 @@ Also in `package.json` add following scripts:
 
 - `yarn firebase:deploy --only functions` - deploy functions
 - Reacts to changes:
+
   - `yarn firebase:serve` - run functions locally
   - `yarn firebase:shell` - run functions shell locally
+
+### Firebase Hosting
+
+This section describes how to serve node app through firebase hosting.
+
+In `firebase.json` add:
+
+```json
+{
+  "hosting": {
+    "public": "dist/apps/web-app",
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "server"
+      }
+    ]
+  }
+}
+```
+
+In `apps/functions/src/main.ts`:
+
+```typescript
+import { app } from '@nx-mean-starter/backend/express';
+import * as functions from 'firebase-functions';
+
+export const server = functions.https.onRequest(app);
+```
+
+Modify `package.json` script:
+
+```
+"firebase:serve": "concurrently --kill-others \"yarn run build functions --watch\" \"firebase serve --only functions,hosting\"",
+```
+
+> Dev: to use it in dev mode you need to change proxy to point to port 5000
+
+> Prod: to use it in production you need to update env variables in firebase.
+> Also you need NOT use free tier. Outbound connections are disabled in free tier.
 
 ### Add Firebase Server Admin SDK
 
