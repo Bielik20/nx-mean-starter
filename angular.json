@@ -327,24 +327,27 @@
         }
       }
     },
-    "schemas": {
-      "root": "libs/schemas",
-      "sourceRoot": "libs/schemas/src",
+    "backend-schemas": {
+      "root": "libs/backend/schemas",
+      "sourceRoot": "libs/backend/schemas/src",
       "projectType": "library",
       "prefix": "app",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/schemas/tsconfig.lib.json", "libs/schemas/tsconfig.spec.json"],
+            "tsConfig": [
+              "libs/backend/schemas/tsconfig.lib.json",
+              "libs/backend/schemas/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
           "builder": "@nrwl/builders:jest",
           "options": {
-            "jestConfig": "libs/schemas/jest.config.js",
-            "tsConfig": "libs/schemas/tsconfig.spec.json"
+            "jestConfig": "libs/backend/schemas/jest.config.js",
+            "tsConfig": "libs/backend/schemas/tsconfig.spec.json"
           }
         }
       }
@@ -501,6 +504,66 @@
             "jestConfig": "apps/functions/jest.config.js",
             "tsConfig": "apps/functions/tsconfig.spec.json"
           }
+        }
+      }
+    },
+    "backend-express": {
+      "root": "libs/backend/express",
+      "sourceRoot": "libs/backend/express/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/backend/express/tsconfig.lib.json",
+              "libs/backend/express/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/backend/express/jest.config.js",
+            "tsConfig": "libs/backend/express/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "backend-core": {
+      "root": "libs/backend/core",
+      "sourceRoot": "libs/backend/core/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/backend/core/tsconfig.lib.json",
+              "libs/backend/core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/backend/core/jest.config.js",
+            "tsConfig": "libs/backend/core/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
         }
       }
     }

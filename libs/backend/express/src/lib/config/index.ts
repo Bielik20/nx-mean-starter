@@ -1,3 +1,4 @@
+import { environment } from '@nx-mean-starter/backend/core';
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
 import * as mongo from 'connect-mongo';
@@ -8,8 +9,6 @@ import * as expressValidator from 'express-validator';
 import * as lusca from 'lusca';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
-
-import { environment } from '../../environments/environment';
 import { initializeAuth } from './auth';
 
 export class AppConfig {

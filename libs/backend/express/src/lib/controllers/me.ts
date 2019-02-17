@@ -1,5 +1,5 @@
+import { UserContext } from '@nx-mean-starter/backend/schemas';
 import { User, UserFromToken } from '@nx-mean-starter/models';
-import { UserContext } from '@nx-mean-starter/schemas';
 import { Request, Response, Router } from 'express';
 
 export const meRouter: Router = Router();

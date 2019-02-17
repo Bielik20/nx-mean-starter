@@ -137,12 +137,6 @@ If there is a need it could be further specified:
 ng g node-app server --unit-test-runner=jest --framework=express
 ```
 
-### Schemas
-
-```
-ng g lib schemas --unit-test-runner=jest --no-module --prefix=app
-```
-
 ### Add Proxy
 
 Create `apps/web-app/proxy.conf.json`:
@@ -179,9 +173,41 @@ with
 app.get('/api/', ...);
 ```
 
-### Add Production build
+## Backend
 
-In `apps/server/src/main.ts` add:
+### Core
+
+```
+ng g lib core --unit-test-runner=jest --directory=backend --no-module --prefix=app
+```
+
+Use `libs/backend/core/src/lib/environment/index.ts` for exporting backend env.
+It can be shared between `server`, `functions` and `libs/*`.
+
+To make it work it is required to add paths to `tscnfig`, eg:
+
+```
+"@env-server/environment": ["apps/server/src/environments/environment.ts"],
+"@env-functions/environment": ["apps/functions/src/environments/environment.ts"],
+```
+
+### Schemas
+
+```
+ng g lib schemas --unit-test-runner=jest --directory=backend --no-module --prefix=app
+```
+
+### Express
+
+```
+ng g lib express --unit-test-runner=jest --directory=backend --no-module --prefix=app
+```
+
+It can be served by both `functions` and `server` if needed.
+
+### Serving app in production
+
+In `libs/backend/express/lib/controllers/index.ts` add:
 
 ```ts
 import * as path from 'path';
@@ -253,7 +279,7 @@ Create `.firebaserc`:
 
 ```
 ng g node-app functions
-yarn add firebase-admin firebase-functions
+yarn add firebase firebase-admin firebase-functions
 yarn add concurrently -D
 ```
 
@@ -311,19 +337,23 @@ Also in `package.json` add following scripts:
 
 ### Add Firebase Server Admin SDK
 
-Run `git update-index --skip-worktree apps/server/src/environments/firebase-adminsdk.ts` to stop tracking changes to that file.
+Run `git update-index --skip-worktree libs/backend/core/src/lib/environment/firebase-adminsdk.ts` to stop tracking changes to that file.
 
 1. Create firebase project at https://console.firebase.google.com
-2. Copy firebase config to `web-app` environment.
-3. Go to authentication tab and configure authentication.
-4. (optional) Go to database tab and configure cloud firestore.
-5. Download firebase-adminsdk private service key
+2. Go to authentication tab and configure authentication.
+3. (optional) Go to database tab and configure cloud firestore.
+4. Download firebase-adminsdk private service key
 
    1. Navigate to the Service Accounts tab.
    2. Generate new private key
    3. Save as `firebase-admindsk.json`
    4. Copy content of `firebase-admindsk.json`
-   5. Modify `aps/server/src/environment/firebase-admindsk.ts`
+   5. Modify `libs/backend/core/src/lib/environment/firebase-admindsk.ts`
+
+### Add Firebase Client SDK
+
+1. Create firebase project at https://console.firebase.google.com
+2. Copy firebase config to `web-app` environment.
 
 ### Add Firebase Auth
 

@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/libs/schemas",
+    "outDir": "../../../dist/out-tsc/libs/backend/express",
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",

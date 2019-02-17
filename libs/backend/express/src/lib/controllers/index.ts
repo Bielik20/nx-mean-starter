@@ -1,6 +1,6 @@
+import { environment } from '@nx-mean-starter/backend/core';
 import { Express, static as expressStatic } from 'express';
 import * as path from 'path';
-import { environment } from '../../environments/environment';
 import { authenticate } from '../config/auth';
 import { meRouter } from './me';
 import { usersRouter } from './users';

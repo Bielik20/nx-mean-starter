@@ -1,10 +1,5 @@
-import * as express from 'express';
-import { AppConfig, AppControllers } from './app';
-import { environment } from './environments/environment';
-
-const app = express();
-new AppConfig(app).make();
-new AppControllers(app).make();
+import { environment } from '@nx-mean-starter/backend/core';
+import { app } from '@nx-mean-starter/backend/express';
 
 /**
  * Start Express server.

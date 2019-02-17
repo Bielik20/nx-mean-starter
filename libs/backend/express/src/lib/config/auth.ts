@@ -1,8 +1,8 @@
+import { firebase } from '@nx-mean-starter/backend/core';
 import { UserFromToken, UserFromTokenProxy } from '@nx-mean-starter/models';
 import { Express } from 'express';
 import * as passport from 'passport';
 import { Strategy as BearerStrategy } from 'passport-http-bearer';
-import { firebase } from '../core';
 
 export function authenticate() {
   return passport.authenticate('bearer', { session: false });

@@ -38,7 +38,7 @@
     "state-auth": {
       "tags": []
     },
-    "schemas": {
+    "backend-schemas": {
       "tags": []
     },
     "state-users": {
@@ -54,6 +54,12 @@
       "tags": []
     },
     "functions": {
+      "tags": []
+    },
+    "backend-express": {
+      "tags": []
+    },
+    "backend-core": {
       "tags": []
     }
   }

@@ -12,6 +12,8 @@
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
+      "@env-server/environment": ["apps/server/src/environments/environment.ts"],
+      "@env-functions/environment": ["apps/functions/src/environments/environment.ts"],
       "@nx-mean-starter/testing": ["libs/testing/src/index.ts"],
       "@nx-mean-starter/core": ["libs/core/src/index.ts"],
       "@nx-mean-starter/shared": ["libs/shared/src/index.ts"],
@@ -19,11 +21,13 @@
       "@nx-mean-starter/state/root": ["libs/state/root/src/index.ts"],
       "@nx-mean-starter/state/router": ["libs/state/router/src/index.ts"],
       "@nx-mean-starter/state/auth": ["libs/state/auth/src/index.ts"],
-      "@nx-mean-starter/schemas": ["libs/schemas/src/index.ts"],
+      "@nx-mean-starter/backend/schemas": ["libs/backend/schemas/src/index.ts"],
       "@nx-mean-starter/state/users": ["libs/state/users/src/index.ts"],
       "@nx-mean-starter/navigation/users": ["libs/navigation/users/src/index.ts"],
       "@nx-mean-starter/feature/auth": ["libs/feature/auth/src/index.ts"],
-      "@nx-mean-starter/state/layout": ["libs/state/layout/src/index.ts"]
+      "@nx-mean-starter/state/layout": ["libs/state/layout/src/index.ts"],
+      "@nx-mean-starter/backend/express": ["libs/backend/express/src/index.ts"],
+      "@nx-mean-starter/backend/core": ["libs/backend/core/src/index.ts"]
     },
     "module": "es2015"
   },
