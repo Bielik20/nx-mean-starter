@@ -7,7 +7,7 @@
     mat-card.responsive-card {
       margin: 0;
       border-radius: 0;
-      height: 100%;
+      flex-grow: 1;
     }
   }
 }
