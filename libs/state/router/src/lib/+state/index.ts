@@ -1,3 +1,2 @@
-export * from './actions';
-export { State } from './reducer';
+export { State, UrlSnapshot } from './reducer';
 export * from './selectors';
