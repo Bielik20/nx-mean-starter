@@ -3,6 +3,7 @@
 @import './styles/gaps';
 @import './styles/general';
 @import './styles/material-fixes';
+@import './styles/overlay';
 @import './styles/responsive-card';
 
 @mixin shared-theme($theme, $config) {
@@ -12,4 +13,5 @@
   @include app-loading($theme);
   @include responsive-card();
   @include article();
+  @include overlay();
 }

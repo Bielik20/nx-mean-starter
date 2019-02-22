@@ -566,6 +566,68 @@
           "styleext": "scss"
         }
       }
+    },
+    "feature-card-image-upload": {
+      "root": "libs/feature/card-image-upload",
+      "sourceRoot": "libs/feature/card-image-upload/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/card-image-upload/tsconfig.lib.json",
+              "libs/feature/card-image-upload/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/feature/card-image-upload/jest.config.js",
+            "tsConfig": "libs/feature/card-image-upload/tsconfig.spec.json",
+            "setupFile": "libs/feature/card-image-upload/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "feature-card-image": {
+      "root": "libs/feature/card-image",
+      "sourceRoot": "libs/feature/card-image/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/card-image/tsconfig.lib.json",
+              "libs/feature/card-image/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/feature/card-image/jest.config.js",
+            "tsConfig": "libs/feature/card-image/tsconfig.spec.json",
+            "setupFile": "libs/feature/card-image/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

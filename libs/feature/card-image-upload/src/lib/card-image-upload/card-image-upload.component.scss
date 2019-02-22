@@ -1,0 +1,30 @@
+app-card-image-upload {
+  .overlay.dropzone-overlay:before {
+    transition: 0.5s ease;
+    filter: blur(10px);
+  }
+
+  @media (hover: hover) {
+    .image-container:hover .overlay.dropzone-overlay:before {
+      box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .content {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .title {
+    color: white;
+    text-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
+  }
+
+  .progress-bar {
+    position: absolute;
+  }
+}

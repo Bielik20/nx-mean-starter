@@ -48,8 +48,9 @@
   }
 
   .user-sidenav-card .picture img {
+    object-fit: cover;
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 50%;
     transform: scale(1);
     transition: all 0.9s ease 0s;

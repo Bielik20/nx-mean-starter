@@ -1,0 +1,10 @@
+<div class="image-container">
+  <div class="overlay image-overlay" [style.background-image]="pictureUrlBypass"></div>
+  <img
+    [src]="pictureUrl"
+    class="image card-image-fit"
+    alt="profile picture"
+    (load)="load.emit($event)"
+  />
+  <ng-content></ng-content>
+</div>

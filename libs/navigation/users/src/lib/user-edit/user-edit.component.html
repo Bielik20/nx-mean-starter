@@ -1,5 +1,6 @@
 <article>
   <mat-card class="responsive-card">
+    <app-card-image-upload (pictureUrlChange)="updatePictureUrl($event)" [pictureUrl]="pictureUrl"></app-card-image-upload>
     <form [formGroup]="userForm" (ngSubmit)="save(userForm.value)">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Name</mat-label>

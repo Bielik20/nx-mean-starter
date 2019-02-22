@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
 import { AuthState } from '@nx-mean-starter/state/auth';
@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
   selector: 'app-user',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserComponent implements OnInit {
   user$: Observable<User>;

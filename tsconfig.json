@@ -27,7 +27,9 @@
       "@nx-mean-starter/feature/auth": ["libs/feature/auth/src/index.ts"],
       "@nx-mean-starter/state/layout": ["libs/state/layout/src/index.ts"],
       "@nx-mean-starter/backend/express": ["libs/backend/express/src/index.ts"],
-      "@nx-mean-starter/backend/core": ["libs/backend/core/src/index.ts"]
+      "@nx-mean-starter/backend/core": ["libs/backend/core/src/index.ts"],
+      "@nx-mean-starter/feature/card-image-upload": ["libs/feature/card-image-upload/src/index.ts"],
+      "@nx-mean-starter/feature/card-image": ["libs/feature/card-image/src/index.ts"]
     },
     "module": "es2015"
   },
