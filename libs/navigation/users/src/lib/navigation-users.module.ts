@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@nx-mean-starter/shared';
@@ -16,5 +16,6 @@ import { UsersComponent } from './users/users.component';
     RouterModule.forChild(NAVIGATION_USERS_ROUTES),
     ReactiveFormsModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class NavigationUsersModule {}

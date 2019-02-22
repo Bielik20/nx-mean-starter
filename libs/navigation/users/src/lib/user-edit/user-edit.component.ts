@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
 import { UsersState } from '@nx-mean-starter/state/users';
+import { FileDropEvent } from 'file-drop-element';
 import { filter, take } from 'rxjs/operators';
 
 @Component({
@@ -11,6 +12,9 @@ import { filter, take } from 'rxjs/operators';
   styleUrls: ['./user-edit.component.scss'],
 })
 export class UserEditComponent implements OnInit {
+  get pictureUrl(): string {
+    return this.userForm.get('pictureUrl').value;
+  }
   userForm: FormGroup;
 
   constructor(private fb: FormBuilder, private store: Store<UsersState.State>) {}
@@ -33,5 +37,10 @@ export class UserEditComponent implements OnInit {
 
   save(user: Partial<User>) {
     this.store.dispatch(new UsersState.PatchOne(user));
+  }
+
+  uploadFile(fileDropEvent: FileDropEvent) {
+    const [file] = fileDropEvent.files;
+    console.log(fileDropEvent.files, file);
   }
 }
