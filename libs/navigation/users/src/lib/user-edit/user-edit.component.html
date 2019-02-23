@@ -1,17 +1,6 @@
 <article>
   <mat-card class="responsive-card">
-    <!-- <file-drop (filedrop)="uploadFile($event)" accept="image/*"> -->
-    <div class="image-container">
-      <img [src]="pictureUrl" class="image" alt="profile picture" />
-      <div class="image-overlay"></div>
-      <div class="overlay">
-        <div class="overlay-content">
-          <div class="text">Drag and Drop an image</div>
-          <button mat-raised-button color="primary">or choose an image</button>
-        </div>
-      </div>
-    </div>
-    <!-- </file-drop> -->
+    <app-card-image-upload [pictureUrl]="pictureUrl"></app-card-image-upload>
     <form [formGroup]="userForm" (ngSubmit)="save(userForm.value)">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Name</mat-label>

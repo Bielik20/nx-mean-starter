@@ -61,6 +61,9 @@
     },
     "backend-core": {
       "tags": []
+    },
+    "feature-card-image-upload": {
+      "tags": []
     }
   }
 }
