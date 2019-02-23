@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { FeatureCardImageUploadModule } from '@nx-mean-starter/feature/card-image-upload';
@@ -18,6 +18,5 @@ import { UsersComponent } from './users/users.component';
     ReactiveFormsModule,
     FeatureCardImageUploadModule,
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class NavigationUsersModule {}

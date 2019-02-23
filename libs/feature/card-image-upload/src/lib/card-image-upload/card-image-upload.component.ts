@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { FileDropEvent } from 'file-drop-element';
 
 @Component({
   selector: 'app-card-image-upload',
@@ -19,8 +18,14 @@ export class CardImageUploadComponent implements OnInit {
 
   ngOnInit() {}
 
-  uploadFile(fileDropEvent: FileDropEvent) {
-    const [file] = fileDropEvent.files;
+  uploadFile(files: FileList) {
+    const [file] = Array.from(files);
+
+    if (file.type.split('/')[0] !== 'image') {
+      console.error(`unsupported file type ${file.type}`);
+      return;
+    }
+
     console.log(file);
   }
 }

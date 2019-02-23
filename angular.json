@@ -32,7 +32,7 @@
               }
             ],
             "styles": ["apps/web-app/src/styles.scss"],
-            "scripts": ["node_modules/file-drop-element/dist/filedrop.umd.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
