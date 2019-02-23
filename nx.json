@@ -64,6 +64,9 @@
     },
     "feature-card-image-upload": {
       "tags": []
+    },
+    "feature-card-image": {
+      "tags": []
     }
   }
 }

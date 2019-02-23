@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-image-upload',
@@ -10,11 +9,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 export class CardImageUploadComponent implements OnInit {
   @Input() pictureUrl: string;
 
-  get pictureUrlBypass() {
-    return this.sanitizer.bypassSecurityTrustStyle(`url(${this.pictureUrl})`);
-  }
-
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor() {}
 
   ngOnInit() {}
 

@@ -2,9 +2,24 @@
   <mat-card class="responsive-card">
     <h2>User:</h2>
 
+    <app-card-image [pictureUrl]="(user$ | async)?.pictureUrl"></app-card-image>
+
     <a *ngIf="(isAuthUser$ | async)" [routerLink]="['./edit']" mat-button color="accent">Edit</a>
 
 <pre>
+{{ user$ | async | json }}
+</pre>
+  </mat-card>
+
+
+  <mat-card class="responsive-card">
+    <!--<h2>User:</h2>-->
+
+    <app-card-image [pictureUrl]="(user$ | async)?.pictureUrl"></app-card-image>
+
+    <a *ngIf="(isAuthUser$ | async)" [routerLink]="['./edit']" mat-button color="accent">Edit</a>
+
+    <pre>
 {{ user$ | async | json }}
 </pre>
   </mat-card>

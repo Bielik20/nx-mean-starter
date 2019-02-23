@@ -1,10 +1,8 @@
-<div dropzone (dropped)="uploadFile($event)" class="image-container">
-  <div class="image-overlay" [style.background-image]="pictureUrlBypass"></div>
-  <img [src]="pictureUrl" class="image card-image-fit" alt="profile picture" />
-  <div class="overlay">
+<app-card-image [pictureUrl]="pictureUrl">
+  <div dropzone (dropped)="uploadFile($event)" class="overlay">
     <div class="overlay-content">
       <div class="text">Drag and Drop an image</div>
       <button mat-raised-button color="primary">or choose an image</button>
     </div>
   </div>
-</div>
+</app-card-image>
