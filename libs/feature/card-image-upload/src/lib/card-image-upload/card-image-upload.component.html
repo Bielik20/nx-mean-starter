@@ -1,7 +1,7 @@
 <app-card-image [pictureUrl]="pictureUrl">
-  <div dropzone (dropped)="uploadFile($event)" class="overlay">
-    <div class="overlay-content">
-      <div class="text">Drag and Drop an image</div>
+  <div dropzone (dropped)="uploadFile($event)" class="overlay dropzone-overlay">
+    <div class="content">
+      <h2 class="title">Drag and Drop an image</h2>
       <button mat-raised-button color="primary">or choose an image</button>
     </div>
   </div>
