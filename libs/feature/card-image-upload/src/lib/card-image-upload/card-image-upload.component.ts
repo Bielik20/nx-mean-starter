@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -17,6 +18,7 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './card-image-upload.component.html',
   styleUrls: ['./card-image-upload.component.scss'],
   encapsulation: ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardImageUploadComponent implements OnInit {
   @Input() pictureUrl: string;

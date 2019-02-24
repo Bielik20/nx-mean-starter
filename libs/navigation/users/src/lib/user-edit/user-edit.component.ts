@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
@@ -9,6 +9,7 @@ import { filter, take } from 'rxjs/operators';
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
   styleUrls: ['./user-edit.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UserEditComponent implements OnInit {
   get pictureUrl(): string {
