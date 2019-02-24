@@ -1,22 +1,6 @@
 <article>
   <mat-card class="responsive-card">
-    <h2>User:</h2>
-    <app-card-image-upload [pictureUrl]="pictureUrl"></app-card-image-upload>
-    <form [formGroup]="userForm" (ngSubmit)="save(userForm.value)">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Name</mat-label>
-        <input formControlName="name" matInput placeholder="What is your name?" />
-      </mat-form-field>
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Picture Url</mat-label>
-        <input formControlName="pictureUrl" matInput placeholder="How do you look like?" />
-      </mat-form-field>
-      <button mat-button color="accent">Save</button>
-    </form>
-  </mat-card>
-
-  <mat-card class="responsive-card">
-    <app-card-image-upload [pictureUrl]="pictureUrl"></app-card-image-upload>
+    <app-card-image-upload (pictureUrlChange)="updatePictureUrl($event)" [pictureUrl]="pictureUrl"></app-card-image-upload>
     <form [formGroup]="userForm" (ngSubmit)="save(userForm.value)">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Name</mat-label>

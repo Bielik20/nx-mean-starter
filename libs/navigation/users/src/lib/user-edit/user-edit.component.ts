@@ -34,6 +34,10 @@ export class UserEditComponent implements OnInit {
       });
   }
 
+  updatePictureUrl(pictureUrl: string) {
+    this.userForm.patchValue({ pictureUrl });
+  }
+
   save(user: Partial<User>) {
     this.store.dispatch(new UsersState.PatchOne(user));
   }

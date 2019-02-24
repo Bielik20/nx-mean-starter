@@ -2,7 +2,25 @@
   <div dropzone (dropped)="uploadFile($event)" class="overlay dropzone-overlay">
     <div class="content">
       <h2 class="title">Drag and Drop an image</h2>
-      <button mat-raised-button color="primary">or choose an image</button>
+      <button
+        mat-raised-button
+        type="button"
+        color="primary"
+        (click)="browse()"
+      >
+        or choose an image
+      </button>
+      <input #fileInput type="file" (change)="uploadFile($event.target.files)" hidden />
     </div>
   </div>
+  <ng-container *ngIf="(snapshot$ | async) as snap">
+    <mat-progress-bar
+      *ngIf="isActive(snap)"
+      class="progress-bar"
+      color="primary"
+      mode="indeterminate"
+      [value]="percentage$ | async"
+    >
+    </mat-progress-bar>
+  </ng-container>
 </app-card-image>
