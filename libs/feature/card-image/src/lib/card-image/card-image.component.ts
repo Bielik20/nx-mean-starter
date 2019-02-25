@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   Input,
   OnInit,
+  Output,
   ViewEncapsulation,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -16,6 +18,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class CardImageComponent implements OnInit {
   @Input() pictureUrl: string;
+  @Output() load = new EventEmitter<Event>();
 
   get pictureUrlBypass() {
     return this.sanitizer.bypassSecurityTrustStyle(`url(${this.pictureUrl})`);

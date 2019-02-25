@@ -10,8 +10,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
+import { catchError, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-card-image-upload',
@@ -25,8 +25,7 @@ export class CardImageUploadComponent implements OnInit {
   @Output() pictureUrlChange = new EventEmitter<string>();
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  task: AngularFireUploadTask;
-  percentage$: Observable<number>;
+  isPending$ = new BehaviorSubject<boolean>(false);
   snapshot$: Observable<any>;
 
   constructor(private storage: AngularFireStorage) {}
@@ -47,22 +46,25 @@ export class CardImageUploadComponent implements OnInit {
 
     const path = `test/${Date.now()}_${file.name}`;
     const ref = this.storage.ref(path);
+    const task: AngularFireUploadTask = this.storage.upload(path, file);
 
-    this.task = this.storage.upload(path, file);
-    this.percentage$ = this.task.percentageChanges();
-    this.snapshot$ = this.task.snapshotChanges().pipe(
+    this.isPending$.next(true);
+    this.snapshot$ = task.snapshotChanges().pipe(
       finalize(async () => {
         const url = await ref.getDownloadURL().toPromise();
 
         this.pictureUrl = url;
         this.pictureUrlChange.emit(url);
-
-        console.log({ file, path, url });
+      }),
+      catchError(err => {
+        this.isPending$.next(false);
+        console.error(err);
+        return of();
       }),
     );
   }
 
-  isActive(snapshot) {
-    return snapshot.state === 'running' && snapshot.bytesTransferred < snapshot.totalBytes;
+  loaded() {
+    this.isPending$.next(false);
   }
 }

@@ -1,13 +1,12 @@
 app-card-image-upload {
   .overlay.dropzone-overlay:before {
     transition: 0.5s ease;
-    box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.1);
     filter: blur(10px);
   }
 
   @media (hover: hover) {
     .image-container:hover .overlay.dropzone-overlay:before {
-      box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.3);
+      box-shadow: inset 0 0 0 2000px rgba(255, 255, 255, 0.2);
     }
   }
 
