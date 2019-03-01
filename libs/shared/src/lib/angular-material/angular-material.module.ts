@@ -5,6 +5,7 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { PlatformModule } from '@angular/cdk/platform';
 import { PortalModule } from '@angular/cdk/portal';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 import { CdkTableModule } from '@angular/cdk/table';
 import { TextFieldModule } from '@angular/cdk/text-field';
 import { CdkTreeModule } from '@angular/cdk/tree';
@@ -98,6 +99,7 @@ import {
     PlatformModule,
     PortalModule,
     FlexLayoutModule,
+    ScrollingModule,
   ],
 })
 export class AngularMaterialModule {}
