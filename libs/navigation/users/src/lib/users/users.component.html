@@ -9,13 +9,18 @@
   <!-- </pre> -->
   <!-- </mat-card> -->
 
-  <cdk-virtual-scroll-viewport itemSize="232">
-    <mat-card
-      style="width: 80%; margin-bottom: 20px !important; margin-top: 20px !important;"
-      class="m-auto"
-      *cdkVirtualFor="let user of users"
+  <ng-container *ngIf="(people$ | async) as people">
+    <cdk-virtual-scroll-viewport
+      itemSize="160"
+      (scrolledIndexChange)="nextBatch($event, people[people.length - 1].id)"
     >
-      <pre>{{ user | json }}</pre>
-    </mat-card>
-  </cdk-virtual-scroll-viewport>
+      <mat-card
+        style="width: 80%; margin-bottom: 20px !important; margin-top: 20px !important;"
+        class="m-auto animated flipInX"
+        *cdkVirtualFor="let user of people; trackBy: trackByIdx"
+      >
+        <pre>{{ user | json }}</pre>
+      </mat-card>
+    </cdk-virtual-scroll-viewport>
+  </ng-container>
 </article>

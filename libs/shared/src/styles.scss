@@ -1,5 +1,6 @@
 @import './styles/app-loading';
 @import './styles/article';
+@import './styles/flipInX';
 @import './styles/gaps';
 @import './styles/general';
 @import './styles/material-fixes';
@@ -16,4 +17,5 @@
   @include article();
   @include overlay();
   @include scrollbar($theme);
+  @include flipInX();
 }

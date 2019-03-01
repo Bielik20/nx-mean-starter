@@ -1,0 +1,85 @@
+// source: https://github.com/daneden/animate.css
+
+@mixin flipInX() {
+  @keyframes flipInX {
+    0% {
+      -webkit-animation-timing-function: ease-in;
+      -webkit-transform: perspective(400px) rotateX(90deg);
+      animation-timing-function: ease-in;
+      opacity: 0;
+      transform: perspective(400px) rotateX(90deg);
+    }
+    40% {
+      -webkit-animation-timing-function: ease-in;
+      -webkit-transform: perspective(400px) rotateX(-20deg);
+      animation-timing-function: ease-in;
+      transform: perspective(400px) rotateX(-20deg);
+    }
+    70% {
+      -webkit-transform: perspective(400px) rotateX(10deg);
+      transform: perspective(400px) rotateX(10deg);
+      opacity: 1;
+    }
+    to {
+      -webkit-transform: perspective(400px);
+      transform: perspective(400px);
+    }
+  }
+
+  .flipInX {
+    animation-name: flipInX;
+    backface-visibility: visible !important;
+  }
+
+  .animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+  }
+
+  .animated.infinite {
+    animation-iteration-count: infinite;
+  }
+
+  .animated.delay-1s {
+    animation-delay: 1s;
+  }
+
+  .animated.delay-2s {
+    animation-delay: 2s;
+  }
+
+  .animated.delay-3s {
+    animation-delay: 3s;
+  }
+
+  .animated.delay-4s {
+    animation-delay: 4s;
+  }
+
+  .animated.delay-5s {
+    animation-delay: 5s;
+  }
+
+  .animated.fast {
+    animation-duration: 800ms;
+  }
+
+  .animated.faster {
+    animation-duration: 500ms;
+  }
+
+  .animated.slow {
+    animation-duration: 2s;
+  }
+
+  .animated.slower {
+    animation-duration: 3s;
+  }
+
+  @media (print), (prefers-reduced-motion) {
+    .animated {
+      animation: unset !important;
+      transition: none !important;
+    }
+  }
+}
