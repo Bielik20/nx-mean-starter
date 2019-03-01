@@ -1,0 +1,10 @@
+cdk-virtual-scroll-viewport {
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  list-style: none;
+}

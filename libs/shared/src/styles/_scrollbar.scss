@@ -2,7 +2,8 @@
   $accent: map-get($theme, accent);
 
   mat-sidenav,
-  mat-sidenav-content {
+  mat-sidenav-content,
+  cdk-virtual-scroll-viewport {
     &::-webkit-scrollbar {
       width: 0.5em;
     }

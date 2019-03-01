@@ -1,11 +1,21 @@
 <article>
-  <mat-card class="responsive-card">
-    <h2>All Users:</h2>
+  <!-- <mat-card class="responsive-card"> -->
+  <!-- <h2>All Users:</h2> -->
 
-    <button mat-button color="accent" (click)="getUsers()">Get Users</button>
+  <!-- <button mat-button color="accent" (click)="getUsers()">Get Users</button> -->
 
-<pre>
-{{ users$ | async | json }}
-</pre>
-  </mat-card>
+  <!-- <pre> -->
+  <!-- {{ users$ | async | json }} -->
+  <!-- </pre> -->
+  <!-- </mat-card> -->
+
+  <cdk-virtual-scroll-viewport itemSize="232">
+    <mat-card
+      style="width: 80%; margin-bottom: 20px !important; margin-top: 20px !important;"
+      class="m-auto"
+      *cdkVirtualFor="let user of users"
+    >
+      <pre>{{ user | json }}</pre>
+    </mat-card>
+  </cdk-virtual-scroll-viewport>
 </article>
