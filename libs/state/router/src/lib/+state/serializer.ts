@@ -15,11 +15,12 @@ export class CustomRouterStateSerializer implements RouterStateSerializer<UrlSna
       url,
       root: { queryParams },
     } = routerState;
-    const { params, data } = route;
+    const { params, data, routeConfig } = route;
+    const guarded = !!routeConfig && !!routeConfig.canActivate;
 
     // Only return an object including the URL, params and query params
     // instead of the entire snapshot
-    return { url, params, data, queryParams };
+    return { url, params, data, queryParams, guarded };
   }
 }
 

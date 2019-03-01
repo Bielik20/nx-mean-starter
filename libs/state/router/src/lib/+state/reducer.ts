@@ -7,6 +7,7 @@ export interface UrlSnapshot {
   params: Params;
   queryParams: Params;
   data: Data;
+  guarded: boolean;
 }
 
 export type State = RouterReducerState<UrlSnapshot>;
