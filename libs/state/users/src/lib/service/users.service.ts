@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '@nx-mean-starter/models';
+import { flattenObject } from '@nx-mean-starter/shared';
+import { QueryParams } from 'api-query-params';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -21,7 +23,7 @@ export class UsersService {
     return this.http.get<User>(`api/users/${id}`);
   }
 
-  getAll(): Observable<User[]> {
-    return this.http.get<User[]>('api/users');
+  getBatch(params: QueryParams = {}): Observable<User[]> {
+    return this.http.get<User[]>(`api/users`, { params: flattenObject(params) });
   }
 }

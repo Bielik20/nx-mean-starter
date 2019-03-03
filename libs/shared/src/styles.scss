@@ -1,10 +1,12 @@
 @import './styles/app-loading';
 @import './styles/article';
+@import './styles/flipInX';
 @import './styles/gaps';
 @import './styles/general';
 @import './styles/material-fixes';
 @import './styles/overlay';
 @import './styles/responsive-card';
+@import './styles/scrollbar';
 
 @mixin shared-theme($theme, $config) {
   @include general();
@@ -14,4 +16,6 @@
   @include responsive-card();
   @include article();
   @include overlay();
+  @include scrollbar($theme);
+  @include flipInX();
 }

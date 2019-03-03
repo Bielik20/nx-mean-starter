@@ -19,6 +19,6 @@ describe('Service: Users', () => {
   });
 
   it('should return empty array', () => {
-    service.getAll().subscribe(val => expect(val).toEqual([]));
+    service.getBatch().subscribe(val => expect(val).toEqual([]));
   });
 });

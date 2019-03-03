@@ -121,7 +121,7 @@ ng g app web-app --style=scss --unit-test-runner=jest --e2e-test-runner=cypress 
 
 ```
 ng g node-app server
-yarn add compression body-parser connect-mongo mongoose errorhandler express-session express-validator lodash lusca path passport passport-http-bearer request request-promise-native winston firebase firebase-admin
+yarn add compression body-parser connect-mongo mongoose errorhandler express-session express-validator lodash lusca path passport passport-http-bearer request request-promise-native winston firebase firebase-admin api-query-params
 yarn add @types/compression @types/body-parser @types/mongoose @types/errorhandler @types/express-session @types/lodash @types/lusca @types/passport @types/passport-http-bearer @types/request @types/request-promise-native @types/winston -D
 ```
 

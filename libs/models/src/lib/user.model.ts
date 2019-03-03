@@ -1,19 +1,21 @@
 import { UserFromToken } from '@nx-mean-starter/models';
+import * as faker from 'faker';
 
 export interface User extends UserFromToken {
   createdAt: Date;
   updatedAt: Date;
 }
 
-export function createMockUsers(): Partial<User>[] {
-  return [
-    {
-      _id: '1',
-      email: 'one@mail.com',
-    },
-    {
-      _id: '2',
-      email: 'two@mail.com',
-    },
-  ];
+export function generateUsers(count: number): Partial<User>[] {
+  return Array.from({ length: count }).map(() => generateUser());
+}
+
+export function generateUser(): Partial<User> {
+  return {
+    _id: faker.random.uuid(),
+    email: faker.internet.email(),
+    emailVerified: faker.random.boolean(),
+    name: faker.name.findName(),
+    pictureUrl: faker.image.avatar(),
+  };
 }

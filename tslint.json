@@ -2,7 +2,7 @@
   "rulesDirectory": ["node_modules/codelyzer", "node_modules/@nrwl/schematics/src/tslint"],
   "rules": {
     "no-unused-variable": true,
-    "max-line-length": [true, { "limit": 100, "ignore-pattern": "^import |^export {(.*?)}" }],
+    "max-line-length": [true, { "limit": 100, "ignore-pattern": "^import |^export {(.*?)} |http" }],
     "ordered-imports": [
       true,
       {
