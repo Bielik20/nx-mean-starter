@@ -58,10 +58,12 @@ export class UsersComponent implements OnInit {
       return;
     }
 
-    const end = this.viewport.getRenderedRange().end;
+    const current = this.viewport.getRenderedRange().end;
     const total = this.viewport.getDataLength();
 
-    if (end === total) {
+    console.log(current, total);
+
+    if (current === total) {
       this.offset.next(offset);
     }
   }

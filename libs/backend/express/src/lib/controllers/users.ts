@@ -1,12 +1,18 @@
 import { UserContext } from '@nx-mean-starter/backend/schemas';
 import { generateUsers, User } from '@nx-mean-starter/models';
+import aqp from 'api-query-params';
 import { Request, Response, Router } from 'express';
 
 export const usersRouter: Router = Router();
 
 usersRouter.get('/', async (req: Request, res: Response) => {
-  let users = await UserContext.find().lean();
-  users = [...users, ...generateUsers(5)];
+  const { filter, skip, limit, sort, projection } = aqp(req.query);
+  const users: User[] = await UserContext.find(filter)
+    .skip(skip)
+    .limit(limit)
+    .sort(sort)
+    .select(projection)
+    .lean();
 
   res.send(users);
 });

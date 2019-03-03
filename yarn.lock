@@ -1559,6 +1559,11 @@ anymatch@^2.0.0:
     micromatch "^3.1.4"
     normalize-path "^2.1.1"
 
+api-query-params@^4.9.0:
+  version "4.9.0"
+  resolved "https://registry.yarnpkg.com/api-query-params/-/api-query-params-4.9.0.tgz#eb4c6b1984e9c219ac1ab2e080db1971355ce3a4"
+  integrity sha512-K+JG5EMV1Ffv23mmobJvebf3cdLpKfzl7buAw3fQO4M1/l0oA682wpM6JMpX0Q0xExtjRtKsn0nxBU71vAnYpA==
+
 app-root-path@^2.0.1, app-root-path@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/app-root-path/-/app-root-path-2.1.0.tgz#98bf6599327ecea199309866e8140368fd2e646a"
