@@ -1,6 +1,7 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { User } from '@nx-mean-starter/models';
 import { Action, createReducer, Store } from 'ngrx-actions';
+import { LoadBatch, LoadBatchSuccess } from '../pagination';
 import {
   Load,
   LoadAll,
@@ -51,7 +52,7 @@ export class EntitiesStore {
     );
   }
 
-  @Action(Load, LoadAll)
+  @Action(Load, LoadAll, LoadBatch)
   load(state: EntitiesState): EntitiesState {
     return { ...state, loading: true, error: undefined };
   }
@@ -61,8 +62,8 @@ export class EntitiesStore {
     return entitiesAdapter.upsertOne(action.user, { ...state, loading: false, error: undefined });
   }
 
-  @Action(LoadAllSuccess)
-  upsertMany(state: EntitiesState, action: LoadAllSuccess): EntitiesState {
+  @Action(LoadAllSuccess, LoadBatchSuccess)
+  upsertMany(state: EntitiesState, action: LoadAllSuccess | LoadBatchSuccess): EntitiesState {
     return entitiesAdapter.upsertMany(action.users, { ...state, loading: false, error: undefined });
   }
 

@@ -1,6 +1,6 @@
 declare module 'api-query-params' {
   /** {@link https://www.npmjs.com/package/api-query-params#available-options--opts-|Documentation} */
-  export interface AqpOptions {
+  export interface ApiQueryOptions {
     /** @default skip */
     skipKey?: string;
 
@@ -29,9 +29,9 @@ declare module 'api-query-params' {
     castParams?: { [key: string]: string };
   }
 
-  type SortValue = 1 | -1;
+  export type SortValue = 1 | -1;
 
-  export interface AqpResult {
+  export interface QueryParams {
     filter?: Map<string, any>;
     sort?: Map<string, SortValue>;
     skip?: number;
@@ -39,5 +39,5 @@ declare module 'api-query-params' {
     projection?: string | any;
   }
 
-  export default function aqp(query: string | {}, options?: AqpOptions): AqpResult;
+  export default function aqp(query: string | {}, options?: ApiQueryOptions): QueryParams;
 }

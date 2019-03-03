@@ -1,17 +1,7 @@
 <article>
-  <!-- <mat-card class="responsive-card"> -->
-  <!-- <h2>All Users:</h2> -->
-
-  <!-- <button mat-button color="accent" (click)="getUsers()">Get Users</button> -->
-
-  <!-- <pre> -->
-  <!-- {{ users$ | async | json }} -->
-  <!-- </pre> -->
-  <!-- </mat-card> -->
-
-  <ng-container *ngIf="(people$ | async) as people">
+  <ng-container *ngIf="(users$ | async) as people">
     <cdk-virtual-scroll-viewport
-      itemSize="160"
+      itemSize="252"
       (scrolledIndexChange)="nextBatch($event, people.length)"
     >
       <mat-card

@@ -4,6 +4,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { AuthInterceptor, AuthState } from '@nx-mean-starter/state/auth';
 import { EntitiesEffects } from './+state/entities/effects';
+import { PaginationEffects } from './+state/pagination/effects';
 import { reducerProvider, reducerToken } from './+state/reducer';
 
 @NgModule({
@@ -12,7 +13,7 @@ import { reducerProvider, reducerToken } from './+state/reducer';
     StoreModule.forFeature('users', reducerToken, {
       metaReducers: [AuthState.signOutMetaReducer],
     }),
-    EffectsModule.forFeature([EntitiesEffects]),
+    EffectsModule.forFeature([EntitiesEffects, PaginationEffects]),
   ],
   providers: [reducerProvider, AuthInterceptor.provider],
 })
