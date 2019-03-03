@@ -8,3 +8,9 @@ cdk-virtual-scroll-viewport {
   justify-content: center;
   list-style: none;
 }
+
+.virtual-scroll-viewport-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}

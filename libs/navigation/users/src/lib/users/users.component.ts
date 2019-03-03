@@ -23,17 +23,19 @@ export class UsersComponent implements OnInit {
     this.end$ = this.store.select(UsersState.getPaginationEnd);
   }
 
-  nextBatch(e, skip) {
+  nextBatch(current: number, skip: number) {
     this.end$
       .pipe(
         take(1),
         filter(end => !end),
       )
       .subscribe(() => {
-        const current = this.viewport.getRenderedRange().end;
+        const current2 = this.viewport.getRenderedRange().end;
         const total = this.viewport.getDataLength();
 
-        if (current === total) {
+        console.log(current, current2);
+
+        if (current2 === total) {
           this.store.dispatch(new UsersState.LoadBatch({ limit: 20, skip }));
         }
       });

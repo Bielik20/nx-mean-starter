@@ -70,7 +70,7 @@ export class EntitiesEffects {
   loadAll$ = this.actions$.pipe(
     ofAction(LoadAll),
     switchMap(() =>
-      this.service.getAll().pipe(
+      this.service.getBatch().pipe(
         map(user => new LoadAllSuccess(user)),
         catchError(err => of(new ServerError(err))),
       ),

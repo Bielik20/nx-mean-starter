@@ -1,9 +1,9 @@
-<article>
-  <ng-container *ngIf="(users$ | async) as people">
-    <cdk-virtual-scroll-viewport
-      itemSize="252"
-      (scrolledIndexChange)="nextBatch($event, people.length)"
-    >
+<div class="virtual-scroll-viewport-container" *ngIf="(users$ | async) as people">
+  <cdk-virtual-scroll-viewport
+    itemSize="252"
+    (scrolledIndexChange)="nextBatch($event, people.length)"
+  >
+    <article>
       <mat-card
         style="width: 80%; margin-bottom: 20px !important; margin-top: 20px !important;"
         class="m-auto animated flipInX"
@@ -11,6 +11,6 @@
       >
         <pre>{{ user | json }}</pre>
       </mat-card>
-    </cdk-virtual-scroll-viewport>
-  </ng-container>
-</article>
+    </article>
+  </cdk-virtual-scroll-viewport>
+</div>

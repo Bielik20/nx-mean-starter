@@ -1,12 +1,12 @@
 import { UserContext } from '@nx-mean-starter/backend/schemas';
 import { generateUsers, User } from '@nx-mean-starter/models';
-import { translator } from '@nx-mean-starter/shared';
+import { queryToParams } from '@nx-mean-starter/shared';
 import { Request, Response, Router } from 'express';
 
 export const usersRouter: Router = Router();
 
 usersRouter.get('/', async (req: Request, res: Response) => {
-  const { filter, skip, limit, sort, projection } = translator.toParams(req.query);
+  const { filter, skip, limit, sort, projection } = queryToParams(req.query);
   const users: User[] = await UserContext.find(filter)
     .skip(skip)
     .limit(limit)

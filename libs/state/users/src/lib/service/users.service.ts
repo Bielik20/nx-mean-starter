@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '@nx-mean-starter/models';
-import { translator } from '@nx-mean-starter/shared';
+import { flattenObject } from '@nx-mean-starter/shared';
 import { QueryParams } from 'api-query-params';
 import { Observable } from 'rxjs';
 
@@ -23,12 +23,7 @@ export class UsersService {
     return this.http.get<User>(`api/users/${id}`);
   }
 
-  getBatch(params?: QueryParams): Observable<User[]> {
-    const query = translator.toQuery(params);
-    return this.http.get<User[]>(`api/users?${query}`);
-  }
-
-  getAll(): Observable<User[]> {
-    return this.http.get<User[]>('api/users');
+  getBatch(params: QueryParams = {}): Observable<User[]> {
+    return this.http.get<User[]>(`api/users`, { params: flattenObject(params) });
   }
 }
