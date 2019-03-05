@@ -4,12 +4,12 @@ import { LoadBatchEnd, LoadBatchSuccess } from './actions';
 
 export interface PaginationState {
   ids: string[];
-  end: boolean;
+  done: boolean;
 }
 
 export const initialState: PaginationState = {
   ids: [],
-  end: false,
+  done: false,
 };
 
 @Store<PaginationState>(initialState)
@@ -26,7 +26,7 @@ export class StateStore {
   end(state: PaginationState): PaginationState {
     return {
       ...state,
-      end: true,
+      done: true,
     };
   }
 }

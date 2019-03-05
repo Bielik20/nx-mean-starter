@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 @mixin material-fixes() {
   // Fix for https://github.com/angular/flex-layout/issues/748
   .ge {
@@ -7,15 +9,14 @@
 
   // Hover Shadow
   @for $i from 0 through 24 {
-    .hover-elevation-z#{$i} {
+    .mat-hover-elevation-z#{$i} {
       transition: box-shadow 0.25s;
-      // box-shadow: //* Doesn't seam to be necessary *\\
     }
 
-    .hover-elevation-z#{$i}:hover {
-      transition: box-shadow 0.25s;
-      box-shadow: #{map-get(_get-umbra-map(black, 1), $i)},
-        #{map-get(_get-penumbra-map(black, 1), $i)}, #{map-get(_get-ambient-map(black, 1), $i)};
+    @media (hover: hover) {
+      .mat-hover-elevation-z#{$i}:hover {
+        @include mat-elevation($i);
+      }
     }
   }
 }

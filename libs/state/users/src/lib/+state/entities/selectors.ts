@@ -24,3 +24,8 @@ export const getSelectedUser = createSelector(
   getSelectedId,
   (users, id) => users[id],
 );
+
+export const getLoading = createSelector(
+  getEntitiesState,
+  state => state.loading,
+);

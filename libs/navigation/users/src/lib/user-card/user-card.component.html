@@ -1,0 +1,10 @@
+<mat-card class="user-card mat-hover-elevation-z9">
+  <h2>{{ user.name }}</h2>
+
+  <app-card-image [pictureUrl]="user.pictureUrl"></app-card-image>
+
+  <p><strong>Email: </strong>{{ user.email }}</p>
+  <p><strong>Verified: </strong>{{ user.emailVerified }}</p>
+  <p><strong>Created at: </strong>{{ user.createdAt | date }}</p>
+  <p><strong>Updated at: </strong>{{ user.updatedAt | date }}</p>
+</mat-card>

@@ -11,7 +11,7 @@ export const getPaginationIds = createSelector(
   state => state.ids,
 );
 
-export const getPaginationEnd = createSelector(
+export const getPaginationDone = createSelector(
   getPaginationState,
-  state => state.end,
+  state => state.done,
 );

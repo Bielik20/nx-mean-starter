@@ -3,7 +3,8 @@
 
   mat-sidenav,
   mat-sidenav-content,
-  cdk-virtual-scroll-viewport {
+  cdk-virtual-scroll-viewport,
+  .infinite-scroll-container {
     &::-webkit-scrollbar {
       width: 0.5em;
     }
@@ -17,5 +18,10 @@
     }
 
     overflow-x: hidden !important;
+  }
+
+  .infinite-scroll-container {
+    height: 100%;
+    overflow: scroll;
   }
 }

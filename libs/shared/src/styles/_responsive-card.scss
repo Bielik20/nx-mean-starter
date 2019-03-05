@@ -3,11 +3,19 @@
     margin: 30px;
   }
 
+  .responsive-content {
+    padding: 30px;
+  }
+
   @media only screen and (max-width: 959px) {
     mat-card.responsive-card {
       margin: 0;
       border-radius: 0;
       flex-grow: 1;
+    }
+
+    .responsive-content {
+      padding: 15px;
     }
   }
 }

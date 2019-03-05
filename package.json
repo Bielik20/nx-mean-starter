@@ -78,6 +78,7 @@
     "mongoose": "^5.4.13",
     "ngrx-actions": "https://github.com/Bielik20/ngrx-actions.git#release",
     "ngx-auth-firebaseui": "^2.2.1",
+    "ngx-infinite-scroll": "^7.0.1",
     "passport": "^0.4.0",
     "passport-http-bearer": "^1.0.1",
     "path": "^0.12.7",
