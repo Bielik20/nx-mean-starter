@@ -29,7 +29,7 @@ export class EntitiesEffects {
     ofAction(Select),
     withLatestFrom(this.entities$),
     filter(([action, entities]) => !entities[action.id]),
-    map(([action, entities]) => new Load(action.id)),
+    map(([action]: [Select, any]) => new Load(action.id)),
   );
 
   @Effect()

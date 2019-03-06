@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
+import { filterWith } from '@nx-mean-starter/shared';
 import { ofAction } from 'ngrx-actions';
 import { of } from 'rxjs';
-import { catchError, concatMap, filter, map, tap, withLatestFrom } from 'rxjs/operators';
+import { catchError, concatMap, map, tap } from 'rxjs/operators';
 import { UsersService } from '../../service/users.service';
 import { ServerError } from '../entities';
 import { State } from '../reducer';
@@ -16,9 +17,7 @@ export class PaginationEffects {
   @Effect()
   loadBatch$ = this.actions$.pipe(
     ofAction(LoadBatch),
-    withLatestFrom(this.store.select(getPaginationDone)),
-    filter(([action, done]) => !done),
-    map(([action]) => action),
+    filterWith(this.store.select(getPaginationDone), (done: boolean) => !done),
     concatMap((action: LoadBatch) =>
       this.service.getBatch(action.params).pipe(
         tap((users: User[]) => {

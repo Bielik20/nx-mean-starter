@@ -27,14 +27,12 @@ export class UsersComponent implements OnInit {
   }
 
   nextBatch(current: InfiniteScrollEvent, skip: number) {
-    console.log(current);
     combineLatest(this.done$, this.loading$)
       .pipe(
         take(1),
         filter(([done, loading]) => !done && !loading),
       )
       .subscribe(() => {
-        console.log('dispatch');
         this.store.dispatch(new UsersState.LoadBatch({ limit: 20, skip }));
       });
   }

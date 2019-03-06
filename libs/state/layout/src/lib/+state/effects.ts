@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { select, Store } from '@ngrx/store';
+import { filterWith } from '@nx-mean-starter/shared';
 import { defer, Observable } from 'rxjs';
-import { filter, map, withLatestFrom } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { SetIsMobile, SetSidenav } from './actions';
 import { State } from './reducer';
 import { getIsMobile } from './selectors';
@@ -24,9 +25,7 @@ export class Effects {
   @Effect()
   closeSidenavOnNavigationIfMobile$ = this.actions$.pipe(
     ofType(ROUTER_NAVIGATION),
-    withLatestFrom(this.isMobile$),
-    map(([action, state]) => state),
-    filter(isMobile => isMobile),
+    filterWith(this.isMobile$, (isMobile: boolean) => isMobile),
     map(() => new SetSidenav(false)),
   );
 
