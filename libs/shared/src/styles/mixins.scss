@@ -1,12 +1,12 @@
-@import './styles/app-loading';
-@import './styles/article';
-@import './styles/flipInX';
-@import './styles/gaps';
-@import './styles/general';
-@import './styles/material-fixes';
-@import './styles/overlay';
-@import './styles/responsive-card';
-@import './styles/scrollbar';
+@import './mixins/app-loading';
+@import './mixins/article';
+@import './mixins/flipInX';
+@import './mixins/gaps';
+@import './mixins/general';
+@import './mixins/material-fixes';
+@import './mixins/overlay';
+@import './mixins/responsive-card';
+@import './mixins/scrollbar';
 
 @mixin shared-theme($theme, $config) {
   @include general();

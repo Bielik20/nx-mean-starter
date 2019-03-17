@@ -15,7 +15,6 @@
       "@env-server/environment": ["apps/server/src/environments/environment.ts"],
       "@env-functions/environment": ["apps/functions/src/environments/environment.ts"],
       "@nx-mean-starter/testing": ["libs/testing/src/index.ts"],
-      "@nx-mean-starter/core": ["libs/core/src/index.ts"],
       "@nx-mean-starter/shared": ["libs/shared/src/index.ts"],
       "@nx-mean-starter/models": ["libs/models/src/index.ts"],
       "@nx-mean-starter/state/root": ["libs/state/root/src/index.ts"],

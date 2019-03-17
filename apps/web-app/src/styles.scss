@@ -1,4 +1,4 @@
-@import 'libs/core/src/styles';
+@import 'libs/shared/src/styles/generate';
 @import './app-theme';
 
 @include app-theme($theme, $config);

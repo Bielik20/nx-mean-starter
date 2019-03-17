@@ -5,13 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/nx';
-import { CoreModule } from '@nx-mean-starter/core';
 import { SharedModule } from '@nx-mean-starter/shared';
 import { StateRootModule } from '@nx-mean-starter/state/root';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
+import { CoreModule } from './core';
 import { HomePageComponent } from './home-page/home-page.component';
 
 export function appFactoryName() {

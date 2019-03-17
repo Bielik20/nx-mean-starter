@@ -1,6 +1,6 @@
-@import 'libs/shared/src/styles';
-@import 'libs/core/src/lib/layout/components/navbar/theme';
-@import 'libs/core/src/lib/layout/components/user-sidenav-card/theme';
+@import 'libs/shared/src/styles/mixins';
+@import 'apps/web-app/src/app/core/layout/components/navbar/theme';
+@import 'apps/web-app/src/app/core/layout/components/user-sidenav-card/theme';
 
 @mixin app-theme($theme, $config) {
   $primary: map-get($theme, primary);

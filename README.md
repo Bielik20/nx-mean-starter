@@ -50,7 +50,7 @@ Modify `tslint.json`:
 ```json
 "rules": {
   "no-unused-variable": true,
-  "max-line-length": [true, {"limit": 100, "ignore-pattern": "^import |^export {(.*?)}"}],
+  "max-line-length": [true, { "limit": 100, "ignore-pattern": "^import |^export {(.*?)} |http" }],
   "ordered-imports": [
     true,
     {
@@ -420,11 +420,7 @@ Do not export module.
 
 ## Add Core Module
 
-```
-ng g lib core --unit-test-runner=jest --prefix=app
-```
-
-Add to web-app module.
+Inside web-app.
 
 ## Add Shared Module
 
@@ -493,19 +489,21 @@ Create `apps/web-app/src/_app-theme.scss` add:
 }
 ```
 
-### Core
+### Generate
 
 Styles that are loaded only once in `apps/web-app/src/styles.scss`. Responsible for loading Angular Material and Bootstrap.
 
-- `libs/core/src/styles.scss`
-- `libs/core/src/styles/...`
+- `libs/shared/src/styles/generate.scss`
 
-### Shared
+### Mixins
 
 Styles that are not connected to any particular application. They are consumed in `apps/web-app/src/_app-theme.scss`. They do not include any styles on their own, one needs to call `shared-theme` mixin for styles to render.
 
-- `libs/shared/src/styles.scss`
-- `libs/shared/src/styles/...`
+- `libs/shared/src/styles/mixins.scss`
+
+### Variables
+
+- `libs/shared/src/styles/varaibles.scss`
 
 ## Add Models
 
