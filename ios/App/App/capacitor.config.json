@@ -1,0 +1,7 @@
+{
+  "appId": "bielik.nx.mean.starter",
+  "appName": "Nx MEAN Starter",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "dist/apps/ionic-app"
+}
