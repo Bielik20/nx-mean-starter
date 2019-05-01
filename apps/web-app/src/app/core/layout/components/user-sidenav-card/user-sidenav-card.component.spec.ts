@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserSidenavCardComponent } from './user-card.component';
+import { UserSidenavCardComponent } from './user-sidenav-card.component';
 
 describe('UserCardComponent', () => {
   let component: UserSidenavCardComponent;

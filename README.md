@@ -117,6 +117,45 @@ Omitting app-name will result in running command for the default app.
 ng g app web-app --style=scss --unit-test-runner=jest --e2e-test-runner=cypress --routing --prefix=app
 ```
 
+## Add Ionic
+
+```
+ionic init --type=angular
+
+ng g app ionic-app --style=scss --unit-test-runner=jest --e2e-test-runner=cypress --routing --prefix=app
+
+yarn add @ionic-native/core @ionic-native/http @ionic-native/splash-screen @ionic-native/status-bar @ionic/angular
+yarn add @ionic/angular-toolkit -D
+```
+
+Introduce changes from [this commit](https://github.com/Bielik20/nx-mean-starter/commit/aacbfa66dbd6465a0e0087fe6dcccd1b805619c3).
+
+### Add Capacitor iOS
+
+```
+yarn add @capacitor/cli @capacitor/core
+npm run build --prod ionic-app
+npx cap init "Nx MEAN Starter" bielik.nx.mean.starter
+```
+
+In `capacitor.config.json` replace value of `webDir` with `dist/apps/ionic-app`
+
+```
+npx cap add ios
+npx cap sync
+npx cap open ios
+```
+
+In Xcode go to `general -> signing -> team` and choose team.
+
+### Run new version on iOS simulator
+
+```
+npm run build --prod ionic-app
+npx cap sync
+npx cap open ios
+```
+
 ## Add Server
 
 ```
