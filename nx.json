@@ -64,6 +64,12 @@
     },
     "feature-card-image": {
       "tags": []
+    },
+    "ionic-app": {
+      "tags": []
+    },
+    "ionic-app-e2e": {
+      "tags": []
     }
   }
 }
