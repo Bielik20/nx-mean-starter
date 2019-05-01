@@ -1,12 +1,33 @@
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform } from '@ionic/angular';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
+
   beforeEach(async(() => {
+    statusBarSpy = {
+      styleDefault: jest.fn(),
+    };
+    splashScreenSpy = {
+      hide: jest.fn(),
+    };
+    platformReadySpy = Promise.resolve();
+    platformSpy = {
+      ready: jest.fn(() => platformReadySpy),
+    };
+
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
       declarations: [AppComponent],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      providers: [
+        { provide: StatusBar, useValue: statusBarSpy },
+        { provide: SplashScreen, useValue: splashScreenSpy },
+        { provide: Platform, useValue: platformSpy },
+      ],
     }).compileComponents();
   }));
 
@@ -16,16 +37,11 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ionic-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ionic-app');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to ionic-app!');
+  it('should initialize the app', async () => {
+    TestBed.createComponent(AppComponent);
+    expect(platformSpy.ready).toHaveBeenCalled();
+    await platformReadySpy;
+    expect(statusBarSpy.styleDefault).toHaveBeenCalled();
+    expect(splashScreenSpy.hide).toHaveBeenCalled();
   });
 });

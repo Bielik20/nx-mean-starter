@@ -625,10 +625,23 @@
             "main": "apps/ionic-app/src/main.ts",
             "polyfills": "apps/ionic-app/src/polyfills.ts",
             "tsConfig": "apps/ionic-app/tsconfig.app.json",
-            "assets": ["apps/ionic-app/src/favicon.ico", "apps/ionic-app/src/assets"],
-            "styles": ["apps/ionic-app/src/styles.scss"],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "assets": [
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              },
+              "apps/ionic-app/src/assets"
+            ],
+            "styles": [
+              {
+                "input": "apps/ionic-app/src/theme/variables.scss"
+              },
+              {
+                "input": "apps/ionic-app/src/global.scss"
+              }
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {
