@@ -743,11 +743,11 @@
   "defaultProject": "web-app",
   "schematics": {
     "@nrwl/schematics:library": {
-      "unitTestRunner": "karma",
+      "unitTestRunner": "jest",
       "framework": "angular"
     },
     "@nrwl/schematics:application": {
-      "unitTestRunner": "karma",
+      "unitTestRunner": "jest",
       "e2eTestRunner": "protractor"
     },
     "@nrwl/schematics:node-application": {
