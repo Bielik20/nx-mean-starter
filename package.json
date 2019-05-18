@@ -128,6 +128,7 @@
     "codelyzer": "~4.5.0",
     "concurrently": "^4.1.0",
     "cypress": "^3.1.0",
+    "dotenv": "6.2.0",
     "husky": "^1.1.4",
     "jasmine-marbles": "0.4.0",
     "jest": "24.1.0",
@@ -140,8 +141,7 @@
     "sass-rem": "^2.0.1",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.4",
-    "dotenv": "6.2.0"
+    "typescript": "~3.2.4"
   },
   "husky": {
     "hooks": {
