@@ -135,12 +135,14 @@
           "options": {
             "outputPath": "dist/apps/server",
             "main": "apps/server/src/main.ts",
-            "tsConfig": "apps/server/tsconfig.app.json"
+            "tsConfig": "apps/server/tsconfig.app.json",
+            "assets": ["apps/server/src/assets"]
           },
           "configurations": {
             "production": {
               "optimization": true,
               "extractLicenses": true,
+              "inspect": false,
               "fileReplacements": [
                 {
                   "replace": "apps/server/src/environments/environment.ts",
@@ -750,6 +752,36 @@
           "styleext": "scss"
         }
       }
+    },
+    "backend-nestjs": {
+      "root": "libs/backend/nestjs",
+      "sourceRoot": "libs/backend/nestjs/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/backend/nestjs/tsconfig.lib.json",
+              "libs/backend/nestjs/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/backend/nestjs/jest.config.js",
+            "tsConfig": "libs/backend/nestjs/tsconfig.spec.json"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {
@@ -771,7 +803,8 @@
       "e2eTestRunner": "protractor"
     },
     "@nrwl/schematics:node-application": {
-      "framework": "express"
+      "unitTestRunner": "jest",
+      "framework": "nestjs"
     }
   }
 }

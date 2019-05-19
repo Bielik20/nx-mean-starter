@@ -73,6 +73,9 @@
     },
     "dev": {
       "tags": []
+    },
+    "backend-nestjs": {
+      "tags": []
     }
   }
 }
