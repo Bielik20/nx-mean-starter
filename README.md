@@ -117,6 +117,13 @@ Omitting app-name will result in running command for the default app.
 ng g app web-app --style=scss --unit-test-runner=jest --e2e-test-runner=cypress --routing --prefix=app
 ```
 
+### Build optimization
+
+```
+ng build <app-name> --prod --stats-json
+npx webpack-bundle-analyzer dist/apps/<app-name>/stats.json
+```
+
 ## Add Ionic
 
 ```
@@ -129,6 +136,8 @@ yarn add @ionic/angular-toolkit -D
 ```
 
 Introduce changes from [this commit](https://github.com/Bielik20/nx-mean-starter/commit/aacbfa66dbd6465a0e0087fe6dcccd1b805619c3).
+
+Fix tests: https://stackoverflow.com/a/56198039/4746094
 
 ### Add Capacitor iOS
 

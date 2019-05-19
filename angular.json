@@ -730,6 +730,26 @@
           }
         }
       }
+    },
+    "dev": {
+      "root": "libs/dev",
+      "sourceRoot": "libs/dev/src",
+      "projectType": "library",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/dev/tsconfig.lib.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/schematics:component": {
+          "styleext": "scss"
+        }
+      }
     }
   },
   "cli": {

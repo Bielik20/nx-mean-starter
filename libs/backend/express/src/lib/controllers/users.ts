@@ -1,5 +1,6 @@
 import { UserContext } from '@nx-mean-starter/backend/schemas';
-import { generateUsers, User } from '@nx-mean-starter/models';
+import { generateUsers } from '@nx-mean-starter/dev';
+import { User } from '@nx-mean-starter/models';
 import { queryToParams } from '@nx-mean-starter/shared';
 import { Request, Response, Router } from 'express';
 
