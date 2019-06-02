@@ -2,8 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
-    "outDir": "../../dist/out-tsc/apps/ionic-app/",
-    "module": "commonjs",
+    "outDir": "../../dist/out-tsc",
     "types": ["jest", "node"]
   },
   "files": ["src/test-setup.ts"],

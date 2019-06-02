@@ -10,7 +10,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { BehaviorSubject, combineLatest, Observable, of, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 
 @Component({
@@ -23,7 +23,7 @@ import { catchError, finalize } from 'rxjs/operators';
 export class CardImageUploadComponent implements OnInit {
   @Input() pictureUrl: string;
   @Output() pictureUrlChange = new EventEmitter<string>();
-  @ViewChild('fileInput') fileInput: ElementRef;
+  @ViewChild('fileInput', { static: true }) fileInput: ElementRef;
 
   isPending$ = new BehaviorSubject<boolean>(false);
   snapshot$: Observable<any>;

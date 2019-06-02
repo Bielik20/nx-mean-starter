@@ -7,7 +7,7 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2015",
     "typeRoots": ["node_modules/@types", "@types"],
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
@@ -32,7 +32,8 @@
       "@nx-mean-starter/dev": ["libs/dev/src/index.ts"],
       "@nx-mean-starter/backend/nestjs": ["libs/backend/nestjs/src/index.ts"]
     },
-    "module": "es2015"
+    "module": "esnext",
+    "rootDir": "."
   },
   "exclude": ["node_modules", "tmp", "@types"]
 }

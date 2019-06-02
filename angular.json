@@ -87,7 +87,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/web-app/jest.config.js",
             "tsConfig": "apps/web-app/tsconfig.spec.json",
@@ -102,7 +102,7 @@
       "prefix": "",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/builders:cypress",
+          "builder": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/web-app-e2e/cypress.json",
             "tsConfig": "apps/web-app-e2e/tsconfig.e2e.json",
@@ -131,7 +131,7 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@nrwl/builders:node-build",
+          "builder": "@nrwl/node:build",
           "options": {
             "outputPath": "dist/apps/server",
             "main": "apps/server/src/main.ts",
@@ -153,7 +153,7 @@
           }
         },
         "serve": {
-          "builder": "@nrwl/builders:node-execute",
+          "builder": "@nrwl/node:execute",
           "options": {
             "buildTarget": "server:build"
           }
@@ -166,7 +166,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/server/jest.config.js",
             "tsConfig": "apps/server/tsconfig.spec.json"
@@ -203,7 +203,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/shared/jest.config.js",
             "tsConfig": "libs/shared/tsconfig.spec.json",
@@ -226,7 +226,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/models/jest.config.js",
             "tsConfig": "libs/models/tsconfig.spec.json"
@@ -248,7 +248,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/state/root/jest.config.js",
             "tsConfig": "libs/state/root/tsconfig.spec.json",
@@ -274,7 +274,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/state/router/jest.config.js",
             "tsConfig": "libs/state/router/tsconfig.spec.json",
@@ -297,7 +297,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/state/auth/jest.config.js",
             "tsConfig": "libs/state/auth/tsconfig.spec.json",
@@ -323,7 +323,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/backend/schemas/jest.config.js",
             "tsConfig": "libs/backend/schemas/tsconfig.spec.json"
@@ -348,7 +348,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/state/users/jest.config.js",
             "tsConfig": "libs/state/users/tsconfig.spec.json",
@@ -374,7 +374,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/navigation/users/jest.config.js",
             "tsConfig": "libs/navigation/users/tsconfig.spec.json",
@@ -400,7 +400,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/feature/auth/jest.config.js",
             "tsConfig": "libs/feature/auth/tsconfig.spec.json",
@@ -426,7 +426,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/state/layout/jest.config.js",
             "tsConfig": "libs/state/layout/tsconfig.spec.json",
@@ -443,7 +443,7 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@nrwl/builders:node-build",
+          "builder": "@nrwl/node:build",
           "options": {
             "outputPath": "dist/apps/functions",
             "main": "apps/functions/src/main.ts",
@@ -465,7 +465,7 @@
           }
         },
         "serve": {
-          "builder": "@nrwl/builders:node-execute",
+          "builder": "@nrwl/node:execute",
           "options": {
             "buildTarget": "functions:build"
           }
@@ -478,7 +478,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/functions/jest.config.js",
             "tsConfig": "apps/functions/tsconfig.spec.json"
@@ -503,7 +503,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/backend/express/jest.config.js",
             "tsConfig": "libs/backend/express/tsconfig.spec.json"
@@ -533,7 +533,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/backend/core/jest.config.js",
             "tsConfig": "libs/backend/core/tsconfig.spec.json"
@@ -563,7 +563,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/feature/card-image-upload/jest.config.js",
             "tsConfig": "libs/feature/card-image-upload/tsconfig.spec.json",
@@ -594,7 +594,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/feature/card-image/jest.config.js",
             "tsConfig": "libs/feature/card-image/tsconfig.spec.json",
@@ -697,7 +697,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "apps/ionic-app/jest.config.js",
             "tsConfig": "apps/ionic-app/tsconfig.spec.json",
@@ -712,7 +712,7 @@
       "prefix": "",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/builders:cypress",
+          "builder": "@nrwl/cypress:cypress",
           "options": {
             "cypressConfig": "apps/ionic-app-e2e/cypress.json",
             "tsConfig": "apps/ionic-app-e2e/tsconfig.e2e.json",
@@ -770,7 +770,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/jest:jest",
           "options": {
             "jestConfig": "libs/backend/nestjs/jest.config.js",
             "tsConfig": "libs/backend/nestjs/tsconfig.spec.json"
@@ -789,7 +789,7 @@
       "typescriptMismatch": false,
       "versionMismatch": false
     },
-    "defaultCollection": "@nrwl/schematics",
+    "defaultCollection": "@nrwl/angular",
     "packageManager": "yarn"
   },
   "defaultProject": "web-app",

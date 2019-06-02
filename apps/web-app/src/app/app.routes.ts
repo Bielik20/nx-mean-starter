@@ -5,6 +5,7 @@ export const APP_ROUTES: Routes = [
   { path: '', component: HomePageComponent },
   {
     path: 'users',
-    loadChildren: '@nx-mean-starter/navigation/users#NavigationUsersModule',
+    loadChildren: () =>
+      import('@nx-mean-starter/navigation/users').then(m => m.NavigationUsersModule),
   },
 ];

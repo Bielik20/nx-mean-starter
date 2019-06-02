@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { NxModule } from '@nrwl/nx';
+import { NxModule } from '@nrwl/angular';
 import { SharedModule } from '@nx-mean-starter/shared';
 import { StateRootModule } from '@nx-mean-starter/state/root';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';

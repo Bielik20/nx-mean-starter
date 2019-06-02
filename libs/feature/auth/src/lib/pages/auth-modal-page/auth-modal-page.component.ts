@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { AuthState } from '@nx-mean-starter/state/auth';
 
