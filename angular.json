@@ -93,24 +93,6 @@
             "tsConfig": "apps/web-app/tsconfig.spec.json",
             "setupFile": "apps/web-app/src/test-setup.ts"
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/apps/web-app-server",
-            "main": "apps/web-app/src/main.server.ts",
-            "tsConfig": "apps/web-app/tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/web-app/src/environments/environment.ts",
-                  "with": "apps/web-app/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
         }
       }
     },

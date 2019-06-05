@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
-import { BrowserModule, BrowserTransferStateModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -21,9 +21,8 @@ export function appFactoryName() {
 @NgModule({
   declarations: [AppComponent, HomePageComponent],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     BrowserAnimationsModule,
-    BrowserTransferStateModule,
     NxModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES, { initialNavigation: 'enabled' }),
     SharedModule.forRoot(),
