@@ -1,8 +1,8 @@
 @mixin scrollbar($theme) {
   $accent: map-get($theme, accent);
 
-  mat-sidenav,
-  mat-sidenav-content,
+  mat-drawer,
+  mat-drawer-content,
   cdk-virtual-scroll-viewport,
   .infinite-scroll-container {
     &::-webkit-scrollbar {

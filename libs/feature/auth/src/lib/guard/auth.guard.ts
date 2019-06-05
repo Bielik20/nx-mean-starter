@@ -31,9 +31,7 @@ export class AuthGuard implements CanActivate {
           return of(true);
         }
         if (navigationId === 1) {
-          const path = next.url[0].path;
-          const parameters = next.url[0].parameters;
-          this.redirectHomeThenReroute(path, parameters);
+          this.redirectHomeThenReroute(state.url);
           return of(false);
         }
         return this.openAndListenAuthModal();
@@ -41,9 +39,9 @@ export class AuthGuard implements CanActivate {
     );
   }
 
-  private async redirectHomeThenReroute(path: string, parameters: {}) {
+  private async redirectHomeThenReroute(url: string) {
     await this.router.navigate(['/']);
-    this.router.navigate([path, parameters]);
+    this.router.navigateByUrl(url);
   }
 
   private openAndListenAuthModal() {
