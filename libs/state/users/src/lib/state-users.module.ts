@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { UniversalInterceptor } from '@nx-mean-starter/shared';
 import { AuthInterceptor, AuthState } from '@nx-mean-starter/state/auth';
 import { EntitiesEffects } from './+state/entities/effects';
 import { PaginationEffects } from './+state/pagination/effects';
@@ -15,6 +16,6 @@ import { reducerProvider, reducerToken } from './+state/reducer';
     }),
     EffectsModule.forFeature([EntitiesEffects, PaginationEffects]),
   ],
-  providers: [reducerProvider, AuthInterceptor.provider],
+  providers: [reducerProvider, AuthInterceptor.provider, UniversalInterceptor.provider],
 })
 export class StateUsersModule {}

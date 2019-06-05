@@ -3,4 +3,5 @@ export * from './lib/animations';
 export * from './lib/rxjs';
 export * from './lib/utils';
 export * from './lib/local-storage/local-storage.service';
+export * from './lib/universal-interceptor/universal.interceptor';
 export * from './lib/validators/custom-validators.service';
