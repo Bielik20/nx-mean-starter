@@ -23,7 +23,7 @@
   @include custom-components-theme($dark-theme, $mat-config);
 }
 
-//.light-theme {
-//  @include angular-material-theme($dark-theme);
-//  @include custom-components-theme($dark-theme, $mat-config);
-//}
+.light-theme {
+  @include angular-material-theme($light-theme);
+  @include custom-components-theme($light-theme, $mat-config);
+}
