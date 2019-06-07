@@ -29,10 +29,11 @@ $body-color: map-get($mat-foreground, text) !default;
 // Links
 // ###################################
 
-$link-color: map-get($mat-light-blue, 800) !default;
+//$link-color: map-get($mat-light-blue, 800) !default;
+$link-hover-decoration: none !default;
+$label-margin-bottom: 0 !default;
 // $link-decoration: none !default;
 // $link-hover-color: darken($link-color, 15%) !default;
-// $link-hover-decoration: underline !default;
 // Darken percentage$ for links with `.text-*` class (e.g. `.text-success`)
 // $emphasized-link-hover-darken-percentage$: 15% !default;
 
