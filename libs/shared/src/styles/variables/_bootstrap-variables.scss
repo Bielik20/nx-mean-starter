@@ -50,10 +50,10 @@ $border-radius-sm: 0.2rem !default;
 // Fonts
 // ###################################
 
-$font-family-sans-serif: mat-font-family($config) !default;
-$font-family-monospace: mat-font-family($config) !default;
+$font-family-sans-serif: mat-font-family($mat-config) !default;
+$font-family-monospace: mat-font-family($mat-config) !default;
 $font-family-base: $font-family-sans-serif !default;
-$font-size-base: rem(mat-font-size($config, body-1)) !default;
+$font-size-base: rem(mat-font-size($mat-config, body-1)) !default;
 
 // ###################################
 // Jumbotron

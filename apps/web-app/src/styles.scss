@@ -1,4 +1,29 @@
-@import 'libs/shared/src/styles/generate';
-@import './app-theme';
+@import 'libs/shared/src/styles/variables';
 
-@include app-theme($theme, $config);
+@import 'libs/shared/src/styles/theme';
+@import 'apps/web-app/src/app/core/layout/components/navbar/theme';
+@import 'apps/web-app/src/app/core/layout/components/user-sidenav-card/theme';
+
+@import 'libs/shared/src/styles/bootstrap';
+@include mat-core();
+
+@mixin custom-components-theme($theme, $config) {
+  @include shared-theme($theme, $config);
+  @include navbar-theme($theme, $config);
+  @include user-sidenav-card-theme($theme, $config);
+}
+
+.theme-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+  @include custom-components-theme($dark-theme, $mat-config);
+}
+
+//.light-theme {
+//  @include angular-material-theme($dark-theme);
+//  @include custom-components-theme($dark-theme, $mat-config);
+//}
