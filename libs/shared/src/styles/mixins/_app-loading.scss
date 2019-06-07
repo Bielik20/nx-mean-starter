@@ -1,13 +1,26 @@
 @mixin app-loading($theme) {
   $primary: map-get($theme, primary);
 
+  body,
+  html {
+    height: 100%;
+  }
+
   .app-loading {
-    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100%;
+
+    .logo {
+      width: 64px;
+      height: 64px;
+      background: url('https://cdn-images-1.medium.com/fit/c/50/50/1*Vch0tzFUL1onazOtX04v5Q.png')
+        center center no-repeat;
+      background-size: cover;
+    }
   }
   .app-loading .spinner {
     height: 200px;

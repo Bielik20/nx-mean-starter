@@ -9,7 +9,7 @@
 @import './mixins/scrollbar';
 
 @mixin shared-theme($theme, $config) {
-  @include general();
+  @include general($theme);
   @include material-fixes();
   @include gaps(1rem, 5);
   @include app-loading($theme);

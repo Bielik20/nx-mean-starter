@@ -1,4 +1,10 @@
-@mixin general() {
+@import '~@angular/material/theming';
+
+@mixin general($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+
   pre {
     color: inherit;
   }
@@ -17,9 +23,19 @@
     height: 100%;
   }
 
-  :focus {
-    outline: none !important;
-    -moz-outline-style: none;
+  * {
+    &:active,
+    :focus {
+      outline: none !important;
+    }
+  }
+
+  a {
+    color: mat-color($foreground, text);
+
+    &:hover {
+      color: mat-color($accent);
+    }
   }
 
   a.no-style:hover,
