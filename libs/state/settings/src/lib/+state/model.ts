@@ -1,15 +1,9 @@
-export const NIGHT_MODE_THEME = 'BLACK-THEME';
-
-export type Language = 'en' | 'sk' | 'de' | 'fr' | 'es' | 'pt-br' | 'he';
+export type ApplicationTheme = 'dark-theme' | 'light-theme';
 
 export interface State {
-  language: string;
-  theme: string;
-  autoNightMode: boolean;
-  nightTheme: string;
+  theme: ApplicationTheme;
   stickyHeader: boolean;
   pageAnimations: boolean;
   pageAnimationsDisabled: boolean;
   elementsAnimations: boolean;
-  hour: number;
 }
