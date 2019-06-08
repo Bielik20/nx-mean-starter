@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { StateAuthModule } from '@nx-mean-starter/state/auth';
 import { StateLayoutModule } from '@nx-mean-starter/state/layout';
 import { StateRouterModule } from '@nx-mean-starter/state/router';
+import { StateSettingsModule } from '@nx-mean-starter/state/settings';
 import { StateUsersModule } from '@nx-mean-starter/state/users';
 import { reducerProvider, reducerToken } from './+state/reducer';
 import { SelectEffects } from './+state/select.effects';
@@ -18,6 +19,7 @@ import { SelectEffects } from './+state/select.effects';
     StateRouterModule,
     StateUsersModule,
     StateLayoutModule,
+    StateSettingsModule,
   ],
   providers: [reducerProvider],
 })

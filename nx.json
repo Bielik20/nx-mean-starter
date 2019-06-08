@@ -76,6 +76,9 @@
     },
     "backend-nestjs": {
       "tags": []
+    },
+    "state-settings": {
+      "tags": []
     }
   }
 }
