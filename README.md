@@ -425,8 +425,6 @@ Modify `package.json` script:
 
 ### Add Firebase Server Admin SDK
 
-Run `git update-index --skip-worktree libs/backend/core/src/lib/environment/firebase-adminsdk.ts` to stop tracking changes to that file.
-
 1. Create firebase project at https://console.firebase.google.com
 2. Go to authentication tab and configure authentication.
 3. (optional) Go to database tab and configure cloud firestore.
@@ -434,9 +432,8 @@ Run `git update-index --skip-worktree libs/backend/core/src/lib/environment/fire
 
    1. Navigate to the Service Accounts tab.
    2. Generate new private key
-   3. Save as `firebase-admindsk.json`
-   4. Copy content of `firebase-admindsk.json`
-   5. Modify `libs/backend/core/src/lib/environment/firebase-admindsk.ts`
+   3. Copy content of the key
+   4. Modify paste it to `.env` -> `FIREBASE_ADMIN`
 
 ### Add Firebase Client SDK
 
