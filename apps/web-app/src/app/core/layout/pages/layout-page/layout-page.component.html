@@ -5,9 +5,12 @@
     [showSidenav]="showSidenav$ | async"
     (openedChangeSidenav)="openedChangeSidenav($event)"
   >
-    <app-sidenav-page sidenav></app-sidenav-page>
-    <main [@routeAnimations]="o.activatedRouteData" class="animation-container">
-      <router-outlet #o="outlet"></router-outlet>
-    </main>
+    <app-sidenav-page drawer></app-sidenav-page>
+    <div drawer-content class="wrapper">
+      <main [@routeAnimations]="o.activatedRouteData" class="content">
+        <router-outlet #o="outlet"></router-outlet>
+      </main>
+      <app-footer></app-footer>
+    </div>
   </app-layout>
 </div>

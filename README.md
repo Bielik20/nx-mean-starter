@@ -435,6 +435,8 @@ Modify `package.json` script:
    3. Copy content of the key
    4. Modify paste it to `.env` -> `FIREBASE_ADMIN`
 
+When running production build locally use: `node -r dotenv/config dist/apps/server/main.js`
+
 ### Add Firebase Client SDK
 
 1. Create firebase project at https://console.firebase.google.com
