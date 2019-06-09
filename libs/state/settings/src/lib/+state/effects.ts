@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { INIT, select, Store } from '@ngrx/store';
-import { LocalStorageService } from '@nx-mean-starter/shared';
+import { AnimationsService, LocalStorageService } from '@nx-mean-starter/shared';
 import { merge } from 'rxjs';
 import { tap, withLatestFrom } from 'rxjs/operators';
 import { SettingsActions, SettingsActionTypes } from './actions';
@@ -19,7 +19,7 @@ export class Effects {
     private store: Store<State>,
     private router: Router,
     private overlayContainer: OverlayContainer,
-    // private animationsService: AnimationsService,
+    private animationsService: AnimationsService,
     private localStorageService: LocalStorageService,
   ) {}
 
@@ -36,24 +36,24 @@ export class Effects {
     tap(([action, settings]) => this.localStorageService.setItem(SETTINGS_KEY, settings)),
   );
 
-  // @Effect({ dispatch: false })
-  // updateRouteAnimationType = merge(
-  //   INIT,
-  //   this.actions$.pipe(
-  //     ofType(
-  //       SettingsActionTypes.CHANGE_ANIMATIONS_ELEMENTS,
-  //       SettingsActionTypes.CHANGE_ANIMATIONS_PAGE,
-  //     ),
-  //   ),
-  // ).pipe(
-  //   withLatestFrom(this.store.pipe(select(getState))),
-  //   tap(([action, settings]) =>
-  //     this.animationsService.updateRouteAnimationType(
-  //       settings.pageAnimations,
-  //       settings.elementsAnimations,
-  //     ),
-  //   ),
-  // );
+  @Effect({ dispatch: false })
+  updateRouteAnimationType = merge(
+    INIT,
+    this.actions$.pipe(
+      ofType(
+        SettingsActionTypes.CHANGE_ANIMATIONS_ELEMENTS,
+        SettingsActionTypes.CHANGE_ANIMATIONS_PAGE,
+      ),
+    ),
+  ).pipe(
+    withLatestFrom(this.store.pipe(select(getState))),
+    tap(([action, settings]) =>
+      this.animationsService.updateRouteAnimationType(
+        settings.pageAnimations,
+        settings.elementsAnimations,
+      ),
+    ),
+  );
 
   @Effect({ dispatch: false })
   updateTheme = merge(INIT, this.actions$.pipe(ofType(SettingsActionTypes.CHANGE_THEME))).pipe(

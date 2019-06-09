@@ -6,7 +6,7 @@
     (openedChangeSidenav)="openedChangeSidenav($event)"
   >
     <app-sidenav-page sidenav></app-sidenav-page>
-    <main [@fadeRouter]="o.activatedRouteData" class="animation-container">
+    <main [@routeAnimations]="o.activatedRouteData" class="animation-container">
       <router-outlet #o="outlet"></router-outlet>
     </main>
   </app-layout>

@@ -1,4 +1,4 @@
-<div #viewPort class="infinite-scroll-container" *ngIf="(users$ | async) as people">
+<div #viewPort class="infinite-scroll-container" *ngIf="users$ | async as people">
   <article class="responsive-content">
     <div
       class="g-4"
@@ -9,11 +9,7 @@
       fxLayout="row wrap"
       fxLayoutAlign="space-around stretch"
     >
-      <div
-        *ngFor="let user of people; trackBy: trackByIdx"
-        class="ge animated flipInX"
-        fxFlex="1 0 300px"
-      >
+      <div *ngFor="let user of people; trackBy: trackByIdx" class="ge" fxFlex="1 0 300px">
         <a class="no-style" [routerLink]="['/users', user._id]">
           <app-user-card [user]="user"></app-user-card>
         </a>

@@ -1,6 +1,5 @@
 @import './mixins/app-loading';
 @import './mixins/article';
-@import './mixins/flipInX';
 @import './mixins/gaps';
 @import './mixins/general';
 @import './mixins/material-fixes';
@@ -17,5 +16,4 @@
   @include article();
   @include overlay();
   @include scrollbar($theme);
-  @include flipInX();
 }
