@@ -1,10 +1,11 @@
-<div #viewPort class="infinite-scroll-container" *ngIf="users$ | async as people">
+<div *ngIf="users$ | async as people" style="height: 100%">
   <article class="responsive-content">
     <div
       class="g-4"
       infiniteScroll
       [scrollWindow]="false"
-      [infiniteScrollContainer]="viewPort"
+      [fromRoot]="true"
+      [infiniteScrollContainer]="'mat-drawer-content'"
       (scrolled)="nextBatch($event, people.length)"
       fxLayout="row wrap"
       fxLayoutAlign="space-around stretch"

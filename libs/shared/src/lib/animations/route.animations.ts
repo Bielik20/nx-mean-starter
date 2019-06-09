@@ -15,7 +15,7 @@ const STEPS_ALL: any[] = [
       ':leave > *',
       [
         style({ transform: 'translateY(0%)', opacity: 1 }),
-        animate('0.2s ease-in-out', style({ transform: 'translateY(-3%)', opacity: 0 })),
+        animate('0.2s ease-in-out', style({ transform: 'translateY(-20px)', opacity: 0 })),
         style({ position: 'fixed' }),
       ],
       { optional: true },
@@ -24,7 +24,7 @@ const STEPS_ALL: any[] = [
       ':enter > *',
       [
         style({
-          transform: 'translateY(-3%)',
+          transform: 'translateY(-20px)',
           opacity: 0,
           position: 'static',
         }),

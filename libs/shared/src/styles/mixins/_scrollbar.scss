@@ -3,8 +3,7 @@
 
   mat-drawer,
   mat-drawer-content,
-  cdk-virtual-scroll-viewport,
-  .infinite-scroll-container {
+  cdk-virtual-scroll-viewport {
     &::-webkit-scrollbar {
       width: 0.5em;
     }
@@ -18,10 +17,5 @@
     }
 
     overflow-x: hidden !important;
-  }
-
-  .infinite-scroll-container {
-    height: 100%;
-    overflow: scroll;
   }
 }
