@@ -8,24 +8,27 @@
 @import 'libs/shared/src/styles/bootstrap';
 @include mat-core();
 
-@mixin custom-components-theme($theme, $config) {
-  @include shared-theme($theme, $config);
-  @include navbar-theme($theme, $config);
-  @include footer-theme($theme);
-  @include user-sidenav-card-theme($theme, $config);
-}
-
-.theme-wrapper {
+// Needed for shared-core styles to take affect over angular material themes
+div.theme-wrapper {
   height: 100%;
   width: 100%;
+
+  @include shared-core();
+}
+
+@mixin custom-components-theme($theme) {
+  @include shared-theme($theme);
+  @include navbar-theme($theme);
+  @include footer-theme($theme);
+  @include user-sidenav-card-theme($theme);
 }
 
 .dark-theme {
   @include angular-material-theme($dark-theme);
-  @include custom-components-theme($dark-theme, $mat-config);
+  @include custom-components-theme($dark-theme);
 }
 
 .light-theme {
   @include angular-material-theme($light-theme);
-  @include custom-components-theme($light-theme, $mat-config);
+  @include custom-components-theme($light-theme);
 }

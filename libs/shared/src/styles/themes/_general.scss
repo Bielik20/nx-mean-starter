@@ -1,10 +1,20 @@
 @import '~@angular/material/theming';
 
-@mixin general($theme) {
+@mixin general-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
 
+  a {
+    color: mat-color($foreground, text);
+
+    &:hover {
+      color: mat-color($accent);
+    }
+  }
+}
+
+@mixin general-core() {
   pre {
     color: inherit;
   }
@@ -18,23 +28,14 @@
   }
 
   .animation-container {
-    //position: absolute;
-    width: 100%;
     height: 100%;
+    width: 100%;
   }
 
   * {
     &:active,
     :focus {
       outline: none !important;
-    }
-  }
-
-  a {
-    color: mat-color($foreground, text);
-
-    &:hover {
-      color: mat-color($accent);
     }
   }
 

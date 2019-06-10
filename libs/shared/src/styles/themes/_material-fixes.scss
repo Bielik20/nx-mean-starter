@@ -10,7 +10,7 @@
   // Hover Shadow
   @for $i from 0 through 24 {
     .mat-hover-elevation-z#{$i} {
-      transition: box-shadow 0.25s;
+      transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     @media (hover: hover) {

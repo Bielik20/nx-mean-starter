@@ -1,19 +1,22 @@
-@import './mixins/app-loading';
-@import './mixins/article';
-@import './mixins/gaps';
-@import './mixins/general';
-@import './mixins/material-fixes';
-@import './mixins/overlay';
-@import './mixins/responsive-card';
-@import './mixins/scrollbar';
+@import 'themes/article';
+@import 'themes/gaps';
+@import 'themes/general';
+@import 'themes/material-fixes';
+@import 'themes/overlay';
+@import 'themes/responsive-card';
+@import 'themes/scrollbar';
 
-@mixin shared-theme($theme, $config) {
-  @include general($theme);
+@mixin shared-theme($theme) {
+  @include general-theme($theme);
+  @include scrollbar-theme($theme);
+}
+
+@mixin shared-core() {
+  @include general-core();
+  @include scrollbar-core();
+  @include overlay();
+  @include article();
+  @include responsive-card();
   @include material-fixes();
   @include gaps(1rem, 5);
-  @include app-loading($theme);
-  @include responsive-card();
-  @include article();
-  @include overlay();
-  @include scrollbar($theme);
 }
