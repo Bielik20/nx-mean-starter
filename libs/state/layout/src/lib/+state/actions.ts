@@ -23,10 +23,10 @@ export class ChangeTheme implements Action {
   constructor(readonly payload: { theme: ApplicationTheme }) {}
 }
 
-export class ChangeStickyHeader implements Action {
-  readonly type = '[Settings] Change Sticky Header';
+export class ChangeAnimationsElements implements Action {
+  readonly type = '[Settings] Change Animations Elements';
 
-  constructor(readonly payload: { stickyHeader: boolean }) {}
+  constructor(readonly payload: { elementsAnimations: boolean }) {}
 }
 
 export class ChangeAnimationsPage implements Action {
@@ -39,10 +39,4 @@ export class ChangeAnimationsPageDisabled implements Action {
   readonly type = '[Settings] Change Animations Page Disabled';
 
   constructor(readonly payload: { pageAnimationsDisabled: boolean }) {}
-}
-
-export class ChangeAnimationsElements implements Action {
-  readonly type = '[Settings] Change Animations Elements';
-
-  constructor(readonly payload: { elementsAnimations: boolean }) {}
 }

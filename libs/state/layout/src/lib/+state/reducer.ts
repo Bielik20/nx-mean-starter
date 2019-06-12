@@ -3,7 +3,6 @@ import {
   ChangeAnimationsElements,
   ChangeAnimationsPage,
   ChangeAnimationsPageDisabled,
-  ChangeStickyHeader,
   ChangeTheme,
   SetIsMobile,
   SetSidenav,
@@ -40,10 +39,10 @@ export class StateStore {
     };
   }
 
-  @Action(ChangeTheme, ChangeStickyHeader, ChangeAnimationsPage, ChangeAnimationsElements)
+  @Action(ChangeTheme, ChangeAnimationsElements, ChangeAnimationsPage)
   setTheme(
     state: State,
-    action: ChangeTheme | ChangeStickyHeader | ChangeAnimationsPage | ChangeAnimationsElements,
+    action: ChangeTheme | ChangeAnimationsElements | ChangeAnimationsPage,
   ): State {
     return { ...state, ...action.payload };
   }

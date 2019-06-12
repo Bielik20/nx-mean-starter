@@ -13,11 +13,6 @@ export const getShowSidenav = createSelector(
   (state: State) => state.showSidenav,
 );
 
-export const getStickyHeader = createSelector(
-  getState,
-  (state: State) => state.stickyHeader,
-);
-
 export const getTheme = createSelector(
   getState,
   settings => settings.theme,
