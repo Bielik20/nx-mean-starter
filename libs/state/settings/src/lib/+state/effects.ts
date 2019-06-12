@@ -43,6 +43,7 @@ export class Effects {
       ofType(
         SettingsActionTypes.CHANGE_ANIMATIONS_ELEMENTS,
         SettingsActionTypes.CHANGE_ANIMATIONS_PAGE,
+        SettingsActionTypes.CHANGE_ANIMATIONS_PAGE_DISABLED,
       ),
     ),
   ).pipe(
