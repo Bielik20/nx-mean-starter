@@ -12,11 +12,22 @@
       color: mat-color($accent);
     }
   }
+
+  code {
+    color: mat-color($accent, lighter-contrast);
+    background-color: mat-color($accent, lighter);
+  }
 }
 
 @mixin general-core() {
   pre {
     color: inherit;
+  }
+
+  code {
+    white-space: nowrap;
+    border-radius: 10px;
+    padding: 0 8px 1px 8px;
   }
 
   .flex {
