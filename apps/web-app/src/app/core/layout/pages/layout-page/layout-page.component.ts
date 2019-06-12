@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { routeAnimations } from '@nx-mean-starter/shared';
 import { LayoutState } from '@nx-mean-starter/state/layout';
-import { SettingsState } from '@nx-mean-starter/state/settings';
 import Browser from 'browser-detect';
 import { Observable } from 'rxjs';
 
@@ -15,15 +14,15 @@ import { Observable } from 'rxjs';
 export class LayoutPageComponent implements OnInit {
   isMobile$: Observable<boolean>;
   showSidenav$: Observable<boolean>;
-  theme$: Observable<SettingsState.ApplicationTheme>;
+  theme$: Observable<LayoutState.ApplicationTheme>;
   private browser = Browser();
 
-  constructor(private store: Store<LayoutState.State | SettingsState.State>) {}
+  constructor(private store: Store<LayoutState.State>) {}
 
   ngOnInit() {
     this.isMobile$ = this.store.select(LayoutState.getIsMobile);
     this.showSidenav$ = this.store.select(LayoutState.getShowSidenav);
-    this.theme$ = this.store.select(SettingsState.getTheme);
+    this.theme$ = this.store.select(LayoutState.getTheme);
 
     this.setAnimations();
   }
@@ -31,7 +30,7 @@ export class LayoutPageComponent implements OnInit {
   private setAnimations() {
     if (this.isIEorEdgeOrSafari()) {
       this.store.dispatch(
-        new SettingsState.ActionSettingsChangeAnimationsPageDisabled({
+        new LayoutState.ChangeAnimationsPageDisabled({
           pageAnimationsDisabled: true,
         }),
       );

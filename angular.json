@@ -782,37 +782,6 @@
           "styleext": "scss"
         }
       }
-    },
-    "state-settings": {
-      "projectType": "library",
-      "root": "libs/state/settings",
-      "sourceRoot": "libs/state/settings/src",
-      "prefix": "app",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/state/settings/tsconfig.lib.json",
-              "libs/state/settings/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/state/settings/jest.config.js",
-            "tsConfig": "libs/state/settings/tsconfig.spec.json",
-            "setupFile": "libs/state/settings/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "styleext": "scss"
-        }
-      }
     }
   },
   "cli": {
