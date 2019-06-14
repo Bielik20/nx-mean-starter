@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FeatureAuthModule } from '@nx-mean-starter/feature/auth';
 import { SharedModule } from '@nx-mean-starter/shared';
@@ -23,4 +23,11 @@ import { LayoutPageComponent, SidenavPageComponent } from './layout/pages';
   ],
   exports: [LayoutPageComponent],
 })
-export class CoreModule {}
+export class CoreModule {
+  /* make sure CoreModule is imported only by one NgModule the AppModule */
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+    if (parentModule) {
+      throw new Error('CoreModule is already loaded. Import only in AppModule');
+    }
+  }
+}
