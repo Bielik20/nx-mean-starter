@@ -6,7 +6,7 @@
 
     <a *ngIf="(isAuthUser$ | async)" [routerLink]="['./edit']" mat-button color="accent">Edit</a>
 
-<pre [ngClass]="routeAnimationsElements">
+<pre>
 {{ user$ | async | json }}
 </pre>
   </mat-card>

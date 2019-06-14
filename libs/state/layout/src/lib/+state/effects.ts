@@ -20,7 +20,7 @@ import {
 import { State } from './model';
 import { getIsMobile, getState, getTheme } from './selectors';
 
-export const SETTINGS_KEY = 'SETTINGS';
+export const SETTINGS_KEY = 'LAYOUT';
 
 @Injectable()
 export class Effects {
