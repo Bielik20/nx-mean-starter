@@ -31,12 +31,13 @@ $body-color: map-get($mat-foreground, text) !default;
 
 $grid-columns: 12;
 $grid-gutter-width: 30px;
+// source: https://material.io/design/layout/responsive-layout-grid.html#breakpoints
 $grid-breakpoints: (
   xs: 0,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
+  sm: 600px,
+  md: 720px,
+  lg: 960px,
+  xl: 1280px,
 );
 
 // ###################################
