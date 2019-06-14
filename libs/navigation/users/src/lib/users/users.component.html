@@ -1,16 +1,14 @@
 <div *ngIf="users$ | async as people" style="height: 100%">
   <article class="responsive-content">
     <div
-      class="g-4"
+      class="g-4 flex-grid"
       infiniteScroll
       [scrollWindow]="false"
       [fromRoot]="true"
       [infiniteScrollContainer]="'mat-drawer-content'"
       (scrolled)="nextBatch($event, people.length)"
-      fxLayout="row wrap"
-      fxLayoutAlign="space-around stretch"
     >
-      <div *ngFor="let user of people; trackBy: trackByIdx" class="ge" fxFlex="1 0 300px">
+      <div *ngFor="let user of people; trackBy: trackByIdx" class="ge flex-element">
         <a class="no-style" [routerLink]="['/users', user._id]">
           <app-user-card [user]="user"></app-user-card>
         </a>
