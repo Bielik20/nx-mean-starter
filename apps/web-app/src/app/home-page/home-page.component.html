@@ -7,7 +7,7 @@
       alt="logo"
     />
 
-    <div *ngIf="settings$ | async as settings" class="my-5 g-2" fxLayout="row" fxLayout.sm="column">
+    <div *ngIf="settings$ | async as settings" class="my-5 g-2" fxLayout="row" fxLayout.lt-md="column">
       <div fxFlex="1 0 50%" class="ge" [ngClass]="routeAnimationsElements">
         <h2>THEMES</h2>
         <div class="icon-form-field">

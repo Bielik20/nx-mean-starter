@@ -2,6 +2,7 @@
 @import 'themes/gaps';
 @import 'themes/general';
 @import 'themes/material-fixes';
+@import 'themes/notifications';
 @import 'themes/overlay';
 @import 'themes/responsive-card';
 @import 'themes/scrollbar';
@@ -9,6 +10,7 @@
 @mixin shared-theme($theme) {
   @include general-theme($theme);
   @include scrollbar-theme($theme);
+  @include notification-theme($theme);
 }
 
 @mixin shared-core() {

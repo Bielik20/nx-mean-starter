@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { environment } from '@env-web-app/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/angular';
-import { SharedModule } from '@nx-mean-starter/shared';
+import { AppErrorHandler, SharedModule } from '@nx-mean-starter/shared';
 import { StateRootModule } from '@nx-mean-starter/state/root';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { AppComponent } from './app.component';
@@ -37,6 +37,7 @@ export function appFactoryName() {
       enableFirestoreSync: false,
     }),
   ],
+  providers: [AppErrorHandler.provider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
