@@ -1,0 +1,16 @@
+@import 'libs/shared/src/styles/variables';
+
+.footer {
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.footer-logo {
+  height: 50px;
+}
+
+@media #{$mat-lt-sm} {
+  .footer {
+    margin-top: 0;
+  }
+}

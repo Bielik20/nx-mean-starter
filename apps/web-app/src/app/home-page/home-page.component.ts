@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '@nx-mean-starter/shared';
+import { LayoutState } from '@nx-mean-starter/state/layout';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -6,7 +10,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
-  constructor() {}
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+  settings$: Observable<LayoutState.State>;
+  themes = [{ value: 'dark-theme', label: 'Dark' }, { value: 'light-theme', label: 'Light' }];
 
-  ngOnInit() {}
+  constructor(private store: Store<LayoutState.State>) {}
+
+  ngOnInit() {
+    this.settings$ = this.store.select(LayoutState.getState);
+  }
+
+  onPageAnimationsToggle({ checked: pageAnimations }) {
+    this.store.dispatch(new LayoutState.ChangeAnimationsPage({ pageAnimations }));
+  }
+
+  onElementsAnimationsToggle({ checked: elementsAnimations }) {
+    this.store.dispatch(new LayoutState.ChangeAnimationsElements({ elementsAnimations }));
+  }
+
+  onThemeSelect({ value: theme }) {
+    this.store.dispatch(new LayoutState.ChangeTheme({ theme }));
+  }
 }

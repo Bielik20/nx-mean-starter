@@ -1,0 +1,24 @@
+@import 'libs/shared/src/styles/variables';
+
+@mixin responsive-card() {
+  mat-card.responsive-card {
+    margin: 2rem;
+  }
+
+  .responsive-content {
+    padding: 2rem;
+  }
+
+  @media #{$mat-lt-sm} {
+    mat-card.responsive-card {
+      margin: 0;
+      border-radius: 0;
+      flex-grow: 1;
+      padding-bottom: 2rem;
+    }
+
+    .responsive-content {
+      padding: 2rem 1rem;
+    }
+  }
+}

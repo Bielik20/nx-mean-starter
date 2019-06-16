@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+
+@mixin footer-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  app-footer {
+    .footer {
+      //color: mat-color($primary, default-contrast);
+      //background: mat-color($primary);
+      color: mat-color($primary, lighter);
+      background-color: mat-color($primary, darker);
+    }
+  }
+}

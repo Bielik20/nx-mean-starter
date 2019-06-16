@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '@nx-mean-starter/shared';
 import { AuthState } from '@nx-mean-starter/state/auth';
 import { RootState } from '@nx-mean-starter/state/root';
 import { UsersState } from '@nx-mean-starter/state/users';

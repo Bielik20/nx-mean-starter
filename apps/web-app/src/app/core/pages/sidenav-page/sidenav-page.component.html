@@ -1,0 +1,38 @@
+<div [@fadeInOut]="'in'" class="animation-container" *ngIf="(display$ | async); else: spinner">
+  <a
+    class="no-style"
+    *ngIf="(user$ | async) as user; else: auth"
+    [routerLink]="['/users', user._id]"
+  >
+    <app-user-sidenav-card
+      [name]="user.name"
+      [pictureUrl]="user.pictureUrl"
+    ></app-user-sidenav-card>
+  </a>
+
+  <mat-nav-list>
+    <a mat-list-item [routerLink]="['/']">
+      <h4 mat-line>Home</h4>
+      <p mat-line>Starting Page</p>
+    </a>
+    <a mat-list-item [routerLink]="['/users']">
+      <h4 mat-line>Users</h4>
+      <p mat-line>Page with list of all users</p>
+    </a>
+    <a *ngIf="(user$ | async)" (click)="singOut()" mat-list-item><h4 mat-line>Sign Out</h4></a>
+  </mat-nav-list>
+</div>
+
+<ng-template #auth>
+  <app-user-sidenav-card
+    name="Sing In"
+    pictureUrl="assets/login-icon.png"
+    (click)="authenticate()"
+  ></app-user-sidenav-card>
+</ng-template>
+
+<ng-template #spinner>
+  <div [@fadeInOut]="'in'" class="animation-container" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

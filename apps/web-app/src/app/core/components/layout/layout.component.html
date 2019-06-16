@@ -1,0 +1,11 @@
+<mat-drawer-container>
+  <mat-drawer class="mat-elevation-z4 app-sidenav" fixedTopGap="56" fixedInViewport="true"
+               [attr.role]="isMobile ? 'dialog' : 'navigation'" [mode]="isMobile ? 'over' : 'side'" [opened]="showSidenav"
+               (openedStart)="openedChangeSidenav.emit(true)" (closedStart)="openedChangeSidenav.emit(false)">
+    <ng-content select="[drawer]"></ng-content>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <ng-content select='[drawer-content]'></ng-content>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+
+@mixin scrollbar-theme($theme) {
+  $accent: map-get($theme, accent);
+
+  mat-drawer,
+  mat-drawer-content,
+  cdk-virtual-scroll-viewport {
+    &::-webkit-scrollbar-thumb {
+      background-color: mat-color($accent);
+    }
+  }
+}
+
+@mixin scrollbar-core() {
+  mat-drawer,
+  mat-drawer-content,
+  cdk-virtual-scroll-viewport {
+    &::-webkit-scrollbar {
+      width: 0.5em;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    }
+
+    overflow-x: hidden !important;
+  }
+}

@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+@mixin user-sidenav-card-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  app-user-sidenav-card {
+    .user-sidenav-card .picture::before {
+      background-color: mat-color($primary);
+    }
+
+    .user-sidenav-card .picture::after {
+      background-color: mat-color($primary);
+    }
+
+    @media (hover: hover) {
+      .user-sidenav-card:hover {
+        background-color: map_get($background, hover);
+      }
+    }
+  }
+}

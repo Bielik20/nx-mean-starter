@@ -1,41 +1,55 @@
 import { Injectable } from '@angular/core';
+import { LocalStorage } from './local-storage.wrapper';
+
+const APP_PREFIX = 'NX-MEAN-STARTER-';
+const STORAGE = new LocalStorage();
 
 @Injectable({
   providedIn: 'root',
 })
-export class LocalStorageService implements Storage {
-  private storage = localStorage;
-
-  get length(): number {
-    return this.storage.length;
+export class LocalStorageService {
+  static loadInitialState() {
+    return STORAGE.keys().reduce((state: any, storageKey) => {
+      if (storageKey.includes(APP_PREFIX)) {
+        const stateKeys = storageKey
+          .replace(APP_PREFIX, '')
+          .toLowerCase()
+          .split('.')
+          .map(key =>
+            key
+              .split('-')
+              .map((token, index) =>
+                index === 0 ? token : token.charAt(0).toUpperCase() + token.slice(1),
+              )
+              .join(''),
+          );
+        let currentStateRef = state;
+        stateKeys.forEach((key, index) => {
+          if (index === stateKeys.length - 1) {
+            currentStateRef[key] = STORAGE.getItem(storageKey);
+            return;
+          }
+          currentStateRef[key] = currentStateRef[key] || {};
+          currentStateRef = currentStateRef[key];
+        });
+      }
+      return state;
+    }, {});
   }
 
-  constructor() {}
-
   clear(): void {
-    return this.storage.clear();
+    return STORAGE.clear();
   }
 
   getItem<T = string>(key: string): T {
-    let value = this.storage.getItem(key);
-    try {
-      value = JSON.parse(value);
-    } catch {}
-    return value as any;
-  }
-
-  key(index: number): string | null {
-    return this.storage.key(index);
+    return STORAGE.getItem<T>(`${APP_PREFIX}${key}`);
   }
 
   removeItem(key: string): void {
-    return this.storage.removeItem(key);
+    return STORAGE.removeItem(`${APP_PREFIX}${key}`);
   }
 
   setItem(key: string, value: Object | string): void {
-    if (value instanceof Object) {
-      value = JSON.stringify(value);
-    }
-    return this.storage.setItem(key, value as string);
+    return STORAGE.setItem(`${APP_PREFIX}${key}`, value);
   }
 }

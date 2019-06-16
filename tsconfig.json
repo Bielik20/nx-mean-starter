@@ -12,6 +12,7 @@
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
+      "@env-web-app/environment": ["apps/web-app/src/environments/environment.ts"],
       "@env-server/environment": ["apps/server/src/environments/environment.ts"],
       "@env-functions/environment": ["apps/functions/src/environments/environment.ts"],
       "@nx-mean-starter/testing": ["libs/testing/src/index.ts"],

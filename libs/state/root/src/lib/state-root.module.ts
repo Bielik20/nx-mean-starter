@@ -6,13 +6,14 @@ import { StateAuthModule } from '@nx-mean-starter/state/auth';
 import { StateLayoutModule } from '@nx-mean-starter/state/layout';
 import { StateRouterModule } from '@nx-mean-starter/state/router';
 import { StateUsersModule } from '@nx-mean-starter/state/users';
+import { metaReducers } from './+state/meta-reducers';
 import { reducerProvider, reducerToken } from './+state/reducer';
 import { SelectEffects } from './+state/select.effects';
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forRoot(reducerToken),
+    StoreModule.forRoot(reducerToken, { metaReducers }),
     EffectsModule.forRoot([SelectEffects]),
     StateAuthModule,
     StateRouterModule,

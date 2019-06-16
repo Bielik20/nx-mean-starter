@@ -1,7 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { State } from './reducer';
+import { State } from './model';
 
-const getState = createFeatureSelector<State>('layout');
+export const getState = createFeatureSelector<State>('layout');
 
 export const getIsMobile = createSelector(
   getState,
@@ -11,4 +11,9 @@ export const getIsMobile = createSelector(
 export const getShowSidenav = createSelector(
   getState,
   (state: State) => state.showSidenav,
+);
+
+export const getTheme = createSelector(
+  getState,
+  settings => settings.theme,
 );

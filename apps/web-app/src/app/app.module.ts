@@ -3,12 +3,13 @@ import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { environment } from '@env-web-app/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/angular';
-import { SharedModule } from '@nx-mean-starter/shared';
+import { AppErrorHandler, HttpErrorInterceptor, SharedModule } from '@nx-mean-starter/shared';
+import { AuthInterceptor } from '@nx-mean-starter/state/auth';
 import { StateRootModule } from '@nx-mean-starter/state/root';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
-import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { CoreModule } from './core';
@@ -37,6 +38,7 @@ export function appFactoryName() {
       enableFirestoreSync: false,
     }),
   ],
+  providers: [AppErrorHandler.provider, HttpErrorInterceptor.provider, AuthInterceptor.provider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

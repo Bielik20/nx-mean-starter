@@ -1,0 +1,24 @@
+@import 'themes/article';
+@import 'themes/gaps';
+@import 'themes/general';
+@import 'themes/material-fixes';
+@import 'themes/notifications';
+@import 'themes/overlay';
+@import 'themes/responsive-card';
+@import 'themes/scrollbar';
+
+@mixin shared-theme($theme) {
+  @include general-theme($theme);
+  @include scrollbar-theme($theme);
+  @include notification-theme($theme);
+}
+
+@mixin shared-core() {
+  @include general-core();
+  @include scrollbar-core();
+  @include overlay();
+  @include article();
+  @include responsive-card();
+  @include material-fixes();
+  @include gaps(1rem, 5);
+}

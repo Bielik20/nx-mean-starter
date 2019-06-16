@@ -9,10 +9,74 @@
     <link
       rel="icon"
       type="image/x-icon"
-      href="https://cdn-images-1.medium.com/fit/c/50/50/1*Vch0tzFUL1onazOtX04v5Q.png"
+      href="https://cdn-images-1.medium.com/fit/c/100/100/1*Vch0tzFUL1onazOtX04v5Q.png"
     />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
+    <style type="text/css">
+      body,
+      html {
+        height: 100%;
+      }
+      .app-loading {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .app-loading .logo {
+        width: 64px;
+        height: 64px;
+        background: url('https://cdn-images-1.medium.com/fit/c/100/100/1*Vch0tzFUL1onazOtX04v5Q.png')
+          center center no-repeat;
+        background-size: cover;
+      }
+
+      .app-loading .spinner {
+        height: 200px;
+        width: 200px;
+        animation: rotate 2s linear infinite;
+        transform-origin: center center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+
+      .app-loading .spinner .path {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+        animation: dash 1.5s ease-in-out infinite;
+        stroke-linecap: round;
+        stroke: #607d8b;
+      }
+
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes dash {
+        0% {
+          stroke-dasharray: 1, 200;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 89, 200;
+          stroke-dashoffset: -35px;
+        }
+        100% {
+          stroke-dasharray: 89, 200;
+          stroke-dashoffset: -124px;
+        }
+      }
+    </style>
   </head>
   <body class="mat-typography">
     <app-root>

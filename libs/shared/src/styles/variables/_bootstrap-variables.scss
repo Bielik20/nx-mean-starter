@@ -26,13 +26,29 @@ $body-bg: map-get($mat-background, background) !default;
 $body-color: map-get($mat-foreground, text) !default;
 
 // ###################################
+// Grid
+// ###################################
+
+// $grid-columns: 12;
+// $grid-gutter-width: 30px;
+// // source: https://material.io/design/layout/responsive-layout-grid.html#breakpoints
+// $grid-breakpoints: (
+//  xs: 0,
+//  sm: 600px,
+//  md: 720px,
+//  lg: 960px,
+//  xl: 1280px,
+// );
+
+// ###################################
 // Links
 // ###################################
 
-$link-color: map-get($mat-light-blue, 800) !default;
+//$link-color: map-get($mat-light-blue, 800) !default;
+$link-hover-decoration: none !default;
+$label-margin-bottom: 0 !default;
 // $link-decoration: none !default;
 // $link-hover-color: darken($link-color, 15%) !default;
-// $link-hover-decoration: underline !default;
 // Darken percentage$ for links with `.text-*` class (e.g. `.text-success`)
 // $emphasized-link-hover-darken-percentage$: 15% !default;
 
@@ -40,25 +56,25 @@ $link-color: map-get($mat-light-blue, 800) !default;
 // Components
 // ###################################
 
-$border-color: map-get($mat-gray, 300) !default;
-$border-radius: 0.25rem !default; // 4px like angular-material 7.x
-$border-radius-lg: 0.3rem !default;
-$border-radius-sm: 0.2rem !default;
+//$border-color: map-get($mat-gray, 300) !default;
+//$border-radius: 0.25rem !default; // 4px like angular-material 7.x
+//$border-radius-lg: 0.3rem !default;
+//$border-radius-sm: 0.2rem !default;
 
 // ###################################
 // Fonts
 // ###################################
 
-$font-family-sans-serif: mat-font-family($config) !default;
-$font-family-monospace: mat-font-family($config) !default;
+$font-family-sans-serif: mat-font-family($mat-config) !default;
+$font-family-monospace: mat-font-family($mat-config) !default;
 $font-family-base: $font-family-sans-serif !default;
-$font-size-base: rem(mat-font-size($config, body-1)) !default;
+$font-size-base: rem(mat-font-size($mat-config, body-1)) !default;
 
 // ###################################
 // Jumbotron
 // ###################################
 
-$jumbotron-bg: map-get($mat-gray, 200) !default;
+// $jumbotron-bg: map-get($mat-gray, 200) !default;
 
 // ###################################
 // Breadcrumbs
@@ -68,9 +84,9 @@ $jumbotron-bg: map-get($mat-gray, 200) !default;
 // $breadcrumb-padding-x:              1rem !default;
 // $breadcrumb-item-padding:           .5rem !default;
 // $breadcrumb-margin-bottom:          1rem !default;
-$breadcrumb-bg: map-get($mat-gray, 200) !default;
-$breadcrumb-divider-color: map-get($mat-gray, 600) !default;
-$breadcrumb-active-color: map-get($mat-gray, 600) !default;
+// $breadcrumb-bg: map-get($mat-gray, 200) !default;
+// $breadcrumb-divider-color: map-get($mat-gray, 600) !default;
+// $breadcrumb-active-color: map-get($mat-gray, 600) !default;
 // $breadcrumb-divider:                quote("/") !default;
 // $breadcrumb-border-radius:          $border-radius !default;
 

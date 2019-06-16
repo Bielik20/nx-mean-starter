@@ -1,11 +1,21 @@
 @import '~@angular/material/theming';
 
-$mat-primary: mat-palette($mat-blue-grey);
-$mat-accent: mat-palette($mat-teal, A200, A100, A400);
-$theme: mat-dark-theme($mat-primary, $mat-accent);
-$mat-warn: map-get($theme, warn);
-$mat-background: map-get($theme, background);
-$mat-foreground: map-get($theme, foreground);
+// Dark Theme
+$mat-primary-dark: mat-palette($mat-blue-grey);
+$mat-accent-dark: mat-palette($mat-teal, A200, A100, A400);
+$dark-theme: mat-dark-theme($mat-primary-dark, $mat-accent-dark);
+
+// Light Theme
+$mat-primary-light: mat-palette($mat-indigo);
+$mat-accent-light: mat-palette($mat-pink, A200, A100, A400);
+$light-theme: mat-light-theme($mat-primary-light, $mat-accent-light);
+
+// Variables for Bootstrap
+$mat-primary: $mat-primary-dark;
+$mat-accent: $mat-accent-dark;
+$mat-warn: map-get($dark-theme, warn);
+$mat-background: map-get($dark-theme, background);
+$mat-foreground: map-get($dark-theme, foreground);
 
 // Create a config with the default typography levels.
-$config: mat-typography-config();
+$mat-config: mat-typography-config();
