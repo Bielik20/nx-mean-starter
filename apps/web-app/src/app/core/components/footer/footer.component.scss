@@ -1,3 +1,5 @@
+@import 'libs/shared/src/styles/variables';
+
 .footer {
   padding: 12px;
   font-size: 12px;
@@ -60,14 +62,12 @@ a {
   }
 }
 
-@media screen and (max-width: 884px) {
-  .footer-list {
-    flex-direction: column;
-  }
-}
-
-@media only screen and (max-width: 959px) {
+@media #{$mat-lt-sm} {
   .footer {
     margin-top: 0;
+  }
+
+  .footer-list {
+    flex-direction: column;
   }
 }

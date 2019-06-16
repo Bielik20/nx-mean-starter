@@ -1,3 +1,5 @@
+@import 'libs/shared/src/styles/variables';
+
 @mixin responsive-card() {
   mat-card.responsive-card {
     margin: 32px;
@@ -7,7 +9,7 @@
     padding: 32px;
   }
 
-  @media only screen and (max-width: 959px) {
+  @media #{$mat-lt-sm} {
     mat-card.responsive-card {
       margin: 0;
       border-radius: 0;

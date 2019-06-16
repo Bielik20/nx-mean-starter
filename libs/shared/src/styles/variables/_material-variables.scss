@@ -17,8 +17,5 @@ $mat-warn: map-get($dark-theme, warn);
 $mat-background: map-get($dark-theme, background);
 $mat-foreground: map-get($dark-theme, foreground);
 
-$success-colors: mat-palette($mat-green, 400);
-$warning-colors: mat-palette($mat-amber, 400);
-
 // Create a config with the default typography levels.
 $mat-config: mat-typography-config();
