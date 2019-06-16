@@ -1,7 +1,9 @@
 mat-card :first-child {
-  app-card-image {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+  @media only screen and (min-width: 960px) {
+    app-card-image {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+    }
   }
 
   .image-container {

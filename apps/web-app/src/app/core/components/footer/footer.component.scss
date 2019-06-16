@@ -1,7 +1,7 @@
 .footer {
   padding: 12px;
   font-size: 12px;
-  margin-top: 40px;
+  margin-top: 32px;
 }
 
 .footer-list {
@@ -63,5 +63,11 @@ a {
 @media screen and (max-width: 884px) {
   .footer-list {
     flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 959px) {
+  .footer {
+    margin-top: 0;
   }
 }
