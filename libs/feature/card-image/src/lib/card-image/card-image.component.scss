@@ -3,13 +3,13 @@
 mat-card :first-child {
   @media #{$mat-gt-xs} {
     app-card-image {
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
     }
   }
 
   .image-container {
-    margin-top: -16px;
+    margin-top: -1rem;
   }
 }
 
@@ -30,7 +30,7 @@ app-card-image {
 
   .image-container {
     position: relative;
-    margin: 0 -16px 16px -16px;
+    margin: 0 -1rem 1rem -1rem;
   }
 
   .overlay.image-overlay {
