@@ -4,7 +4,7 @@ import { User } from '@nx-mean-starter/models';
 import { UsersState } from '@nx-mean-starter/state/users';
 import { InfiniteScrollEvent } from 'ngx-infinite-scroll';
 import { combineLatest, Observable } from 'rxjs';
-import { filter, take } from 'rxjs/operators';
+import { filter, map, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-users',
@@ -23,18 +23,28 @@ export class UsersComponent implements OnInit {
     this.users$ = this.store.select(UsersState.getPaginationUsers);
     this.done$ = this.store.select(UsersState.getPaginationDone);
     this.loading$ = this.store.select(UsersState.getLoading);
-    this.store.dispatch(new UsersState.LoadBatch({ limit: 20 }));
+
+    this.loadInitialBatch();
+  }
+
+  private loadInitialBatch() {
+    this.users$
+      .pipe(
+        take(1),
+        filter(users => users.length === 0),
+        map(() => new UsersState.LoadBatch({ limit: 20 })),
+      )
+      .subscribe(this.store);
   }
 
   nextBatch(current: InfiniteScrollEvent, skip: number) {
-    combineLatest(this.done$, this.loading$)
+    combineLatest([this.done$, this.loading$])
       .pipe(
         take(1),
         filter(([done, loading]) => !done && !loading),
+        map(() => new UsersState.LoadBatch({ limit: 20, skip })),
       )
-      .subscribe(() => {
-        this.store.dispatch(new UsersState.LoadBatch({ limit: 20, skip }));
-      });
+      .subscribe(this.store);
   }
 
   trackByIdx(i) {

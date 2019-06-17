@@ -3,9 +3,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { DropzoneDirective } from './directives/dropzone.directive';
-import { fontawesomeImports } from './fontawesome/fontawesome-imports';
+import { AngularMaterialModule } from './ui/angular-material.module';
+import { fontawesomeImports } from './ui/fontawesome-imports';
 
 fontawesomeImports();
 
