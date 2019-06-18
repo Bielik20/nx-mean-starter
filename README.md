@@ -168,7 +168,7 @@ npx cap open ios
 ## Add Server
 
 ```
-ng g node-app server
+ng g @nrwl/node:application server
 yarn add compression body-parser connect-mongo mongoose errorhandler express-session express-validator lodash lusca path passport passport-http-bearer request request-promise-native winston firebase firebase-admin api-query-params
 yarn add @types/compression @types/body-parser @types/mongoose @types/errorhandler @types/express-session @types/lodash @types/lusca @types/passport @types/passport-http-bearer @types/request @types/request-promise-native @types/winston -D
 ```
@@ -181,7 +181,7 @@ It will create `express` application with `jest` as a test runner.
 If there is a need it could be further specified:
 
 ```
-ng g node-app server --unit-test-runner=jest --framework=express
+ng g @nrwl/node:application server --unit-test-runner=jest --framework=express
 ```
 
 ### Add Proxy
@@ -315,7 +315,7 @@ Create `.firebaserc`:
 ### Add Firebase Functions
 
 ```
-ng g node-app functions
+ng g @nrwl/node:application functions
 yarn add firebase firebase-admin firebase-functions
 yarn add concurrently -D
 ```
