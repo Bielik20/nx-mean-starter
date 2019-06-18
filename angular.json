@@ -38,8 +38,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/web-app/src/environments/environment.ts",
-                  "with": "apps/web-app/src/environments/environment.prod.ts"
+                  "replace": "environments/frontend/environment.ts",
+                  "with": "environments/frontend/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -145,8 +145,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/server/src/environments/environment.ts",
-                  "with": "apps/server/src/environments/environment.prod.ts"
+                  "replace": "environments/backend/environment.ts",
+                  "with": "environments/backend/environment.prod.ts"
                 }
               ]
             }
@@ -457,8 +457,8 @@
               "inspect": false,
               "fileReplacements": [
                 {
-                  "replace": "apps/functions/src/environments/environment.ts",
-                  "with": "apps/functions/src/environments/environment.prod.ts"
+                  "replace": "environments/backend/environment.ts",
+                  "with": "environments/backend/environment.prod.ts"
                 }
               ]
             }
@@ -649,8 +649,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/ionic-app/src/environments/environment.ts",
-                  "with": "apps/ionic-app/src/environments/environment.prod.ts"
+                  "replace": "environments/frontend/environment.ts",
+                  "with": "environments/frontend/environment.prod.ts"
                 }
               ],
               "optimization": true,

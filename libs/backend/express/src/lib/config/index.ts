@@ -1,4 +1,4 @@
-import { environment } from '@nx-mean-starter/backend/core';
+import { environment } from '@env/backend';
 import * as bodyParser from 'body-parser';
 import * as compression from 'compression';
 import * as mongo from 'connect-mongo';
@@ -29,10 +29,7 @@ export class AppConfig {
   private async mongo() {
     try {
       // https://github.com/Automattic/mongoose/issues/6890#issuecomment-416218953
-      await mongoose.connect(
-        environment.mongoUri,
-        { useNewUrlParser: true, useCreateIndex: true },
-      );
+      await mongoose.connect(environment.mongoUri, { useNewUrlParser: true, useCreateIndex: true });
       console.log('MongoDB Connected');
     } catch (err) {
       console.error('MongoDB connection error. Please make sure MongoDB is running. ' + err);

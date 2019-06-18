@@ -228,16 +228,6 @@ app.get('/api/', ...);
 ng g lib core --unit-test-runner=jest --directory=backend --no-module --prefix=app
 ```
 
-Use `libs/backend/core/src/lib/environment/index.ts` for exporting backend env.
-It can be shared between `server`, `functions` and `libs/*`.
-
-To make it work it is required to add paths to `tscnfig`, eg:
-
-```
-"@env-server/environment": ["apps/server/src/environments/environment.ts"],
-"@env-functions/environment": ["apps/functions/src/environments/environment.ts"],
-```
-
 ### Schemas
 
 ```
@@ -456,6 +446,10 @@ yarn add ngx-auth-firebaseui
 
 - https://medium.com/@cyrilletuzi/angular-server-side-rendering-in-node-with-express-universal-engine-dce21933ddce
 - https://angular.io/guide/universal
+
+## Environment
+
+Setup environment following [this](https://github.com/nrwl/nx/issues/208#issuecomment-503165673).
 
 ## Add Testing helpers
 

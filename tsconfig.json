@@ -12,9 +12,8 @@
     "lib": ["es2017", "dom"],
     "baseUrl": ".",
     "paths": {
-      "@env-web-app/environment": ["apps/web-app/src/environments/environment.ts"],
-      "@env-server/environment": ["apps/server/src/environments/environment.ts"],
-      "@env-functions/environment": ["apps/functions/src/environments/environment.ts"],
+      "@env/frontend": ["environments/frontend/environment.ts"],
+      "@env/backend": ["environments/backend/environment.ts"],
       "@nx-mean-starter/testing": ["libs/testing/src/index.ts"],
       "@nx-mean-starter/shared": ["libs/shared/src/index.ts"],
       "@nx-mean-starter/models": ["libs/models/src/index.ts"],

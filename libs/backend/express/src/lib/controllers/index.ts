@@ -1,4 +1,4 @@
-import { environment } from '@nx-mean-starter/backend/core';
+import { environment } from '@env/backend';
 import { Express, static as expressStatic } from 'express';
 import * as path from 'path';
 import { authenticate } from '../config/auth';

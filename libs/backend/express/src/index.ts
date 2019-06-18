@@ -1,4 +1,4 @@
-import { environment } from '@nx-mean-starter/backend/core';
+import { environment } from '@env/backend';
 import * as express from 'express';
 import { AppConfig, AppControllers } from './lib';
 

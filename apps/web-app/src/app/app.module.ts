@@ -3,7 +3,7 @@ import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { environment } from '@env-web-app/environment';
+import { environment } from '@env/frontend';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/angular';
 import { AppErrorHandler, HttpErrorInterceptor, SharedModule } from '@nx-mean-starter/shared';

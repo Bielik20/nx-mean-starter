@@ -3,8 +3,8 @@
  * This is only a minimal backend to get started.
  **/
 
+import { environment } from '@env/backend';
 import { NestFactory } from '@nestjs/core';
-import { environment } from '@nx-mean-starter/backend/core';
 import { AppModule } from './lib/app.module';
 
 export async function bootstrap() {
