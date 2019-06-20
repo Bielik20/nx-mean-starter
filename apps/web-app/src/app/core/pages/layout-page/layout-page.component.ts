@@ -30,7 +30,7 @@ export class LayoutPageComponent implements OnInit {
   private setAnimations() {
     if (this.isDefectiveBrowser()) {
       this.store.dispatch(
-        new LayoutState.ChangeAnimationsPageDisabled({
+        LayoutState.changeAnimationsPageDisabled({
           pageAnimationsDisabled: true,
         }),
       );
@@ -42,10 +42,10 @@ export class LayoutPageComponent implements OnInit {
   }
 
   toggleSidenav() {
-    this.store.dispatch(new LayoutState.ToggleSidenav());
+    this.store.dispatch(LayoutState.toggleSidenav());
   }
 
-  openedChangeSidenav(value: boolean) {
-    this.store.dispatch(new LayoutState.SetSidenav(value));
+  openedChangeSidenav(showSidenav: boolean) {
+    this.store.dispatch(LayoutState.setSidenav({ showSidenav }));
   }
 }

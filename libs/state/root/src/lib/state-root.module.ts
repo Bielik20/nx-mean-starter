@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { environment } from '@env/frontend';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StateAuthModule } from '@nx-mean-starter/state/auth';
@@ -13,7 +14,15 @@ import { SelectEffects } from './+state/select.effects';
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forRoot(reducerToken, { metaReducers }),
+    StoreModule.forRoot(reducerToken, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: !environment.production,
+        strictActionImmutability: !environment.production,
+        strictStateSerializability: !environment.production,
+        strictActionSerializability: !environment.production,
+      },
+    }),
     EffectsModule.forRoot([SelectEffects]),
     StateAuthModule,
     StateRouterModule,

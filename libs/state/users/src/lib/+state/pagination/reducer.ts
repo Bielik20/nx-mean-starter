@@ -1,6 +1,6 @@
+import { Action, createReducer, on } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
-import { Action, createReducer, Store } from 'ngrx-actions';
-import { LoadBatchEnd, LoadBatchSuccess } from './actions';
+import { loadBatchEnd, loadBatchSuccess } from './actions';
 
 export interface PaginationState {
   ids: string[];
@@ -12,25 +12,20 @@ export const initialState: PaginationState = {
   done: false,
 };
 
-@Store<PaginationState>(initialState)
-export class StateStore {
-  @Action(LoadBatchSuccess)
-  upsertMany(state: PaginationState, action: LoadBatchSuccess): PaginationState {
-    return {
-      ...state,
-      ids: [...state.ids, ...action.users.map((user: User) => user._id)],
-    };
-  }
+export const factory = createReducer<PaginationState>(
+  initialState,
 
-  @Action(LoadBatchEnd)
-  end(state: PaginationState): PaginationState {
-    return {
-      ...state,
-      done: true,
-    };
-  }
-}
+  on(loadBatchSuccess, (state, { users }) => ({
+    ...state,
+    ids: [...state.ids, ...users.map((user: User) => user._id)],
+  })),
 
-export function paginationReducer(state, action) {
-  return createReducer(StateStore)(state, action);
+  on(loadBatchEnd, state => ({
+    ...state,
+    done: true,
+  })),
+);
+
+export function paginationReducer(state: PaginationState | undefined, action: Action) {
+  return factory(state, action);
 }

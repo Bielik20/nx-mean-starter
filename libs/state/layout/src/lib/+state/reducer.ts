@@ -1,16 +1,16 @@
-import { Action, createReducer, Store } from 'ngrx-actions';
+import { Action, createReducer, on } from '@ngrx/store';
 import {
-  ChangeAnimationsElements,
-  ChangeAnimationsPage,
-  ChangeAnimationsPageDisabled,
-  ChangeTheme,
-  SetIsMobile,
-  SetSidenav,
-  ToggleSidenav,
+  changeAnimationsElements,
+  changeAnimationsPage,
+  changeAnimationsPageDisabled,
+  changeTheme,
+  setIsMobile,
+  setSidenav,
+  toggleSidenav,
 } from './actions';
 import { State } from './model';
 
-@Store<State>({
+export const initialState: State = {
   showSidenav: false,
   isMobile: true,
   theme: 'dark-theme',
@@ -18,45 +18,39 @@ import { State } from './model';
   pageAnimations: true,
   pageAnimationsDisabled: false,
   elementsAnimations: true,
-})
-export class StateStore {
-  @Action(SetSidenav)
-  setSidenav(state: State, action: SetSidenav): State {
-    return { ...state, showSidenav: action.payload };
-  }
+};
 
-  @Action(ToggleSidenav)
-  toggleSidenavSuccess(state: State): State {
-    return { ...state, showSidenav: !state.showSidenav };
-  }
+export const factory = createReducer<State>(
+  initialState,
 
-  @Action(SetIsMobile)
-  setIsMobile(state: State, action: SetIsMobile): State {
-    return {
-      ...state,
-      showSidenav: !action.payload,
-      isMobile: action.payload,
-    };
-  }
+  on(setSidenav, (state, { showSidenav }) => ({
+    ...state,
+    showSidenav,
+  })),
 
-  @Action(ChangeTheme, ChangeAnimationsElements, ChangeAnimationsPage)
-  setTheme(
-    state: State,
-    action: ChangeTheme | ChangeAnimationsElements | ChangeAnimationsPage,
-  ): State {
-    return { ...state, ...action.payload };
-  }
+  on(toggleSidenav, state => ({
+    ...state,
+    showSidenav: !state.showSidenav,
+  })),
 
-  @Action(ChangeAnimationsPageDisabled)
-  setAnimationForBrowser(state: State, action: ChangeAnimationsPageDisabled): State {
-    return {
-      ...state,
-      pageAnimations: false,
-      pageAnimationsDisabled: action.payload.pageAnimationsDisabled,
-    };
-  }
-}
+  on(setIsMobile, (state, { isMobile }) => ({
+    ...state,
+    isMobile,
+    showSidenav: !isMobile,
+  })),
 
-export function reducer(state, action) {
-  return createReducer(StateStore)(state, action);
+  on(changeTheme, changeAnimationsElements, changeAnimationsPage, (state, payload) => ({
+    ...state,
+    ...payload,
+  })),
+
+  on(changeAnimationsPageDisabled, (state, { pageAnimationsDisabled }) => ({
+    ...state,
+    pageAnimationsDisabled,
+    pageAnimations: false,
+  })),
+);
+
+export function reducer(state: State | undefined, action: Action) {
+  return factory(state, action);
 }

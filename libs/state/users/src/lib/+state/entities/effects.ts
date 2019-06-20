@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
 import { AuthState } from '@nx-mean-starter/state/auth';
-import { ofAction } from 'ngrx-actions';
 import { of } from 'rxjs';
 import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operators';
 import { UsersService } from '../../service/users.service';
 import {
-  Load,
-  LoadAll,
-  LoadAllSuccess,
-  LoadSuccess,
-  PatchOne,
-  PatchOneSuccess,
-  Select,
-  ServerError,
+  load,
+  loadAll,
+  loadAllSuccess,
+  loadSuccess,
+  patchOne,
+  patchOneSuccess,
+  select,
+  serverError,
 } from './actions';
 import { EntitiesState } from './reducer';
 import { getEntities } from './selectors';
@@ -26,53 +25,53 @@ export class EntitiesEffects {
 
   @Effect()
   selected$ = this.actions$.pipe(
-    ofAction(Select),
+    ofType(select),
     withLatestFrom(this.entities$),
-    filter(([action, entities]) => !entities[action.id]),
-    map(([action]: [Select, any]) => new Load(action.id)),
+    filter(([{ selectedId }, entities]) => !entities[selectedId]),
+    map(([{ selectedId }]) => load({ id: selectedId })),
   );
 
   @Effect()
   updateOne$ = this.actions$.pipe(
-    ofAction(PatchOne),
-    map((action: PatchOne) => action.user),
+    ofType(patchOne),
+    map(({ user }) => user),
     switchMap((user: Partial<User>) =>
       this.service.patchMe(user).pipe(
-        map((updatedUser: User) => new PatchOneSuccess(updatedUser)),
-        catchError(err => of(new ServerError(err))),
+        map((updatedUser: User) => patchOneSuccess({ user: updatedUser })),
+        catchError(error => of(serverError({ error }))),
       ),
     ),
   );
 
   @Effect()
   authenticated$ = this.actions$.pipe(
-    ofAction(AuthState.AuthIn),
+    ofType(AuthState.authIn),
     switchMap(() =>
       this.service.getMe().pipe(
-        map((user: User) => new LoadSuccess(user)),
-        catchError(err => of(new ServerError(err))),
+        map((user: User) => loadSuccess({ user })),
+        catchError(error => of(serverError({ error }))),
       ),
     ),
   );
 
   @Effect()
   load$ = this.actions$.pipe(
-    ofAction(Load),
-    switchMap(action =>
-      this.service.getOne(action.id).pipe(
-        map(user => new LoadSuccess(user)),
-        catchError(err => of(new ServerError(err))),
+    ofType(load),
+    switchMap(({ id }) =>
+      this.service.getOne(id).pipe(
+        map(user => loadSuccess({ user })),
+        catchError(error => of(serverError({ error }))),
       ),
     ),
   );
 
   @Effect()
   loadAll$ = this.actions$.pipe(
-    ofAction(LoadAll),
+    ofType(loadAll),
     switchMap(() =>
       this.service.getBatch().pipe(
-        map(user => new LoadAllSuccess(user)),
-        catchError(err => of(new ServerError(err))),
+        map(users => loadAllSuccess({ users })),
+        catchError(error => of(serverError({ error }))),
       ),
     ),
   );

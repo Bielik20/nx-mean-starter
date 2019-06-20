@@ -1,16 +1,16 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
+import { Action, createReducer, on } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
-import { Action, createReducer, Store } from 'ngrx-actions';
-import { LoadBatch, LoadBatchSuccess } from '../pagination';
+import { loadBatch, loadBatchSuccess } from '../pagination';
 import {
-  Load,
-  LoadAll,
-  LoadAllSuccess,
-  LoadSuccess,
-  PatchOne,
-  PatchOneSuccess,
-  Select,
-  ServerError,
+  load,
+  loadAll,
+  loadAllSuccess,
+  loadSuccess,
+  patchOne,
+  patchOneSuccess,
+  select,
+  serverError,
 } from './actions';
 
 export interface EntitiesState extends EntityState<User> {
@@ -32,47 +32,44 @@ export const initialState = entitiesAdapter.getInitialState({
   error: undefined,
 });
 
-@Store<EntitiesState>(initialState)
-export class EntitiesStore {
-  @Action(Select)
-  select(state: EntitiesState, action: Select): EntitiesState {
-    return { ...state, selectedId: action.id };
-  }
+export const factory = createReducer<EntitiesState>(
+  initialState,
 
-  @Action(PatchOne)
-  updateOne(state: EntitiesState): EntitiesState {
-    return { ...state, saving: true, error: undefined };
-  }
+  on(select, (state, { selectedId }) => ({
+    ...state,
+    selectedId,
+  })),
 
-  @Action(PatchOneSuccess)
-  updateOneSuccess(state: EntitiesState, action: PatchOneSuccess): EntitiesState {
-    return entitiesAdapter.updateOne(
-      { id: action.user._id, changes: action.user },
+  on(patchOne, state => ({
+    ...state,
+    saving: true,
+    error: undefined,
+  })),
+
+  on(patchOneSuccess, (state, { user }) =>
+    entitiesAdapter.updateOne(
+      { id: user._id, changes: user },
       { ...state, saving: false, error: undefined },
-    );
-  }
+    ),
+  ),
 
-  @Action(Load, LoadAll, LoadBatch)
-  load(state: EntitiesState): EntitiesState {
-    return { ...state, loading: true, error: undefined };
-  }
+  on(load, loadAll, loadBatch, state => ({
+    ...state,
+    loading: true,
+    error: undefined,
+  })),
 
-  @Action(LoadSuccess)
-  upsertOne(state: EntitiesState, action: LoadSuccess): EntitiesState {
-    return entitiesAdapter.upsertOne(action.user, { ...state, loading: false, error: undefined });
-  }
+  on(loadSuccess, (state, { user }) =>
+    entitiesAdapter.upsertOne(user, { ...state, loading: false, error: undefined }),
+  ),
 
-  @Action(LoadAllSuccess, LoadBatchSuccess)
-  upsertMany(state: EntitiesState, action: LoadAllSuccess | LoadBatchSuccess): EntitiesState {
-    return entitiesAdapter.upsertMany(action.users, { ...state, loading: false, error: undefined });
-  }
+  on(loadAllSuccess, loadBatchSuccess, (state, { users }) =>
+    entitiesAdapter.upsertMany(users, { ...state, loading: false, error: undefined }),
+  ),
 
-  @Action(ServerError)
-  loadError(state: EntitiesState, action: ServerError): EntitiesState {
-    return { ...state, selectedId: undefined, error: action.error };
-  }
-}
+  on(serverError, (state, { error }) => ({ ...state, selectedId: undefined, error: error })),
+);
 
-export function entitiesReducer(state, action) {
-  return createReducer(EntitiesStore)(state, action);
+export function entitiesReducer(state: EntitiesState | undefined, action: Action) {
+  return factory(state, action);
 }

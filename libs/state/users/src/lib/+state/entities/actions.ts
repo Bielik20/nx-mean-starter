@@ -1,41 +1,30 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
 
-export class Select implements Action {
-  readonly type = '[Users Entities] Select';
-  constructor(public id: string) {}
-}
+export const select = createAction('[Users Entities] Select', props<{ selectedId: string }>());
 
-export class PatchOne implements Action {
-  readonly type = '[Users Entities] Update One';
-  constructor(public user: Partial<User>) {}
-}
+export const patchOne = createAction(
+  '[Users Entities] Patch One',
+  props<{ user: Partial<User> }>(),
+);
 
-export class PatchOneSuccess implements Action {
-  readonly type = '[Users Entities] Update One Success';
-  constructor(public user: User) {}
-}
+export const patchOneSuccess = createAction(
+  '[Users Entities] Patch One Success',
+  props<{ user: User }>(),
+);
 
-export class Load implements Action {
-  readonly type = '[Users Entities] Load';
-  constructor(public id: string) {}
-}
+export const load = createAction('[Users Entities] Load', props<{ id: string }>());
 
-export class LoadSuccess implements Action {
-  readonly type = '[Users Entities] Load Success';
-  constructor(public user: User) {}
-}
+export const loadSuccess = createAction('[Users Entities] Load Success', props<{ user: User }>());
 
-export class LoadAll implements Action {
-  readonly type = '[Users Entities] Load All';
-}
+export const loadAll = createAction('[Users Entities] Load All');
 
-export class LoadAllSuccess implements Action {
-  readonly type = '[Users Entities] Load All Success';
-  constructor(public users: User[]) {}
-}
+export const loadAllSuccess = createAction(
+  '[Users Entities] Load All Success',
+  props<{ users: User[] }>(),
+);
 
-export class ServerError implements Action {
-  readonly type = '[Users Entities] Server Error';
-  constructor(public error: string) {}
-}
+export const serverError = createAction(
+  '[Users Entities] Server Error',
+  props<{ error: string }>(),
+);

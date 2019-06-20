@@ -1,6 +1,5 @@
-import { ActionReducer } from '@ngrx/store';
-import { Action, createReducer, Store } from 'ngrx-actions';
-import { AuthIn, AuthOut } from './actions';
+import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
+import { authIn, authOut } from './actions';
 
 export interface State {
   uid: string;
@@ -8,35 +7,30 @@ export interface State {
   ready: boolean;
 }
 
-export const initialState = {
+export const initialState: State = {
   uid: null,
   isAnonymous: false,
   ready: false,
 };
 
-@Store<State>(initialState)
-export class StateStore {
-  @Action(AuthIn)
-  authSuccess(state: State, action: AuthIn): State {
-    return {
-      ...state,
-      ...action.authData,
-      ready: true,
-    };
-  }
+export const factory = createReducer<State>(
+  initialState,
 
-  @Action(AuthOut)
-  signOutSuccess(state: State): State {
-    return {
-      ...state,
-      ...initialState,
-      ready: true,
-    };
-  }
-}
+  on(authIn, (state, { authData }) => ({
+    ...state,
+    ...authData,
+    ready: true,
+  })),
 
-export function reducer(state, action) {
-  return createReducer(StateStore)(state, action);
+  on(authOut, state => ({
+    ...state,
+    ...initialState,
+    ready: true,
+  })),
+);
+
+export function reducer(state: State | undefined, action: Action) {
+  return factory(state, action);
 }
 
 /** Clears storage on SignOut */

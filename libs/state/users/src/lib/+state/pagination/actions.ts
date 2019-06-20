@@ -1,17 +1,15 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
 import { QueryParams } from 'api-query-params';
 
-export class LoadBatch implements Action {
-  readonly type = '[Users Pagination] Load Batch';
-  constructor(public params: QueryParams) {}
-}
+export const loadBatch = createAction(
+  '[Users Pagination] Load Batch',
+  props<{ params: QueryParams }>(),
+);
 
-export class LoadBatchSuccess implements Action {
-  readonly type = '[Users Pagination] Load Batch Success';
-  constructor(public users: User[], public end = false) {}
-}
+export const loadBatchSuccess = createAction(
+  '[Users Pagination] Load Batch Success',
+  props<{ users: User[] }>(),
+);
 
-export class LoadBatchEnd implements Action {
-  readonly type = '[Users Pagination] Load Batch End';
-}
+export const loadBatchEnd = createAction('[Auth] Load Batch End');

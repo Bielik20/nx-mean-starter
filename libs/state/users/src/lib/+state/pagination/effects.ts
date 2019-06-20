@@ -1,32 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
 import { filterWith } from '@nx-mean-starter/shared';
-import { ofAction } from 'ngrx-actions';
 import { of } from 'rxjs';
 import { catchError, concatMap, map, tap } from 'rxjs/operators';
 import { UsersService } from '../../service/users.service';
-import { ServerError } from '../entities';
+import { serverError } from '../entities';
 import { State } from '../reducer';
-import { LoadBatch, LoadBatchEnd, LoadBatchSuccess } from './actions';
+import { loadBatch, loadBatchEnd, loadBatchSuccess } from './actions';
 import { getPaginationDone } from './selectors';
 
 @Injectable()
 export class PaginationEffects {
   @Effect()
   loadBatch$ = this.actions$.pipe(
-    ofAction(LoadBatch),
+    ofType(loadBatch),
     filterWith(this.store.select(getPaginationDone), (done: boolean) => !done),
-    concatMap((action: LoadBatch) =>
-      this.service.getBatch(action.params).pipe(
+    concatMap(({ params }) =>
+      this.service.getBatch(params).pipe(
         tap((users: User[]) => {
           if (users.length === 0) {
-            this.store.dispatch(new LoadBatchEnd());
+            this.store.dispatch(loadBatchEnd());
           }
         }),
-        map((users: User[]) => new LoadBatchSuccess(users)),
-        catchError(err => of(new ServerError(err))),
+        map((users: User[]) => loadBatchSuccess({ users })),
+        catchError(error => of(serverError({ error }))),
       ),
     ),
   );

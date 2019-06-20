@@ -28,7 +28,7 @@ export class AuthDataProxy {
     checkString(d.uid, false, field + '.uid');
     checkBoolean(d.isAnonymous, false, field + '.isAnonymous');
 
-    return new AuthDataProxy(d);
+    return { ...new AuthDataProxy(d) };
   }
   private constructor(d: any) {
     this.uid = d.uid;

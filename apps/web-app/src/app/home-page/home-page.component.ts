@@ -21,14 +21,14 @@ export class HomePageComponent implements OnInit {
   }
 
   onPageAnimationsToggle({ checked: pageAnimations }) {
-    this.store.dispatch(new LayoutState.ChangeAnimationsPage({ pageAnimations }));
+    this.store.dispatch(LayoutState.changeAnimationsPage({ pageAnimations }));
   }
 
   onElementsAnimationsToggle({ checked: elementsAnimations }) {
-    this.store.dispatch(new LayoutState.ChangeAnimationsElements({ elementsAnimations }));
+    this.store.dispatch(LayoutState.changeAnimationsElements({ elementsAnimations }));
   }
 
   onThemeSelect({ value: theme }) {
-    this.store.dispatch(new LayoutState.ChangeTheme({ theme }));
+    this.store.dispatch(LayoutState.changeTheme({ theme }));
   }
 }

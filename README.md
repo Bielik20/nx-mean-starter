@@ -592,7 +592,7 @@ Rename `FeatureAuthModule` to `AuthModule`:
 ## Add State
 
 ```
-yarn add @ngrx/entity ngrx-actions
+yarn add @ngrx/entity
 yarn add @ngrx/store-devtools -D
 ```
 

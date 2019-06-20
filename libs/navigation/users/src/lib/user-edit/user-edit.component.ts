@@ -40,6 +40,6 @@ export class UserEditComponent implements OnInit {
   }
 
   save(user: Partial<User>) {
-    this.store.dispatch(new UsersState.PatchOne(user));
+    this.store.dispatch(UsersState.patchOne({ user }));
   }
 }

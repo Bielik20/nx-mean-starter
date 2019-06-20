@@ -25,7 +25,7 @@ export class SelectEffects {
     }
     switch (navigation) {
       case 'users':
-        return new UsersState.Select(id);
+        return UsersState.select({ selectedId: id });
     }
     return null;
   }

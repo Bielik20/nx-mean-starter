@@ -6,16 +6,15 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { INIT, select, Store } from '@ngrx/store';
 import { AnimationsService, filterWith, LocalStorageService } from '@nx-mean-starter/shared';
-import { ofAction } from 'ngrx-actions';
 import { defer, merge, Observable } from 'rxjs';
 import { map, tap, withLatestFrom } from 'rxjs/operators';
 import {
-  ChangeAnimationsElements,
-  ChangeAnimationsPage,
-  ChangeAnimationsPageDisabled,
-  ChangeTheme,
-  SetIsMobile,
-  SetSidenav,
+  changeAnimationsElements,
+  changeAnimationsPage,
+  changeAnimationsPageDisabled,
+  changeTheme,
+  setIsMobile,
+  setSidenav,
 } from './actions';
 import { State } from './model';
 import { getIsMobile, getState, getTheme } from './selectors';
@@ -30,7 +29,7 @@ export class Effects {
   setIsMobile$ = defer(() =>
     this.breakpointObserver.observe([Breakpoints.Small, Breakpoints.XSmall]).pipe(
       map(result => result.matches),
-      map(isMobile => new SetIsMobile(isMobile)),
+      map(isMobile => setIsMobile({ isMobile })),
     ),
   );
 
@@ -38,16 +37,16 @@ export class Effects {
   closeSidenavOnNavigationIfMobile$ = this.actions$.pipe(
     ofType(ROUTER_NAVIGATION),
     filterWith(this.isMobile$, (isMobile: boolean) => isMobile),
-    map(() => new SetSidenav(false)),
+    map(() => setSidenav({ showSidenav: false })),
   );
 
   @Effect({ dispatch: false })
   persistSettings = this.actions$.pipe(
-    ofAction(
-      ChangeAnimationsElements,
-      ChangeAnimationsPage,
-      ChangeAnimationsPageDisabled,
-      ChangeTheme,
+    ofType(
+      changeAnimationsElements,
+      changeAnimationsPage,
+      changeAnimationsPageDisabled,
+      changeTheme,
     ),
     withLatestFrom(this.store.pipe(select(getState))),
     tap(([action, settings]) => this.localStorageService.setItem(SETTINGS_KEY, settings)),
@@ -57,7 +56,7 @@ export class Effects {
   updateRouteAnimationType = merge(
     INIT,
     this.actions$.pipe(
-      ofAction(ChangeAnimationsElements, ChangeAnimationsPage, ChangeAnimationsPageDisabled),
+      ofType(changeAnimationsElements, changeAnimationsPage, changeAnimationsPageDisabled),
     ),
   ).pipe(
     withLatestFrom(this.store.pipe(select(getState))),
@@ -70,7 +69,7 @@ export class Effects {
   );
 
   @Effect({ dispatch: false })
-  updateTheme = merge(INIT, this.actions$.pipe(ofAction(ChangeTheme))).pipe(
+  updateTheme = merge(INIT, this.actions$.pipe(ofType(changeTheme))).pipe(
     withLatestFrom(this.store.pipe(select(getTheme))),
     tap(([action, effectiveTheme]) => {
       const classList = this.overlayContainer.getContainerElement().classList;

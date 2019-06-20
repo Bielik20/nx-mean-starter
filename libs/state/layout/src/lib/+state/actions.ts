@@ -1,42 +1,28 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 import { ApplicationTheme } from './model';
 
-export class SetIsMobile implements Action {
-  readonly type = '[Layout] Set Is Mobile';
+export const setIsMobile = createAction('[Layout] Set Is Mobile', props<{ isMobile: boolean }>());
 
-  constructor(public payload: boolean) {}
-}
+export const toggleSidenav = createAction('[Layout] Toggle Sidenav');
 
-export class ToggleSidenav implements Action {
-  readonly type = '[Layout] Toggle Sidenav';
-}
+export const setSidenav = createAction('[Layout] Set Sidenav', props<{ showSidenav: boolean }>());
 
-export class SetSidenav implements Action {
-  readonly type = '[Layout] Set Sidenav';
+export const changeTheme = createAction(
+  '[Layout] Change Theme',
+  props<{ theme: ApplicationTheme }>(),
+);
 
-  constructor(public payload: boolean) {}
-}
+export const changeAnimationsElements = createAction(
+  '[Layout] Change Animations Elements',
+  props<{ elementsAnimations: boolean }>(),
+);
 
-export class ChangeTheme implements Action {
-  readonly type = '[Settings] Change Theme';
+export const changeAnimationsPage = createAction(
+  '[Layout] Change Animations Page',
+  props<{ pageAnimations: boolean }>(),
+);
 
-  constructor(readonly payload: { theme: ApplicationTheme }) {}
-}
-
-export class ChangeAnimationsElements implements Action {
-  readonly type = '[Settings] Change Animations Elements';
-
-  constructor(readonly payload: { elementsAnimations: boolean }) {}
-}
-
-export class ChangeAnimationsPage implements Action {
-  readonly type = '[Settings] Change Animations Page';
-
-  constructor(readonly payload: { pageAnimations: boolean }) {}
-}
-
-export class ChangeAnimationsPageDisabled implements Action {
-  readonly type = '[Settings] Change Animations Page Disabled';
-
-  constructor(readonly payload: { pageAnimationsDisabled: boolean }) {}
-}
+export const changeAnimationsPageDisabled = createAction(
+  '[Layout] Change Animations Page Disabled',
+  props<{ pageAnimationsDisabled: boolean }>(),
+);

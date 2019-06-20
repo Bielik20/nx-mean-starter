@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit {
       .pipe(
         take(1),
         filter(users => users.length === 0),
-        map(() => new UsersState.LoadBatch({ limit: 20 })),
+        map(() => UsersState.loadBatch({ params: { limit: 20 } })),
       )
       .subscribe(this.store);
   }
@@ -42,7 +42,7 @@ export class UsersComponent implements OnInit {
       .pipe(
         take(1),
         filter(([done, loading]) => !done && !loading),
-        map(() => new UsersState.LoadBatch({ limit: 20, skip })),
+        map(() => UsersState.loadBatch({ params: { limit: 20, skip } })),
       )
       .subscribe(this.store);
   }
