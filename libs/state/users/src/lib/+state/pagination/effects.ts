@@ -6,16 +6,16 @@ import { filterWith } from '@nx-mean-starter/shared';
 import { of } from 'rxjs';
 import { catchError, concatMap, map, tap } from 'rxjs/operators';
 import { UsersService } from '../../service/users.service';
-import { serverError } from '../entities';
+import { serverErrorLoadBatch } from '../entities';
 import { State } from '../reducer';
-import { loadBatch, loadBatchEnd, loadBatchSuccess } from './actions';
+import { loadBatch, loadBatchEnd, loadBatchSuccess, loadInitialBatch } from './actions';
 import { getPaginationDone } from './selectors';
 
 @Injectable()
 export class PaginationEffects {
   @Effect()
   loadBatch$ = this.actions$.pipe(
-    ofType(loadBatch),
+    ofType(loadBatch, loadInitialBatch),
     filterWith(this.store.select(getPaginationDone), (done: boolean) => !done),
     concatMap(({ params }) =>
       this.service.getBatch(params).pipe(
@@ -25,7 +25,7 @@ export class PaginationEffects {
           }
         }),
         map((users: User[]) => loadBatchSuccess({ users })),
-        catchError(error => of(serverError({ error }))),
+        catchError(error => of(serverErrorLoadBatch({ error }))),
       ),
     ),
   );

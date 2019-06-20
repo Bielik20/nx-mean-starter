@@ -1,10 +1,16 @@
 import { createAction, props } from '@ngrx/store';
 import { AuthData } from '@nx-mean-starter/models';
 
-export const authIn = createAction('[Auth] Auth In', props<{ authData: AuthData }>());
+// USER
 
-export const authOut = createAction('[Auth] Auth Out');
+export const signOutAuthModal = createAction('[Auth Modal Page] SignOut');
 
-export const signOut = createAction('[Auth] SignOut');
+export const signOutSidenav = createAction('[Auth Sidenav Page] SignOut');
 
-export const signOutSuccess = createAction('[Auth] SignOut Success');
+// API
+
+export const authIn = createAction('[Auth Effects] Auth In', props<{ authData: AuthData }>());
+
+export const authOut = createAction('[Auth Effects] Auth Out');
+
+export const signOutSuccess = createAction('[Auth Effects] SignOut Success');

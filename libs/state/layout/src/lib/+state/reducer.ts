@@ -6,6 +6,7 @@ import {
   changeTheme,
   setIsMobile,
   setSidenav,
+  setSidenavFromPage,
   toggleSidenav,
 } from './actions';
 import { State } from './model';
@@ -23,7 +24,7 @@ export const initialState: State = {
 export const factory = createReducer<State>(
   initialState,
 
-  on(setSidenav, (state, { showSidenav }) => ({
+  on(setSidenav, setSidenavFromPage, (state, { showSidenav }) => ({
     ...state,
     showSidenav,
   })),

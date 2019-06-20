@@ -1,5 +1,5 @@
 import { Action, ActionReducer, createReducer, on } from '@ngrx/store';
-import { authIn, authOut } from './actions';
+import { authIn, authOut, signOutSuccess } from './actions';
 
 export interface State {
   uid: string;
@@ -36,6 +36,6 @@ export function reducer(state: State | undefined, action: Action) {
 /** Clears storage on SignOut */
 export function signOutMetaReducer(_reducer: ActionReducer<any>): ActionReducer<any> {
   return function(state, action) {
-    return _reducer(action.type === '[Auth] SignOut Success' ? undefined : state, action);
+    return _reducer(action.type === signOutSuccess.type ? undefined : state, action);
   };
 }

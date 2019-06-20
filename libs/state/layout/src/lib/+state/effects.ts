@@ -6,8 +6,9 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { ROUTER_NAVIGATION } from '@ngrx/router-store';
 import { INIT, select, Store } from '@ngrx/store';
 import { AnimationsService, filterWith, LocalStorageService } from '@nx-mean-starter/shared';
-import { defer, merge, Observable } from 'rxjs';
-import { map, tap, withLatestFrom } from 'rxjs/operators';
+import Browser from 'browser-detect';
+import { defer, merge, Observable, of } from 'rxjs';
+import { filter, map, tap, withLatestFrom } from 'rxjs/operators';
 import {
   changeAnimationsElements,
   changeAnimationsPage,
@@ -24,6 +25,7 @@ export const SETTINGS_KEY = 'LAYOUT';
 @Injectable()
 export class Effects {
   isMobile$: Observable<boolean> = this.store.pipe(select(getIsMobile));
+  private browser = Browser();
 
   @Effect()
   setIsMobile$ = defer(() =>
@@ -53,7 +55,7 @@ export class Effects {
   );
 
   @Effect({ dispatch: false })
-  updateRouteAnimationType = merge(
+  updateRouteAnimationType$ = merge(
     INIT,
     this.actions$.pipe(
       ofType(changeAnimationsElements, changeAnimationsPage, changeAnimationsPageDisabled),
@@ -68,8 +70,14 @@ export class Effects {
     ),
   );
 
+  @Effect()
+  setBrowserAnimations$ = of(1).pipe(
+    filter(() => this.isDefectiveBrowser()),
+    map(() => changeAnimationsPageDisabled({ pageAnimationsDisabled: true })),
+  );
+
   @Effect({ dispatch: false })
-  updateTheme = merge(INIT, this.actions$.pipe(ofType(changeTheme))).pipe(
+  updateTheme$ = merge(INIT, this.actions$.pipe(ofType(changeTheme))).pipe(
     withLatestFrom(this.store.pipe(select(getTheme))),
     tap(([action, effectiveTheme]) => {
       const classList = this.overlayContainer.getContainerElement().classList;
@@ -90,4 +98,8 @@ export class Effects {
     private animationsService: AnimationsService,
     private localStorageService: LocalStorageService,
   ) {}
+
+  private isDefectiveBrowser() {
+    return ['ie', 'edge', 'safari', 'crios'].includes(this.browser.name);
+  }
 }

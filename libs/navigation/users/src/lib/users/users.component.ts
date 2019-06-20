@@ -32,7 +32,7 @@ export class UsersComponent implements OnInit {
       .pipe(
         take(1),
         filter(users => users.length === 0),
-        map(() => UsersState.loadBatch({ params: { limit: 20 } })),
+        map(() => UsersState.loadInitialBatch({ params: { limit: 20 } })),
       )
       .subscribe(this.store);
   }

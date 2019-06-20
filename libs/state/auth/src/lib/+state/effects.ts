@@ -9,7 +9,7 @@ import { RouterState } from '@nx-mean-starter/state/router';
 import { User as FirebaseUser } from 'firebase';
 import { from } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
-import { authIn, authOut, signOut, signOutSuccess } from './actions';
+import { authIn, authOut, signOutAuthModal, signOutSidenav, signOutSuccess } from './actions';
 import { State } from './reducer';
 import { getAuthenticated } from './selectors';
 
@@ -28,7 +28,7 @@ export class Effects {
 
   @Effect()
   signOut$ = this.actions$.pipe(
-    ofType(signOut),
+    ofType(signOutAuthModal, signOutSidenav),
     filterWith(this.store.select(getAuthenticated), (authenticated: boolean) => authenticated),
     switchMap(() => from(this.afa.auth.signOut())),
     map(() => signOutSuccess()),

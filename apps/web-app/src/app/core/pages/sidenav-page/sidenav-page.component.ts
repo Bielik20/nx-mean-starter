@@ -39,6 +39,6 @@ export class SidenavPageComponent implements OnInit {
   }
 
   singOut() {
-    this.store.dispatch(AuthState.signOut());
+    this.store.dispatch(AuthState.signOutSidenav());
   }
 }

@@ -16,7 +16,7 @@ export class AuthModalPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    setTimeout(() => this.store.dispatch(AuthState.signOut()));
+    setTimeout(() => this.store.dispatch(AuthState.signOutAuthModal()));
   }
 
   onSuccess() {

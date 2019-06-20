@@ -1,16 +1,18 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { Action, createReducer, on } from '@ngrx/store';
 import { User } from '@nx-mean-starter/models';
-import { loadBatch, loadBatchSuccess } from '../pagination';
+import { loadBatch, loadBatchSuccess, loadInitialBatch } from '../pagination';
 import {
   load,
-  loadAll,
-  loadAllSuccess,
+  loadAuthSuccess,
   loadSuccess,
   patchOne,
   patchOneSuccess,
   select,
-  serverError,
+  serverErrorAuth,
+  serverErrorLoad,
+  serverErrorLoadBatch,
+  serverErrorUpdate,
 } from './actions';
 
 export interface EntitiesState extends EntityState<User> {
@@ -53,21 +55,29 @@ export const factory = createReducer<EntitiesState>(
     ),
   ),
 
-  on(load, loadAll, loadBatch, state => ({
+  on(load, loadBatch, loadInitialBatch, state => ({
     ...state,
     loading: true,
     error: undefined,
   })),
 
-  on(loadSuccess, (state, { user }) =>
+  on(loadAuthSuccess, loadSuccess, (state, { user }) =>
     entitiesAdapter.upsertOne(user, { ...state, loading: false, error: undefined }),
   ),
 
-  on(loadAllSuccess, loadBatchSuccess, (state, { users }) =>
+  on(loadBatchSuccess, (state, { users }) =>
     entitiesAdapter.upsertMany(users, { ...state, loading: false, error: undefined }),
   ),
 
-  on(serverError, (state, { error }) => ({ ...state, selectedId: undefined, error: error })),
+  // TODO: Fix, for unknown reasons it throws error if joined
+  on(serverErrorUpdate, (state, { error }) => ({ ...state, selectedId: undefined, error: error })),
+  on(serverErrorAuth, (state, { error }) => ({ ...state, selectedId: undefined, error: error })),
+  on(serverErrorLoad, (state, { error }) => ({ ...state, selectedId: undefined, error: error })),
+  on(serverErrorLoadBatch, (state, { error }) => ({
+    ...state,
+    selectedId: undefined,
+    error: error,
+  })),
 );
 
 export function entitiesReducer(state: EntitiesState | undefined, action: Action) {

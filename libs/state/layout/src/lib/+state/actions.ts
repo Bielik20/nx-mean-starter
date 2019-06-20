@@ -1,28 +1,43 @@
 import { createAction, props } from '@ngrx/store';
 import { ApplicationTheme } from './model';
 
-export const setIsMobile = createAction('[Layout] Set Is Mobile', props<{ isMobile: boolean }>());
+// USER
 
-export const toggleSidenav = createAction('[Layout] Toggle Sidenav');
-
-export const setSidenav = createAction('[Layout] Set Sidenav', props<{ showSidenav: boolean }>());
+export const toggleSidenav = createAction('[Layout Page] Toggle Sidenav');
 
 export const changeTheme = createAction(
-  '[Layout] Change Theme',
+  '[Home Page] Change Theme',
   props<{ theme: ApplicationTheme }>(),
 );
 
 export const changeAnimationsElements = createAction(
-  '[Layout] Change Animations Elements',
+  '[Home Page] Change Animations Elements',
   props<{ elementsAnimations: boolean }>(),
 );
 
 export const changeAnimationsPage = createAction(
-  '[Layout] Change Animations Page',
+  '[Home Page] Change Animations Page',
   props<{ pageAnimations: boolean }>(),
 );
 
+// DEVICE
+
+export const setSidenavFromPage = createAction(
+  '[Layout Page] Set Sidenav',
+  props<{ showSidenav: boolean }>(),
+);
+
 export const changeAnimationsPageDisabled = createAction(
-  '[Layout] Change Animations Page Disabled',
+  '[Layout Effects] Change Animations Page Disabled',
   props<{ pageAnimationsDisabled: boolean }>(),
+);
+
+export const setIsMobile = createAction(
+  '[Layout Effects] Set Is Mobile',
+  props<{ isMobile: boolean }>(),
+);
+
+export const setSidenav = createAction(
+  '[Layout Effects] Set Sidenav',
+  props<{ showSidenav: boolean }>(),
 );

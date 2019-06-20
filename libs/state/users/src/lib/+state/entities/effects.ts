@@ -8,13 +8,14 @@ import { catchError, filter, map, switchMap, withLatestFrom } from 'rxjs/operato
 import { UsersService } from '../../service/users.service';
 import {
   load,
-  loadAll,
-  loadAllSuccess,
+  loadAuthSuccess,
   loadSuccess,
   patchOne,
   patchOneSuccess,
   select,
-  serverError,
+  serverErrorAuth,
+  serverErrorLoad,
+  serverErrorUpdate,
 } from './actions';
 import { EntitiesState } from './reducer';
 import { getEntities } from './selectors';
@@ -38,7 +39,7 @@ export class EntitiesEffects {
     switchMap((user: Partial<User>) =>
       this.service.patchMe(user).pipe(
         map((updatedUser: User) => patchOneSuccess({ user: updatedUser })),
-        catchError(error => of(serverError({ error }))),
+        catchError(error => of(serverErrorUpdate({ error }))),
       ),
     ),
   );
@@ -48,8 +49,8 @@ export class EntitiesEffects {
     ofType(AuthState.authIn),
     switchMap(() =>
       this.service.getMe().pipe(
-        map((user: User) => loadSuccess({ user })),
-        catchError(error => of(serverError({ error }))),
+        map((user: User) => loadAuthSuccess({ user })),
+        catchError(error => of(serverErrorAuth({ error }))),
       ),
     ),
   );
@@ -60,18 +61,7 @@ export class EntitiesEffects {
     switchMap(({ id }) =>
       this.service.getOne(id).pipe(
         map(user => loadSuccess({ user })),
-        catchError(error => of(serverError({ error }))),
-      ),
-    ),
-  );
-
-  @Effect()
-  loadAll$ = this.actions$.pipe(
-    ofType(loadAll),
-    switchMap(() =>
-      this.service.getBatch().pipe(
-        map(users => loadAllSuccess({ users })),
-        catchError(error => of(serverError({ error }))),
+        catchError(error => of(serverErrorLoad({ error }))),
       ),
     ),
   );
