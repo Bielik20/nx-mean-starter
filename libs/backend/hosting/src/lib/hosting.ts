@@ -2,13 +2,21 @@ import { environment } from '@env/backend';
 import { Express, static as expressStatic } from 'express';
 import * as path from 'path';
 
+/**
+ * In production mode run application from dist folder
+ */
 export function hostApplication(app: Express) {
   if (environment.production === true) {
-    // in production mode run application from dist folder
-    app.use(expressStatic(path.join(__dirname, '/../web-app'), { index: false }));
-    app.use(expressStatic(path.join(__dirname, '/../ionic-app'), { index: false }));
+    app.get('*.*', (req, res, next) => {
+      console.log(req.path);
+      if (isMobile(req)) {
+        expressStatic(path.join(__dirname, '/../ionic-app'))(req, res, next);
+      } else {
+        expressStatic(path.join(__dirname, '/../web-app'))(req, res, next);
+      }
+    });
 
-    app.get('*', function(req, res) {
+    app.get('*', (req, res) => {
       if (isMobile(req)) {
         res.sendFile(path.join(__dirname, '/../ionic-app/index.html'));
       } else {
