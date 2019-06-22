@@ -8,4 +8,5 @@ export const APP_ROUTES: Routes = [
     loadChildren: () =>
       import('@nx-mean-starter/navigation/users').then(m => m.NavigationUsersModule),
   },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

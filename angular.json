@@ -509,11 +509,6 @@
             "tsConfig": "libs/backend/express/tsconfig.spec.json"
           }
         }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
-        }
       }
     },
     "backend-core": {
@@ -538,11 +533,6 @@
             "jestConfig": "libs/backend/core/jest.config.js",
             "tsConfig": "libs/backend/core/tsconfig.spec.json"
           }
-        }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
         }
       }
     },
@@ -776,10 +766,30 @@
             "tsConfig": "libs/backend/nestjs/tsconfig.spec.json"
           }
         }
-      },
-      "schematics": {
-        "@nrwl/schematics:component": {
-          "styleext": "scss"
+      }
+    },
+    "backend-hosting": {
+      "root": "libs/backend/hosting",
+      "sourceRoot": "libs/backend/hosting/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/backend/hosting/tsconfig.lib.json",
+              "libs/backend/hosting/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/backend/hosting/jest.config.js",
+            "tsConfig": "libs/backend/hosting/tsconfig.spec.json"
+          }
         }
       }
     }

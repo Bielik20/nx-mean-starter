@@ -225,19 +225,19 @@ app.get('/api/', ...);
 ### Core
 
 ```
-ng g lib core --unit-test-runner=jest --directory=backend --no-module --prefix=app
+ng g @nrwl/node:library core --unit-test-runner=jest --directory=backend
 ```
 
 ### Schemas
 
 ```
-ng g lib schemas --unit-test-runner=jest --directory=backend --no-module --prefix=app
+ng g @nrwl/node:library schemas --unit-test-runner=jest --directory=backend
 ```
 
 ### Express
 
 ```
-ng g lib express --unit-test-runner=jest --directory=backend --no-module --prefix=app
+ng g @nrwl/node:library express --unit-test-runner=jest --directory=backend
 ```
 
 It can be served by both `functions` and `server` if needed.
