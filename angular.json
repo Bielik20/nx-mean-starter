@@ -29,7 +29,8 @@
                 "glob": "**/*",
                 "input": "node_modules/ngx-auth-firebaseui/assets/",
                 "output": "./assets/"
-              }
+              },
+              "apps/web-app/src/manifest.webmanifest"
             ],
             "styles": ["apps/web-app/src/styles.scss"],
             "scripts": []
@@ -57,7 +58,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/web-app/ngsw-config.json"
             }
           }
         },
