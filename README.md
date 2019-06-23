@@ -458,6 +458,12 @@ When changing theme, also change:
 - `manifest.webmanifest`
 - `index.html` -> `<meta name="theme-color" content="{{color}}" />`
 
+To generate icons
+
+1. Create folder with icon inside called `icon.png`
+2. Run `npx ngx-pwa-icons`
+3. Copy generated icons to respective directories
+
 ## Environment
 
 Setup environment following [this](https://github.com/nrwl/nx/issues/208#issuecomment-503165673).
