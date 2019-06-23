@@ -447,6 +447,17 @@ yarn add ngx-auth-firebaseui
 - https://medium.com/@cyrilletuzi/angular-server-side-rendering-in-node-with-express-universal-engine-dce21933ddce
 - https://angular.io/guide/universal
 
+## Add PWA
+
+```
+ng add @angular/pwa --project <project-name>
+```
+
+When changing theme, also change:
+
+- `manifest.webmanifest`
+- `index.html` -> `<meta name="theme-color" content="{{color}}" />`
+
 ## Environment
 
 Setup environment following [this](https://github.com/nrwl/nx/issues/208#issuecomment-503165673).

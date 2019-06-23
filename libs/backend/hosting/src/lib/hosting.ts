@@ -8,11 +8,10 @@ import * as path from 'path';
 export function hostApplication(app: Express) {
   if (environment.production === true) {
     app.get('*.*', (req, res, next) => {
-      console.log(req.path);
       if (isMobile(req)) {
-        expressStatic(path.join(__dirname, '/../ionic-app'))(req, res, next);
+        expressStatic(path.join(__dirname, '/../ionic-app'), { index: false })(req, res, next);
       } else {
-        expressStatic(path.join(__dirname, '/../web-app'))(req, res, next);
+        expressStatic(path.join(__dirname, '/../web-app'), { index: false })(req, res, next);
       }
     });
 

@@ -1,8 +1,8 @@
 {
   "name": "web-app",
   "short_name": "web-app",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "theme_color": "#627E8B",
+  "background_color": "#D9E7EB",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
