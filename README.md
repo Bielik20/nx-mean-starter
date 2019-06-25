@@ -458,6 +458,8 @@ When changing theme, also change:
 - `manifest.webmanifest`
 - `index.html` -> `<meta name="theme-color" content="{{color}}" />`
 
+When adding new script tag dependencies include them inside `ngsw-config.json`.
+
 To generate icons
 
 1. Create folder with icon inside called `icon.png`
