@@ -10,6 +10,7 @@ import { StateUsersModule } from '@nx-mean-starter/state/users';
 import { metaReducers } from './+state/meta-reducers';
 import { reducerProvider, reducerToken } from './+state/reducer';
 import { SelectEffects } from './+state/select.effects';
+import { PromptUpdateEffects } from './+state/update-app.effects';
 
 @NgModule({
   imports: [
@@ -23,7 +24,7 @@ import { SelectEffects } from './+state/select.effects';
         strictActionSerializability: !environment.production,
       },
     }),
-    EffectsModule.forRoot([SelectEffects]),
+    EffectsModule.forRoot([SelectEffects, PromptUpdateEffects]),
     StateAuthModule,
     StateRouterModule,
     StateUsersModule,
