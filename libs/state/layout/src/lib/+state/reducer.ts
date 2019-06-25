@@ -15,7 +15,6 @@ export const initialState: State = {
   showSidenav: false,
   isMobile: true,
   theme: 'dark-theme',
-  stickyHeader: true,
   pageAnimations: true,
   pageAnimationsDisabled: false,
   elementsAnimations: true,

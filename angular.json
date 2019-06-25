@@ -29,7 +29,8 @@
                 "glob": "**/*",
                 "input": "node_modules/ngx-auth-firebaseui/assets/",
                 "output": "./assets/"
-              }
+              },
+              "apps/web-app/src/manifest.webmanifest"
             ],
             "styles": ["apps/web-app/src/styles.scss"],
             "scripts": []
@@ -57,7 +58,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/web-app/ngsw-config.json"
             }
           }
         },
@@ -623,7 +626,8 @@
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
               },
-              "apps/ionic-app/src/assets"
+              "apps/ionic-app/src/assets",
+              "apps/ionic-app/src/manifest.webmanifest"
             ],
             "styles": [
               {
@@ -658,7 +662,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "apps/ionic-app/ngsw-config.json"
             }
           }
         },

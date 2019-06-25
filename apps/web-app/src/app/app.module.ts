@@ -3,6 +3,7 @@ import { AngularFireModule } from '@angular/fire';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/frontend';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/angular';
@@ -41,6 +42,7 @@ export function appFactoryName() {
     NgxAuthFirebaseUIModule.forRoot(environment.firebase, appFactoryName, {
       enableFirestoreSync: false,
     }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [AppErrorHandler.provider, HttpErrorInterceptor.provider, AuthInterceptor.provider],
   bootstrap: [AppComponent],
