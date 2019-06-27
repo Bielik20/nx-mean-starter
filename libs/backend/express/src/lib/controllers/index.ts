@@ -1,3 +1,4 @@
+import { environment } from '@env/backend';
 import { hostApplication } from '@nx-mean-starter/backend/hosting';
 import { Express } from 'express';
 import { authenticate } from '../config/auth';
@@ -11,6 +12,8 @@ export class AppControllers {
     this.app.use('/api/users', usersRouter);
     this.app.use('/api/me', authenticate(), meRouter);
 
-    hostApplication(this.app);
+    if (environment.production === true) {
+      hostApplication(this.app);
+    }
   }
 }
