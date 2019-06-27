@@ -26,11 +26,7 @@ export function appFactoryName() {
     BrowserModule,
     BrowserAnimationsModule,
     NxModule.forRoot(),
-    RouterModule.forRoot(APP_ROUTES, {
-      initialNavigation: 'enabled',
-      scrollPositionRestoration: 'enabled',
-      anchorScrolling: 'enabled',
-    }),
+    RouterModule.forRoot(APP_ROUTES, { initialNavigation: 'enabled' }),
     SharedModule.forRoot(),
     CoreModule,
     StateRootModule,
