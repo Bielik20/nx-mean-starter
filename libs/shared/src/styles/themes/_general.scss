@@ -20,6 +20,11 @@
 }
 
 @mixin general-core() {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   pre {
     color: inherit;
   }

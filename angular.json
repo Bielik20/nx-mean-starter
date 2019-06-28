@@ -30,6 +30,11 @@
                 "input": "node_modules/ngx-auth-firebaseui/assets/",
                 "output": "./assets/"
               },
+              {
+                "glob": "**/*",
+                "input": "libs/shared/src/assets/",
+                "output": "./assets"
+              },
               "apps/web-app/src/manifest.webmanifest"
             ],
             "styles": ["apps/web-app/src/styles.scss"],
@@ -626,6 +631,11 @@
                 "input": "node_modules/ionicons/dist/ionicons/svg",
                 "output": "./svg"
               },
+              {
+                "glob": "**/*",
+                "input": "libs/shared/src/assets/",
+                "output": "./assets"
+              },
               "apps/ionic-app/src/assets",
               "apps/ionic-app/src/manifest.webmanifest"
             ],
@@ -796,6 +806,37 @@
             "jestConfig": "libs/backend/hosting/jest.config.js",
             "tsConfig": "libs/backend/hosting/tsconfig.spec.json"
           }
+        }
+      }
+    },
+    "feature-layout": {
+      "projectType": "library",
+      "root": "libs/feature/layout",
+      "sourceRoot": "libs/feature/layout/src",
+      "prefix": "app",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/feature/layout/tsconfig.lib.json",
+              "libs/feature/layout/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/feature/layout/jest.config.js",
+            "tsConfig": "libs/feature/layout/tsconfig.spec.json",
+            "setupFile": "libs/feature/layout/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

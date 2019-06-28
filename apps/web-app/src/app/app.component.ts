@@ -1,12 +1,33 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { routeAnimations } from '@nx-mean-starter/shared';
+import { LayoutState } from '@nx-mean-starter/state/layout';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  animations: [routeAnimations],
 })
 export class AppComponent implements OnInit {
-  constructor() {}
+  isMobile$: Observable<boolean>;
+  showSidenav$: Observable<boolean>;
+  theme$: Observable<LayoutState.ApplicationTheme>;
 
-  ngOnInit() {}
+  constructor(private store: Store<LayoutState.State>) {}
+
+  ngOnInit() {
+    this.isMobile$ = this.store.select(LayoutState.getIsMobile);
+    this.showSidenav$ = this.store.select(LayoutState.getShowSidenav);
+    this.theme$ = this.store.select(LayoutState.getTheme);
+  }
+
+  toggleSidenav() {
+    this.store.dispatch(LayoutState.toggleSidenav());
+  }
+
+  openedChangeSidenav(showSidenav: boolean) {
+    this.store.dispatch(LayoutState.setSidenavFromPage({ showSidenav }));
+  }
 }

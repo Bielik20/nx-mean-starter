@@ -79,6 +79,9 @@
     },
     "backend-hosting": {
       "tags": []
+    },
+    "feature-layout": {
+      "tags": []
     }
   }
 }

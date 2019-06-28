@@ -1,9 +1,9 @@
 @import 'libs/shared/src/styles/variables';
 
 @import 'libs/shared/src/styles/theme';
-@import 'app/core/components/navbar/theme';
-@import 'app/core/components/footer/theme';
-@import 'app/core/components/user-sidenav-card/theme';
+@import 'libs/feature/layout/src/lib/components/navbar/theme';
+@import 'libs/feature/layout/src/lib/components/footer/theme';
+@import 'libs/feature/layout/src/lib/components/user-sidenav-card/theme';
 
 @import 'libs/shared/src/styles/bootstrap';
 @include mat-core();

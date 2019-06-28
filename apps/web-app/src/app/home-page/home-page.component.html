@@ -16,7 +16,7 @@
           </mat-icon>
           <mat-form-field>
             <mat-label>Color Theme</mat-label>
-            <mat-select [(value)]="settings.theme" (selectionChange)="onThemeSelect($event)">
+            <mat-select [value]="settings.theme" (selectionChange)="onThemeSelect($event)">
               <mat-option *ngFor="let theme of themes" [value]="theme.value">
                 {{ theme.label }}
               </mat-option>

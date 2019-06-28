@@ -7,13 +7,13 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/frontend';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NxModule } from '@nrwl/angular';
+import { FeatureLayoutModule } from '@nx-mean-starter/feature/layout';
 import { AppErrorHandler, HttpErrorInterceptor, SharedModule } from '@nx-mean-starter/shared';
 import { AuthInterceptor } from '@nx-mean-starter/state/auth';
 import { StateRootModule } from '@nx-mean-starter/state/root';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
-import { CoreModule } from './core';
 import { HomePageComponent } from './home-page/home-page.component';
 
 export function appFactoryName() {
@@ -28,7 +28,7 @@ export function appFactoryName() {
     NxModule.forRoot(),
     RouterModule.forRoot(APP_ROUTES, { initialNavigation: 'enabled' }),
     SharedModule.forRoot(),
-    CoreModule,
+    FeatureLayoutModule,
     StateRootModule,
     StoreDevtoolsModule.instrument({
       name: 'web-app',

@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { CoreModule } from './core.module';
+import { FeatureLayoutModule } from './feature-layout.module';
 
-describe('CoreModule', () => {
+describe('FeatureLayoutModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [CoreModule],
+      imports: [FeatureLayoutModule],
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(CoreModule).toBeDefined();
+    expect(FeatureLayoutModule).toBeDefined();
   });
 });

@@ -31,7 +31,8 @@
       "@nx-mean-starter/feature/card-image": ["libs/feature/card-image/src/index.ts"],
       "@nx-mean-starter/dev": ["libs/dev/src/index.ts"],
       "@nx-mean-starter/backend/nestjs": ["libs/backend/nestjs/src/index.ts"],
-      "@nx-mean-starter/backend/hosting": ["libs/backend/hosting/src/index.ts"]
+      "@nx-mean-starter/backend/hosting": ["libs/backend/hosting/src/index.ts"],
+      "@nx-mean-starter/feature/layout": ["libs/feature/layout/src/index.ts"]
     },
     "module": "esnext",
     "rootDir": "."
