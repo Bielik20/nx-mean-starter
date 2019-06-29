@@ -4,7 +4,15 @@ import * as path from 'path';
 /**
  * In production mode run application from dist folder
  */
-export function hostApplication(app: Express) {
+export function hostWebApp(app: Express) {
+  app.use(expressStatic(path.join(__dirname, '/../web-app'), { index: false }));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/../web-app/index.html'));
+  });
+}
+
+export function hostWebAppAndIonicApp(app: Express): void {
   app.get('*.*', (req, res, next) => {
     if (isMobile(req)) {
       expressStatic(path.join(__dirname, '/../ionic-app'), { index: false })(req, res, next);

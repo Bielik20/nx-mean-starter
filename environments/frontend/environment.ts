@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiUrl: 'http://localhost:3333',
   firebase: {
     apiKey: 'AIzaSyDdE3ZPqNs5k1uV3ULyT4jU1euTlZCELKc',
     authDomain: 'nx-mean-starter.firebaseapp.com',

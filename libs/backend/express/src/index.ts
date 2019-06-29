@@ -1,4 +1,5 @@
 import { environment } from '@env/backend';
+import { hostWebApp } from '@nx-mean-starter/backend/hosting';
 import * as express from 'express';
 import { AppConfig, AppControllers } from './lib';
 
@@ -6,6 +7,10 @@ export const app = express();
 
 new AppConfig(app).make();
 new AppControllers(app).make();
+
+if (environment.production === true) {
+  hostWebApp(app);
+}
 
 export function bootstrap() {
   return app.listen(environment.port, () => {
