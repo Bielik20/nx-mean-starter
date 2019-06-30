@@ -34,7 +34,7 @@
   "private": true,
   "main": "dist/apps/functions/main.js",
   "engines": {
-    "node": "12"
+    "node": "10"
   },
   "dependencies": {
     "@angular/animations": "^8.0.0",
