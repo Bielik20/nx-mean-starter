@@ -1,4 +1,3 @@
-import { app } from '@nx-mean-starter/backend/express';
 import * as functions from 'firebase-functions';
 
 // // Start writing Firebase Functions
@@ -8,4 +7,9 @@ export const helloWorld = functions.https.onRequest((request, response) => {
   response.send('Hello from Firebase!');
 });
 
-export const server = functions.https.onRequest(app);
+export const cdnTest = functions.https.onRequest((request, response) => {
+  response.set('Cache-Control', 'public, max-age=30, s-maxage=31556926'); // 31556926 = 1 year
+  response.send(`${Date.now()}`);
+});
+
+// export const server = functions.https.onRequest(app);
