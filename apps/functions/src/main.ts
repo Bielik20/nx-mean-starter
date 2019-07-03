@@ -1,11 +1,9 @@
+import { firebase } from '@nx-mean-starter/backend/core';
 import { spawn } from 'child-process-promise';
-import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
 import * as mkdirp from 'mkdirp-promise';
 import * as os from 'os';
 import * as path from 'path';
-
-admin.initializeApp();
 
 // // Start writing Firebase Functions
 // // https://firebase.google.com/docs/functions/typescript
@@ -31,7 +29,7 @@ const THUMB_PREFIX = 'thumb_';
 export const image = functions.https.onRequest(async (request, response) => {
   const fullPath = request.params[0];
 
-  const storage = admin.storage();
+  const storage = firebase.storage();
   const file = storage.bucket('test').file('1561813747350_test-aaa.jpg');
 
   const filePath = file.name;
