@@ -42,9 +42,9 @@ export const image = functions.https.onRequest(async (request, response) => {
   const tempLocalThumbFile = path.join(os.tmpdir(), thumbFilePath);
 
   await mkdirp(tempLocalDir);
-  // await file.download({destination: tempLocalFile});
+  await file.download({ destination: tempLocalFile });
 
-  await response.send(tempLocalFile);
+  await response.sendFile(tempLocalFile);
 });
 
 // export const server = functions.https.onRequest(app);
