@@ -51,10 +51,10 @@ export class CardImageUploadComponent implements OnInit {
     this.isPending$.next(true);
     this.snapshot$ = task.snapshotChanges().pipe(
       finalize(async () => {
-        const url = await ref.getDownloadURL().toPromise();
+        const metadata = await ref.getMetadata().toPromise();
 
-        this.pictureUrl = url;
-        this.pictureUrlChange.emit(url);
+        this.pictureUrl = metadata.fullPath;
+        this.pictureUrlChange.emit(metadata.fullPath);
       }),
       catchError(err => {
         this.isPending$.next(false);
