@@ -17,6 +17,7 @@ import {
 })
 export class CardImageComponent implements OnInit {
   @Input() pictureUrl: string;
+  @Input() thumbnail = false;
   @Output() load = new EventEmitter<Event>();
 
   constructor() {}

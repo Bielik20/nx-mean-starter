@@ -1,7 +1,7 @@
 <mat-card class="user-card mat-hover-elevation-z9">
   <h2>{{ user.name }}</h2>
 
-  <app-card-image [pictureUrl]="user.pictureUrl"></app-card-image>
+  <app-card-image [pictureUrl]="user.pictureUrl" [thumbnail]="true"></app-card-image>
 
   <p><strong>Email: </strong>{{ user.email }}</p>
   <p><strong>Verified: </strong>{{ user.emailVerified }}</p>
