@@ -7,7 +7,6 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-image',
@@ -20,11 +19,7 @@ export class CardImageComponent implements OnInit {
   @Input() pictureUrl: string;
   @Output() load = new EventEmitter<Event>();
 
-  get pictureUrlBypass() {
-    return this.sanitizer.bypassSecurityTrustStyle(`url(${this.pictureUrl})`);
-  }
-
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor() {}
 
   ngOnInit() {}
 }
