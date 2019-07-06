@@ -1,5 +1,5 @@
 <div class="image-container">
-  <div class="overlay image-overlay" [lazyLoad]="pictureUrl"></div>
+  <div #host class="overlay image-overlay" [lazyLoad]="pictureUrl | image:host"></div>
   <img
     [lazyLoad]="pictureUrl"
     class="image card-image-fit"
