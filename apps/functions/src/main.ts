@@ -30,7 +30,9 @@ export const image = functions.https.onRequest(async (request, response) => {
   const fullPath = request.params[0];
 
   const storage = firebase.storage();
-  const file = storage.bucket('test').file('1561813747350_test-aaa.jpg');
+  const file = storage
+    .bucket('nx-mean-starter.appspot.com')
+    .file('test/1561813747350_test-aaa.jpg');
 
   const filePath = file.name;
   const fileDir = path.dirname(filePath);

@@ -1,6 +1,6 @@
 {
   "functions": {
-    "predeploy": ["yarn lint functions", "yarn build functions --prod"],
+    "predeploy": ["yarn build functions --prod"],
     "source": "/"
   },
   "hosting": {
