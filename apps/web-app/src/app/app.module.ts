@@ -11,7 +11,6 @@ import { FeatureLayoutModule } from '@nx-mean-starter/feature/layout';
 import { AppErrorHandler, HttpErrorInterceptor, SharedModule } from '@nx-mean-starter/shared';
 import { AuthInterceptor } from '@nx-mean-starter/state/auth';
 import { StateRootModule } from '@nx-mean-starter/state/root';
-import { intersectionObserverPreset, LazyLoadImageModule } from 'ng-lazyload-image';
 import { NgxAuthFirebaseUIModule } from 'ngx-auth-firebaseui';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
@@ -37,9 +36,6 @@ export function appFactoryName() {
     AngularFireModule.initializeApp(environment.firebase),
     NgxAuthFirebaseUIModule.forRoot(environment.firebase, appFactoryName, {
       enableFirestoreSync: false,
-    }),
-    LazyLoadImageModule.forRoot({
-      preset: intersectionObserverPreset,
     }),
     RouterModule.forRoot(APP_ROUTES, { initialNavigation: 'enabled' }),
     FeatureLayoutModule,

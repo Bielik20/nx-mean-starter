@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 export const environment = {
   production: true,
   mongoUri: process.env.MONGO_URI || 'mongodb://localhost/nx-mean-starter',

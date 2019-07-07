@@ -1,4 +1,3 @@
-import { app } from '@nx-mean-starter/backend/express';
 import * as functions from 'firebase-functions';
 
 // // Start writing Firebase Functions
@@ -8,4 +7,6 @@ export const helloWorld = functions.https.onRequest((request, response) => {
   response.send('Hello from Firebase!');
 });
 
-export const server = functions.https.onRequest(app);
+// export const server = functions.https.onRequest(app);
+
+export * from './app/generate-thumbnail';

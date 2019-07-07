@@ -2,7 +2,7 @@
 
 <div matRipple class="user-sidenav-card">
   <div class="picture">
-    <img class="img-fluid" [src]="pictureUrl">
+    <img class="img-fluid" [src]="pictureUrl | image:true">
   </div>
   <h3 class="mat-h3">{{name}}</h3>
 </div>
