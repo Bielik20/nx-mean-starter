@@ -7,6 +7,8 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ImagePipe } from '@nx-mean-starter/shared';
 
 @Component({
   selector: 'app-card-image',
@@ -20,7 +22,13 @@ export class CardImageComponent implements OnInit {
   @Input() thumbnail = false;
   @Output() load = new EventEmitter<Event>();
 
-  constructor() {}
+  get pictureUrlBypass() {
+    return this.sanitizer.bypassSecurityTrustStyle(
+      `url("${this.imagePipe.transform(this.pictureUrl, this.thumbnail)}")`,
+    );
+  }
+
+  constructor(private sanitizer: DomSanitizer, private imagePipe: ImagePipe) {}
 
   ngOnInit() {}
 }

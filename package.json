@@ -97,7 +97,6 @@
     "lusca": "^1.6.1",
     "mkdirp-promise": "^5.0.1",
     "mongoose": "^5.4.13",
-    "ng-lazyload-image": "^6.0.0",
     "ngx-auth-firebaseui": "^2.2.1",
     "ngx-infinite-scroll": "^7.0.1",
     "passport": "^0.4.0",

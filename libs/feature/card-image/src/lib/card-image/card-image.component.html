@@ -1,7 +1,7 @@
 <div class="image-container">
-  <div class="overlay image-overlay" [lazyLoad]="pictureUrl | image:thumbnail"></div>
+  <div class="overlay image-overlay" [style.background-image]="pictureUrlBypass"></div>
   <img
-    [lazyLoad]="pictureUrl | image:thumbnail"
+    [src]="pictureUrl | image:thumbnail"
     class="image card-image-fit"
     alt="profile picture"
     (load)="load.emit($event)"

@@ -3,6 +3,7 @@ export * from './lib/animations';
 export * from './lib/services/error-handler/app-error-handler.service';
 export * from './lib/interceptors/http-error/http-error.interceptor';
 export * from './lib/interceptors/http-url/http-url.interceptor';
+export * from './lib/pipes/image.pipe';
 export * from './lib/rxjs';
 export * from './lib/utils';
 export * from './lib/services/local-storage/local-storage.service';
