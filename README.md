@@ -95,6 +95,26 @@ git push heroku master
 
 When running production build locally use: `node -r dotenv/config dist/apps/server/main.js`
 
+## Add Firebase Storage
+
+1. Go to https://console.firebase.google.com -> storage tab
+2. Activate
+3. Change rules so that image pipe works (you may change directory name):
+
+```
+service firebase.storage {
+  match /b/{bucket}/o {
+  	match /test/{allPaths=**} {
+    	allow read;
+      allow write: if request.auth != null;
+    }
+    match /{allPaths=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
+```
+
 ## Add Firebase Client SDK
 
 1. Create firebase project at https://console.firebase.google.com
