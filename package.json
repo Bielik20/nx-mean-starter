@@ -96,7 +96,7 @@
     "lodash": "^4.17.11",
     "lusca": "^1.6.1",
     "mkdirp-promise": "^5.0.1",
-    "mongoose": "^5.4.13",
+    "mongoose": "^5.7.5",
     "ngx-auth-firebaseui": "^2.2.1",
     "ngx-infinite-scroll": "^7.0.1",
     "passport": "^0.4.0",
